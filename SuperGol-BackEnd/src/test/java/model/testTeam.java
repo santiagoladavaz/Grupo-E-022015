@@ -32,7 +32,7 @@ public class testTeam {
 					.withPlayer(factory.createForwardWithTeam("Delantero1", boca))
 					.withPlayer(factory.createForwardWithTeam("Delantero2", boca))
 					.withFlag("Flag")
-					.withOwner(new User());
+					.withOwner(new User()); 
 	}
 	
 	@Test
