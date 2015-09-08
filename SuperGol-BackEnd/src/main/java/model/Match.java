@@ -27,4 +27,33 @@ public class Match {
 		tie=true;
 	}
 
+
+
+	public Team getVisitorTeam() {
+		return visitorTeam;
+	}
+
+
+
+	public void setVisitorTeam(Team visitorTeam) {
+		this.visitorTeam = visitorTeam;
+	}
+
+
+
+	public Team getLocalTeam() {
+		return localTeam;
+	}
+
+
+
+	public void setLocalTeam(Team localTeam) {
+		this.localTeam = localTeam;
+	}
+	
+	
+	
+	
+	
+
 }
