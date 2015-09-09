@@ -1,10 +1,2 @@
 language: java
 script: cd SuperGol-BackEnd && mvn test
-
-
-notifications:
-  email:
-  - cristianelopez@gmail.com
-  - jfflores90@gmail.com
-  - santiagoladavaz@gmail.com
-	
