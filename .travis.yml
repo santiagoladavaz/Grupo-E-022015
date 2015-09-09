@@ -3,8 +3,8 @@ script: cd SuperGol-BackEnd && mvn test
 
 
 
-Notifications:
-	email:
-		-jfflores90@gmail.com	
-		-santiagoladavaz@gmail.com
-		-cristianelopez@gmail.com
+notifications:
+  email:
+		- jfflores90@gmail.com	
+		- santiagoladavaz@gmail.com
+		- cristianelopez@gmail.com
