@@ -38,8 +38,8 @@ public class TestQuartzReader {
 	
 	@After
 	public void tearDown(){
-		File f = new File("src/main/resources/csv/pepe_readed.txt");
-		f.renameTo(new File("src/main/resources/csv/pepe.txt"));
+		File f = new File("src/main/resources/csv/pepe_15-09-2015_readed.txt");
+		f.renameTo(new File("src/main/resources/csv/pepe_15-09_2015.txt"));
 	}
 	
 	
