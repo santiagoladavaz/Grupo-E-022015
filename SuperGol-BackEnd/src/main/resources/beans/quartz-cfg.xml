@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	
+	<bean id="readerCSVQuartz" class="quartz.ReaderCSVQuartz">
+	</bean>
+	
+	<bean id="readCSVJob" 
+ 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="readerCSVQuartz" />
+		<property name="targetMethod" value="readFiles" />		
+	</bean>
+	
+	<bean id="cronTriggerCSV"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="readCSVJob" />
+		<property name="cronExpression" value="0/5 * * * * ?" />
+	</bean>
+	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+	   		<list>
+	      		<ref bean="readCSVJob" />
+	   		</list>
+		</property>
+			<property name="triggers">
+	    		<list>
+					<ref bean="cronTriggerCSV"/>
+	    		</list>
+			</property>
+   </bean>
+	
+</beans>

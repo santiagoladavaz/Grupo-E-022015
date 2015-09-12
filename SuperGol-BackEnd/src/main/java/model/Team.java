@@ -14,6 +14,7 @@ public class Team {
 	private String name;
 	private String flag;
 	private User owner;
+	private int matchPoints;
 	
 	public User getOwner() {
 		return owner;
@@ -27,7 +28,6 @@ public class Team {
 	public void setMatchPoints(int matchPoints) {
 		this.matchPoints = matchPoints;
 	}
-	private int matchPoints;
 	
 	public Team(){
 		this.players = new ArrayList<Player>();
