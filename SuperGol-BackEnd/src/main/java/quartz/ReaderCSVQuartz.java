@@ -42,7 +42,7 @@ public class ReaderCSVQuartz {
 			}else{
 				try{
 					readCSV(f.getPath());
-					String name = f.getName();
+					String name = DEFAULT_PATH + f.getName();
 					name= name.replaceFirst(".txt", "_readed.txt");
 					f.renameTo(new File(name));
 				}catch(IOException e){

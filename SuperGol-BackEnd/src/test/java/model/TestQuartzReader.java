@@ -39,9 +39,7 @@ public class TestQuartzReader {
 	@After
 	public void tearDown(){
 		File f = new File("src/main/resources/csv/pepe_readed.txt");
-		f.renameTo(new File("pepe.txt"));
-		File f2 = new File("src/main/resources/csvTest/"+"incorrectcsv_readed.txt");
-		f2.renameTo(new File("incorrectcsv.txt"));
+		f.renameTo(new File("src/main/resources/csv/pepe.txt"));
 	}
 	
 	
