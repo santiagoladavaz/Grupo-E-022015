@@ -16,19 +16,6 @@ public class Team {
 	private User owner;
 	private int matchPoints;
 	
-	public User getOwner() {
-		return owner;
-	}
-	public void setOwner(User owner) {
-		this.owner = owner;
-	}
-	public int getMatchPoints() {
-		return matchPoints;
-	}
-	public void setMatchPoints(int matchPoints) {
-		this.matchPoints = matchPoints;
-	}
-	
 	public Team(){
 		this.players = new ArrayList<Player>();
 		matchPoints= 0;
@@ -79,6 +66,20 @@ public class Team {
 		return total;
 	}
 	
+	public void removePlayerWithName(String string) {
+		for(Player p : players){
+			if (p.getName().equals(string)){
+				players.remove(p);
+				return;
+			}
+		}
+		
+	}
+	
+	
+	
+	
+	
 	
 	public Team withPlayer(Player pl){
 		this.addPlayer(pl);
@@ -119,6 +120,18 @@ public class Team {
 	}
 	public void setFlag(String flag) {
 		this.flag = flag;
+	}
+	public User getOwner() {
+		return owner;
+	}
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+	public int getMatchPoints() {
+		return matchPoints;
+	}
+	public void setMatchPoints(int matchPoints) {
+		this.matchPoints = matchPoints;
 	}
 	
 	

@@ -2,6 +2,8 @@ package model;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.junit.After;
 import org.junit.Before;
@@ -21,7 +23,7 @@ public class TestQuartzReader {
 	
 	@Test(expected=Exception.class)
 	public void testReadFileInIcorrectPath() throws IOException{
-		reader.readCSV("IncorrectPath");
+		reader.readCSV("IncorrectPath", null);
 	}
 	
 	@Test
@@ -38,8 +40,11 @@ public class TestQuartzReader {
 	
 	@After
 	public void tearDown(){
-		File f = new File("src/main/resources/csv/pepe_15-09-2015_readed.txt");
-		f.renameTo(new File("src/main/resources/csv/pepe_15-09_2015.txt"));
+		Date d = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+		String date = format.format(d);
+		File f = new File("src/main/resources/csv/pepe_" +date+"_readed.txt");
+		f.renameTo(new File("src/main/resources/csv/pepe_"+date+".txt"));
 	}
 	
 	

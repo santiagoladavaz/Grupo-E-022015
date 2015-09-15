@@ -1,6 +1,7 @@
 package model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,29 +11,19 @@ import exceptions.PlayerDoesntExistException;
 import exceptions.PlayerInTeamException;
 import exceptions.TeamAlreadyFullException;
 import factories.PlayerFactory;
+import factories.TeamFactory;
 
 public class TestTeam {
 	
 	Team boca;
 	PlayerFactory factory;
+	TeamFactory teamFactory;
 	
 	@Before
 	public void setUp(){
 		factory = new PlayerFactory();
-		boca = new Team()
-					.withName("Boca")
-					.withPlayer(factory.createGoalKeeperWithTeam("Arquero", boca))
-					.withPlayer(factory.createDefenderWithTeam("Defensor1", boca))
-					.withPlayer(factory.createDefenderWithTeam("Defensor2", boca))
-					.withPlayer(factory.createDefenderWithTeam("Defensor3", boca))
-					.withPlayer(factory.createDefenderWithTeam("Defensor4", boca))
-					.withPlayer(factory.createMidFielderWithTeam("Medio1", boca))
-					.withPlayer(factory.createMidFielderWithTeam("Medio2", boca))
-					.withPlayer(factory.createMidFielderWithTeam("Medio3", boca))
-					.withPlayer(factory.createForwardWithTeam("Delantero1", boca))
-					.withPlayer(factory.createForwardWithTeam("Delantero2", boca))
-					.withFlag("Flag")
-					.withOwner(new User()); 
+		teamFactory = new TeamFactory();
+		boca = teamFactory.createFullyTeam("Boca", "h");
 	}
 	
 	@Test
@@ -47,24 +38,25 @@ public class TestTeam {
 	
 	@Test
 	public void testAddPlayerSuccessfully(){
-		boca.addPlayer(factory.createForwardWithTeam("Delantero3", boca));
+		boca.removePlayerWithName("Delantero3h");
+		boca.addPlayer(factory.createForwardWithTeam("Delantero3h", boca));
 	}
 	
 	@Test(expected=PlayerInTeamException.class) 
 	public void testAddPlayerAlreadyInTeam(){
-		boca.addPlayer(factory.createForwardWithTeam("Delantero3", boca));
-		boca.addPlayer(boca.getPlayer("Delantero3"));
+		boca.addPlayer(factory.createForwardWithTeam("Delantero3h", boca));
+		boca.addPlayer(boca.getPlayer("Delantero3h"));
 	}
 
 	@Test(expected=EnoughtPlayersInPositionException.class)
 	public void testAddPlayerWithFullPositionsInTeam(){
-		boca.addPlayer(factory.createDefenderWithTeam("delantero5", boca));
+		boca.addPlayer(factory.createDefenderWithTeam("delantero5h", boca));
 	}
 	
 	@Test(expected=TeamAlreadyFullException.class)
 	public void testTeamFull(){
-		boca.addPlayer(factory.createForwardWithTeam("Delantero3", boca));
-		boca.addPlayer(factory.createForwardWithTeam("Delantero4", boca));
+		boca.addPlayer(factory.createForwardWithTeam("Delantero3h", boca));
+		boca.addPlayer(factory.createForwardWithTeam("Delantero4h", boca));
 	}
 	
 	@Test(expected=PlayerDoesntExistException.class)
@@ -74,12 +66,12 @@ public class TestTeam {
 	
 	@Test
 	public void testGetPlayer(){
-		assertNotNull(boca.getPlayer("Delantero1"));
+		assertNotNull(boca.getPlayer("Delantero1h"));
 	}
 	
 	@Test
 	public void testScore(){
-		boca.score(boca.getPlayer("Delantero1"));
+		boca.score(boca.getPlayer("Delantero1h"));
 		assertEquals(boca.getMatchPoints(), 1);
 	}
 	

@@ -10,23 +10,29 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import exceptions.DateException;
 import exceptions.PlayerDoesntExistException;
 import factories.PlayerFactory;
 import model.League;
+import model.MatchDay;
 import model.Player;
 
 public class ReaderCSVQuartz {
 	
 	final static Logger logger = Logger.getLogger(ReaderCSVQuartz.class);
 	PlayerFactory playerFactory = new PlayerFactory();
+	// "MOCK DE LA DB POR EL MOMENTO"
+	// se "mockea los jugadores en la 'BD'"
 	List<Player>players = new ArrayList<Player>();
+
+	
 	// lista de jugadores que metieron goles
 	List<Player>playerss = new ArrayList<Player>();
 	public static String DEFAULT_PATH = "src/main/resources/csv/";
-	// se "mockea los jugadores en la 'BD'"
 	
 	private League league = new League();
 	
@@ -41,7 +47,6 @@ public class ReaderCSVQuartz {
 	
 	public void readFiles(){
 		logger.info("QUARTZ STARTED!!!");
-		System.out.println("QUARTZ STARTED!!!");
 		logger.info("QUARTZ -> Reading files of default path: " + DEFAULT_PATH);
 		File folder = new File(DEFAULT_PATH);
 		for (File f : folder.listFiles()){
@@ -50,7 +55,7 @@ public class ReaderCSVQuartz {
 			}else{
 				try{
 					if (isTodaysFile(f.getName())){
-						readCSV(f.getPath());
+						readCSV(f.getPath(),toDate(f.getName()));
 						String name = DEFAULT_PATH + f.getName();
 						name= name.replaceFirst(".txt", "_readed.txt");
 						f.renameTo(new File(name));
@@ -63,20 +68,29 @@ public class ReaderCSVQuartz {
 		
 	}
 	
-	public boolean isTodaysFile(String name){
+	public Calendar toDate(String name){
 		try{
 			String[] split = name.split("_");
 			String date = split[1].split("\\.")[0];
 			DateFormat f = new SimpleDateFormat("dd-MM-yyyy");
 			Calendar today = Calendar.getInstance();
-			today.setTimeInMillis((f.parse(date).getTime()));	
+			today.setTimeInMillis((f.parse(date).getTime()));
+			return today;			
+		}catch(Exception e){
+			 throw new DateException("The given String cannot be parsed to a date");
+		}
+	}
+	
+	public boolean isTodaysFile(String name){
+		try{
+			Calendar today = toDate(name);
 			return (today.get(Calendar.DAY_OF_YEAR) == Calendar.getInstance().get(Calendar.DAY_OF_YEAR));
 		}catch(Exception e){
 			return false;
 		}
 	}
 	
-	public void readCSV(String path) throws IOException{
+	public void readCSV(String path,Calendar date) throws IOException{
 		logger.info("Reading file: " + path);
 		initializePlayers();
 		BufferedReader reader = new BufferedReader(new FileReader(path));
@@ -85,7 +99,13 @@ public class ReaderCSVQuartz {
 			Player pl = validatePlayer(line.split(","));
 			playerss.add(pl);
 		}
+	//	calculateGoals(date);
 		
+	}
+	
+	private void calculateGoals(Calendar date){
+		MatchDay matchDay = league.getMatchOfTheDay(date);
+		matchDay.playersScore(playerss);
 	}
 	
 	// este metodo despues va a hacer querys contra la DB
@@ -102,8 +122,8 @@ public class ReaderCSVQuartz {
 		
 	}
 	
-	public static void main( String[] args ) throws Exception
-    {
+	public static void main( String[] args ) throws Exception {
+		BasicConfigurator.configure();
     	new ClassPathXmlApplicationContext("beans/quartz-cfg.xml");
     }
 
