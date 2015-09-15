@@ -23,7 +23,7 @@ public class TestTeam {
 	public void setUp(){
 		factory = new PlayerFactory();
 		teamFactory = new TeamFactory();
-		boca = teamFactory.createFullyTeam("Boca", "h");
+		boca = teamFactory.createFullTeam("Boca", "h");
 	}
 	
 	@Test

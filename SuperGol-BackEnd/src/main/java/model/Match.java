@@ -25,28 +25,23 @@ public class Match {
 			return;
 		}
 		tie=true;
+		localTeam.setMatchPoints(0);
+		visitorTeam.setMatchPoints(0);
 	}
 
 
+	
+	
 
 	public Team getVisitorTeam() {
 		return visitorTeam;
 	}
-
-
-
 	public void setVisitorTeam(Team visitorTeam) {
 		this.visitorTeam = visitorTeam;
 	}
-
-
-
 	public Team getLocalTeam() {
 		return localTeam;
 	}
-
-
-
 	public void setLocalTeam(Team localTeam) {
 		this.localTeam = localTeam;
 	}

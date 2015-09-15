@@ -15,6 +15,7 @@ public class Team {
 	private String flag;
 	private User owner;
 	private int matchPoints;
+	private int pointsOfTheTeam;
 	
 	public Team(){
 		this.players = new ArrayList<Player>();
@@ -133,6 +134,16 @@ public class Team {
 	public void setMatchPoints(int matchPoints) {
 		this.matchPoints = matchPoints;
 	}
+
+	public int getPointsOfTheTeam() {
+		return pointsOfTheTeam;
+	}
+
+	public void setPointsOfTheTeam(int pointsOfTheTeam) {
+		this.pointsOfTheTeam = pointsOfTheTeam;
+	}
+	
+	
 	
 	
 	

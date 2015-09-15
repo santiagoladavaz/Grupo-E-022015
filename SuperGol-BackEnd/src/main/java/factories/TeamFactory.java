@@ -7,7 +7,7 @@ public class TeamFactory {
 
 	PlayerFactory factory = new PlayerFactory();
 	
-	public Team createFullyTeam(String name,String suffix){
+	public Team createFullTeam(String name,String suffix){
 		Team t = new Team();
 		t.withName("Boca")
 		.withPlayer(factory.createGoalKeeperWithTeam("Arquero" + suffix, t))

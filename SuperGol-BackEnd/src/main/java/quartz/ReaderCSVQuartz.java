@@ -99,13 +99,7 @@ public class ReaderCSVQuartz {
 			Player pl = validatePlayer(line.split(","));
 			playerss.add(pl);
 		}
-	//	calculateGoals(date);
-		
-	}
-	
-	private void calculateGoals(Calendar date){
-		MatchDay matchDay = league.getMatchOfTheDay(date);
-		matchDay.playersScore(playerss);
+	//	league.calculateGoals(date,playerss);
 	}
 	
 	// este metodo despues va a hacer querys contra la DB

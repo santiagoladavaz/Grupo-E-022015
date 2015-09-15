@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -9,6 +10,10 @@ public class MatchDay {
 	private Calendar date;
 	
 	
+	public MatchDay(){
+		matchsOfTheDay = new ArrayList<Match>();
+		date = Calendar.getInstance();
+	}
 	
 	public void playersScore(List<Player> p){
 		for (Match m : matchsOfTheDay){
@@ -22,8 +27,6 @@ public class MatchDay {
 		}
 		return false;
 	}
-	
-
 
 
 	public Calendar getDate() {
@@ -44,12 +47,9 @@ public class MatchDay {
 	
 	
 	
-	public List<Match> getMatchsOfTheDay() {
+	public List<Match> getMatchesOfTheDay() {
 		return matchsOfTheDay;
 	}
-
-
-
 	public void setMatchsOfTheDay(List<Match> matchsOfTheDay) {
 		this.matchsOfTheDay = matchsOfTheDay;
 	}
