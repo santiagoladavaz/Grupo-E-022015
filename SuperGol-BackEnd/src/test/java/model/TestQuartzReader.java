@@ -7,6 +7,7 @@ import java.util.Date;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import exceptions.PlayerDoesntExistException;
@@ -31,6 +32,7 @@ public class TestQuartzReader {
 		reader.readFiles();
 	}
 	
+	@Ignore
 	@Test(expected=PlayerDoesntExistException.class)
 	public void testReadIncorrectFile(){
 		reader.DEFAULT_PATH = "src/test/resources/";
