@@ -33,7 +33,7 @@ public class TestQuartzReader {
 	
 	@Test(expected=PlayerDoesntExistException.class)
 	public void testReadIncorrectFile(){
-		reader.DEFAULT_PATH = "src/main/resources/csvTest/";
+		reader.DEFAULT_PATH = "src/test/resources/";
 		reader.readFiles();
 	}
 	
