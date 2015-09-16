@@ -18,7 +18,6 @@ import exceptions.DateException;
 import exceptions.PlayerDoesntExistException;
 import factories.PlayerFactory;
 import model.League;
-import model.MatchDay;
 import model.Player;
 
 public class ReaderCSVQuartz {
