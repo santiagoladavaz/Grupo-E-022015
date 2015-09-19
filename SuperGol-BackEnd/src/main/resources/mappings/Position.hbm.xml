@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field"
+	default-cascade="save-update">
+	<class name="model.Position">
+		<id column="ID" name="id">
+			<generator class="native" />
+		</id>
+		
+	<joined-subclass name="model.MidFielder">
+		<key column="pos" />
+	</joined-subclass>
+	
+	<joined-subclass name="model.Defender">
+		<key column="pos" />
+	</joined-subclass>
+
+	<joined-subclass name="model.GoalKeeper">
+		<key column="pos"/>
+	</joined-subclass>	
+	
+	<joined-subclass name="model.Forward">
+		<key column="pos"/>
+	</joined-subclass>
+</class>
+	
+	
+	
+	
+</hibernate-mapping>

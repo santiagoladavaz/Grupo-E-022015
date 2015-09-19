@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field"
+	default-cascade="save-update">
+	<class name="model.League">
+		<id column="ID" name="id">
+			<generator class="native" />
+		</id>
+		
+		<property name="name" type="java.lang.String"/>
+		<list name="matchesOfTheLeague" lazy="false">
+			<key column="matchesOfTheDayID" />
+			<list-index column="id"/>
+			<one-to-many class="model.MatchOfTheDay"/>
+		</list>
+	</class>
+</hibernate-mapping>

@@ -8,6 +8,7 @@ public class Match {
 	Team localTeam;
 	Team winner;
 	boolean tie;
+	int id;
 	
 	
 	
@@ -45,6 +46,23 @@ public class Match {
 	public void setLocalTeam(Team localTeam) {
 		this.localTeam = localTeam;
 	}
+
+
+
+
+
+	public int getId() {
+		return id;
+	}
+
+
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	
 	
 	

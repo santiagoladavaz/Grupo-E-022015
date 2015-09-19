@@ -1,4 +1,5 @@
 package model;
+;
 
 public class Defender extends Position{
 
@@ -16,7 +17,5 @@ public class Defender extends Position{
 	public int totalOfPlayerInPositionAllowed() {
 		return 4;
 	}
-	
-	
 
 }

@@ -6,11 +6,20 @@ public class User {
 	String email;
 	String password;
 	int points;	
+	Team userTeam;
 	
 	
 	
 	
 	
+	
+	
+	public Team getUserTeam() {
+		return userTeam;
+	}
+	public void setUserTeam(Team userTeam) {
+		this.userTeam = userTeam;
+	}
 	public String getUserName() {
 		return userName;
 	}

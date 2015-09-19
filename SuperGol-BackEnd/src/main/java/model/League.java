@@ -7,17 +7,17 @@ import java.util.List;
 public class League {
 	
 	private String name;
-	private List<MatchDay>matchesOfTheDay;
+	private List<MatchDay>matchesOfTheLeague;
 	
 	
 	public League(){
-		matchesOfTheDay = new ArrayList<MatchDay>();	
+		matchesOfTheLeague = new ArrayList<MatchDay>();	
 	}
 	
 	
 	
 	public MatchDay getListOfMatchDay(Calendar date){
-		for (MatchDay m : matchesOfTheDay){
+		for (MatchDay m : matchesOfTheLeague){
 			if(m.isToday(date)){
 				return m;
 			}
@@ -33,10 +33,10 @@ public class League {
 		this.name = name;
 	}
 	public List<MatchDay> getMatchDays() {
-		return matchesOfTheDay;
+		return matchesOfTheLeague;
 	}
 	public void setMatchDays(List<MatchDay> m) {
-		this.matchesOfTheDay = m;
+		this.matchesOfTheLeague = m;
 	}
 
 
@@ -48,7 +48,7 @@ public class League {
 
 
 	public void addMatchDay(MatchDay md) {
-		matchesOfTheDay.add(md);
+		matchesOfTheLeague.add(md);
 	}	
 
 	

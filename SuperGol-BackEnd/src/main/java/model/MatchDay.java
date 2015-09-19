@@ -6,17 +6,17 @@ import java.util.List;
 
 public class MatchDay {
 
-	private List<Match>matchsOfTheDay;
+	private List<Match>matchesOfTheDay;
 	private Calendar date;
 	
 	
 	public MatchDay(){
-		matchsOfTheDay = new ArrayList<Match>();
+		matchesOfTheDay = new ArrayList<Match>();
 		date = Calendar.getInstance();
 	}
 	
 	public void playersScore(List<Player> p){
-		for (Match m : matchsOfTheDay){
+		for (Match m : matchesOfTheDay){
 			m.results(p);
 		}
 	}
@@ -42,16 +42,16 @@ public class MatchDay {
 
 
 	public void addMatch(Match m){
-		matchsOfTheDay.add(m);
+		matchesOfTheDay.add(m);
 	}
 	
 	
 	
 	public List<Match> getMatchesOfTheDay() {
-		return matchsOfTheDay;
+		return matchesOfTheDay;
 	}
 	public void setMatchsOfTheDay(List<Match> matchsOfTheDay) {
-		this.matchsOfTheDay = matchsOfTheDay;
+		this.matchesOfTheDay = matchsOfTheDay;
 	}
 	
 	

@@ -5,6 +5,7 @@ public class Player {
 	private Position position;
 	private String name;
 	private Team team;
+	private int ID;
 	
 	
 	public Player(){
@@ -61,6 +62,18 @@ public class Player {
 	public int score() {
 		return position.points();
 	}
+
+
+	public int getID() {
+		return ID;
+	}
+
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+	
+	
 	
 	
 	
