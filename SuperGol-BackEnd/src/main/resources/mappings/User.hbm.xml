@@ -9,7 +9,7 @@
 		</id>
 		
 		<property name="password" type="java.lang.String"/>
-		<property name="name" type="java.lang.String"/>
+		<property name="userName" type="java.lang.String"/>
 		<property name="email" type="java.lang.String"/>
 		<property name="points" type="java.lang.Integer"/>
 		<one-to-one name="userTeam" class="model.Team"/>

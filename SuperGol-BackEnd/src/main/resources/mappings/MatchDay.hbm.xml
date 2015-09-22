@@ -8,11 +8,11 @@
 			<generator class="native" />
 		</id>
 		
-		<property name="date" type="java.lang.Date"/>
+		<property name="date" type="java.util.Date"/>
 		<list name="matchesOfTheDay" lazy="false">
 			<key column="matchID"/>
 			<list-index column="id"/>
-			<one-to-many class="model.MatchOfTheDay"/>
+			<one-to-many class="model.MatchDay"/>
 		</list>
 		
 	</class>

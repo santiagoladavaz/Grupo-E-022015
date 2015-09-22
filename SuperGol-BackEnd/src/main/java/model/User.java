@@ -7,6 +7,7 @@ public class User {
 	String password;
 	int points;	
 	Team userTeam;
+	int id;
 	
 	
 	
@@ -14,6 +15,18 @@ public class User {
 	
 	
 	
+	public int getPoints() {
+		return points;
+	}
+	public void setPoints(int points) {
+		this.points = points;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public Team getUserTeam() {
 		return userTeam;
 	}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Registrate</title>
+    
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+		
+	<!-- script references -->
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    
+	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+	
+	<script type="text/javascript">
+			$(function () {
+
+            $('[data-toggle="tooltip"]').tooltip();
+
+            var url = "img/fondo.jpg";
+            $("<img />").attr('src', url).load(function () {
+                if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+                    alert('broken image!');
+                } else {
+                    $('#background').css('background', 'url("' + url + '") no-repeat center top');
+                    $('#background').delay(500).css('opacity', 0).show().animate({ opacity: 1 }, 2000);
+                }
+            });
+
+            //ImageAjaxLoad();
+
+        });
+
+    </script>
+
+	<style>
+		h1,label{color:white}
+	</style>
+</head>
+<body>
+<div id="background" class="max-background ObjTransparent" style="background: url('') no-repeat center top; height: 100%; position: fixed; width: 100%; z-index: -1;">  
+</div>
+<div class="container">
+
+<div class="page-header">
+    <h1>Registrate</h1>
+</div>
+
+<!-- Registration form - START -->
+
+<div class="contentRegistro clearfix" style="z-index: 10;">
+<div class="col-md-12">
+	<div class="container form_Registro center-block text-center bg_trans_dark" 
+	       style="max-width: 640px; margin-top: 40px; margin-bottom: 100px; padding: 60px">
+        <form role="form">
+            
+                <div class="well well-sm"><strong style="color:black;"><span class="glyphicon glyphicon-asterisk"></span>Campos Requeridos</strong></div>
+                <div class="form-group">
+                  <div class="input-group">
+                        <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Nombre de usuario" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="InputPassword" name="InputPassword" placeholder="Password" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+				<input type="submit" name="submit" id="submit" value="Registrate" class="btn btn-info">
+           
+        </form>
+		</div>
+        
+    </div>
+</div>
+<!-- Registration form - END -->
+
+</div>
+	
+</body>
+</html>

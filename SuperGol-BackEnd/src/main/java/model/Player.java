@@ -5,7 +5,7 @@ public class Player {
 	private Position position;
 	private String name;
 	private Team team;
-	private int ID;
+	private int id;
 	
 	
 	public Player(){
@@ -64,13 +64,13 @@ public class Player {
 	}
 
 
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
 
 
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

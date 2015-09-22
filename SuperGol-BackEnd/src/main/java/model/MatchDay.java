@@ -8,13 +8,17 @@ public class MatchDay {
 
 	private List<Match>matchesOfTheDay;
 	private Calendar date;
-	
+	private int id;
 	
 	public MatchDay(){
 		matchesOfTheDay = new ArrayList<Match>();
 		date = Calendar.getInstance();
 	}
 	
+	public void setMatchesOfTheDay(List<Match> matchesOfTheDay) {
+		this.matchesOfTheDay = matchesOfTheDay;
+	}
+
 	public void playersScore(List<Player> p){
 		for (Match m : matchesOfTheDay){
 			m.results(p);
@@ -40,6 +44,14 @@ public class MatchDay {
 
 
 
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public void addMatch(Match m){
 		matchesOfTheDay.add(m);

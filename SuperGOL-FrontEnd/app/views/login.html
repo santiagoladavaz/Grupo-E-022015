@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SuperGol - Registrate</title>
+    
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+	
+	<!-- script references -->
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    
+	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+	
+	<script type="text/javascript">
+			$(function () {
+
+            $('[data-toggle="tooltip"]').tooltip();
+
+            var url = "img/fondo.jpg";
+            $("<img />").attr('src', url).load(function () {
+                if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+                    alert('broken image!');
+                } else {
+                    $('#background').css('background', 'url("' + url + '") no-repeat center top');
+                    $('#background').delay(500).css('opacity', 0).show().animate({ opacity: 1 }, 2000);
+                }
+            });
+        });
+
+    </script>
+
+	<style>
+		h1{color:white}
+		
+
+	</style>
+</head>
+
+<body>
+<div id="background" class="max-background ObjTransparent" style="background: url('') no-repeat center top; height: 100%; position: fixed; width: 100%; z-index: -1;">  
+</div>
+
+
+<!-- Registration form - START -->
+<div class="contentRegistro clearfix" style="z-index: 10;">
+<div class="col-md-12">
+
+	<div class="container form_Registro center-block text-center bg_trans_dark" 
+	       style="max-width: 640px; margin-top: 40px; margin-bottom: 100px; padding: 20px">
+		    
+			<div>
+				<h1 class="text-center">SuperGol<img src="img/pelota.png" style="width:80px;margin-bottom: 22px;"></img></h1>
+			</div>
+			 <form class="form col-md-12 center-block">
+            <div class="form-group">
+              <input type="email" class="form-control input-lg" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control input-lg" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary btn-lg btn-block">Iniciar Sesión</button>
+              <span class="pull-right"><a href="register.html">Registrate</a></span>
+            </div>
+          </form>
+        <!-- /.row -->
+	</div>
+	</div>
+<!-- Registration form - END -->
+
+	</div>
+</div>
+	
+</body>
+</html>

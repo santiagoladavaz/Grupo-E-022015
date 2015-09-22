@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SuperGol - Cargar Fecha</title>
+    
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+	
+	<!-- script references -->
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    
+	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+	
+	<script type="text/javascript">
+			$(function () {
+
+            $('[data-toggle="tooltip"]').tooltip();
+
+            var url = "img/fondo.jpg";
+            $("<img />").attr('src', url).load(function () {
+                if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+                    alert('broken image!');
+                } else {
+                    $('#background').css('background', 'url("' + url + '") no-repeat center top');
+                    $('#background').delay(500).css('opacity', 0).show().animate({ opacity: 1 }, 2000);
+                }
+            });
+        });
+
+
+        $(document).on('change', '.btn-file :file', function() {
+          var input = $(this),
+              numFiles = input.get(0).files ? input.get(0).files.length : 1,
+              label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+          input.trigger('fileselect', [numFiles, label]);
+        });
+
+        $(document).ready( function() {
+            $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+                
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = numFiles > 1 ? numFiles + ' files selected' : label;
+                
+                if( input.length ) {
+                    input.val(log);
+                } else {
+                    if( log ) alert(log);
+                }
+                
+            });
+        });
+
+    </script>
+
+	<style>
+		h1{color:white}
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+	</style>
+</head>
+
+<body>
+<div id="background" class="max-background ObjTransparent" style="background: url('') no-repeat center top; height: 100%; position: fixed; width: 100%; z-index: -1;">  
+</div>
+<!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">SuperGol</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+<div class="container">
+
+<div class="page-header" style="margin-top: 63px;">
+    <h1>Cargar Fecha</h1>
+</div>
+
+<!-- Registration form - START -->
+<div class="contentRegistro clearfix" style="z-index: 10;">
+  <div class="col-md-12">
+
+	<div class="container form_Registro center-block text-center bg_trans_dark" 
+	       style="max-width: 640px; margin-top: 40px; margin-bottom: 100px; padding: 60px">
+			<form role="form" data-toggle="validator" class="form-horizontal">
+			  <div class="form-group">
+                <div class="input-group">
+                <span class="input-group-btn">
+                    <span class="btn btn-primary btn-file">
+                        Cargar Archivo&hellip; <input type="file" multiple>
+                    </span>
+                </span>
+                <input type="text" class="form-control" readonly>
+            </div>
+              </div>
+              <div class="form-group">
+                <label for="ejemplo_archivo_1">Carga Manual</label>
+				<input type="text" class="form-control" id="liga" placeholder="Nombre del Jugador" required>
+			  </div>
+			  <div class="form-group"> 
+				<div>
+				  <button type="submit" class="btn btn-success btn btn-primary btn-lg" >Cargar</button>
+				</div>
+			  </div>
+			</form>
+        <!-- /.row -->
+	</div>
+  </div>
+    <!-- Registration form - END -->
+
+</div>
+
+	
+</body>
+</html>

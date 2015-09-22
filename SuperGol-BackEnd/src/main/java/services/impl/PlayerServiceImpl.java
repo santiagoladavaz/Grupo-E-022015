@@ -1,15 +1,36 @@
 package services.impl;
 
-import org.springframework.util.PropertyPlaceholderHelper.PlaceholderResolver;
-
+import daos.interfaces.PlayerDAO;
 import services.interfaces.PlayerService;
 
-public class PlayerServiceImpl implements PlayerService, PlaceholderResolver {
+public class PlayerServiceImpl implements PlayerService{
 
-	@Override
-	public String resolvePlaceholder(String arg0) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	private PlayerDAO playerDAO;
+
+	
+	
+	
+	
+	
+	
+	
+	
+	public PlayerDAO getPlayerDAO() {
+		return playerDAO;
 	}
+	public void setPlayerDAO(PlayerDAO playerDAO) {
+		this.playerDAO = playerDAO;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

@@ -8,14 +8,42 @@ public class League {
 	
 	private String name;
 	private List<MatchDay>matchesOfTheLeague;
+	private int id;
 	
 	
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
 	public League(){
 		matchesOfTheLeague = new ArrayList<MatchDay>();	
 	}
 	
 	
 	
+	public List<MatchDay> getMatchesOfTheLeague() {
+		return matchesOfTheLeague;
+	}
+
+
+
+	public void setMatchesOfTheLeague(List<MatchDay> matchesOfTheLeague) {
+		this.matchesOfTheLeague = matchesOfTheLeague;
+	}
+
+
+
 	public MatchDay getListOfMatchDay(Calendar date){
 		for (MatchDay m : matchesOfTheLeague){
 			if(m.isToday(date)){
