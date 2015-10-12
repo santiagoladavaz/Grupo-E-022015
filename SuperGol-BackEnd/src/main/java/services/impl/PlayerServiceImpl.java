@@ -1,20 +1,19 @@
 package services.impl;
 
 import daos.interfaces.PlayerDAO;
+import model.Player;
 import services.interfaces.PlayerService;
 
 public class PlayerServiceImpl implements PlayerService{
 
 	
-	private PlayerDAO playerDAO;
-
+	private PlayerDAO playerDAO;	
 	
 	
-	
-	
-	
-	
-	
+	@Override
+	public void savePlayer(Player pl) {
+		playerDAO.savePlayer(pl);
+	}
 	
 	public PlayerDAO getPlayerDAO() {
 		return playerDAO;
@@ -22,7 +21,6 @@ public class PlayerServiceImpl implements PlayerService{
 	public void setPlayerDAO(PlayerDAO playerDAO) {
 		this.playerDAO = playerDAO;
 	}
-	
 	
 	
 	

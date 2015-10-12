@@ -9,7 +9,9 @@ public class TeamFactory {
 	
 	public Team createFullTeam(String name,String suffix){
 		Team t = new Team();
-		t.withName("Boca")
+		User u = new User();
+		u.setUserName("Fede");
+		t.withName(name)
 		.withPlayer(factory.createGoalKeeperWithTeam("Arquero" + suffix, t))
 		.withPlayer(factory.createDefenderWithTeam("Defensor1"+ suffix, t))
 		.withPlayer(factory.createDefenderWithTeam("Defensor2"+ suffix, t))
@@ -21,7 +23,7 @@ public class TeamFactory {
 		.withPlayer(factory.createForwardWithTeam("Delantero1"+ suffix, t))
 		.withPlayer(factory.createForwardWithTeam("Delantero2"+ suffix, t))
 		.withFlag("Flag")
-		.withOwner(new User()); 
+		.withOwner(u); 
 		
 		return t;
 	}

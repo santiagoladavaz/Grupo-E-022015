@@ -6,4 +6,8 @@ public interface TeamDAO {
 
 	
 	public void saveTeam(Team t);
+
+	public Team getTeamByName(String string);
+
+	public Team getTeamByUser(String string);
 }

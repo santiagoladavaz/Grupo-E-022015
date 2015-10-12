@@ -20,6 +20,10 @@
     <bean id="leagueService" class="services.impl.LeagueServiceImpl">
     	<property name="leagueDAO" ref="leagueDAO"/>
     </bean>
+    
+    <bean id="UserService" class="services.impl.UserServiceImpl">
+    	<property name="userDAO" ref="userDAO"></property>
+    </bean>
        
     <!--  DAOS BEAN -->
     <bean id="playerDAO" class="daos.impl.PlayerDAOImpl">
@@ -31,6 +35,10 @@
    	</bean>
    	
    	<bean id="leagueDAO" class="daos.impl.LeagueDAOImpl">
+   		<property name="sessionFactory" ref="sessionFactory"/>
+   	</bean>
+   	
+   	<bean id="userDAO" class="daos.impl.UserDAOImpl">
    		<property name="sessionFactory" ref="sessionFactory"/>
    	</bean>
 </beans>

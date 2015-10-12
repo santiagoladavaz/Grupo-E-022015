@@ -1,6 +1,8 @@
 package model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +12,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import daos.interfaces.PlayerDAO;
-import daos.interfaces.TeamDAO;
 import factories.PlayerFactory;
 import factories.TeamFactory;
 
@@ -22,8 +23,6 @@ public class TestPlayerDAO {
 	
 	@Autowired
 	public PlayerDAO playerDAO;
-	@Autowired
-	public TeamDAO teamDAO;
 	public PlayerFactory playerFactory = new PlayerFactory();
 	public TeamFactory teamFactory = new TeamFactory();
 	
@@ -31,7 +30,7 @@ public class TestPlayerDAO {
 	
 	@Before
 	public void setUp(){
-//		playerDAO.erase();
+		playerDAO.erase();
 		Player p = playerFactory.createDefender("A");
 		Player p2 = playerFactory.createMidFielder("B");
 		Player p3 = playerFactory.createForward("C");
@@ -52,7 +51,6 @@ public class TestPlayerDAO {
 		Player santi = playerDAO.searchPlayerByName("A");
 		assertEquals(santi.getName(),"A");
 		assertTrue(santi.getPosition() instanceof Defender);
-		playerDAO.delete(santi);
 	}
 	
 	@Test
@@ -60,7 +58,6 @@ public class TestPlayerDAO {
 		Player santi = playerDAO.searchPlayerByName("B");
 		assertEquals(santi.getName(),"B");
 		assertTrue(santi.getPosition() instanceof MidFielder);
-		playerDAO.delete(santi);
 	}
 	
 	@Test
@@ -68,7 +65,6 @@ public class TestPlayerDAO {
 		Player santi = playerDAO.searchPlayerByName("C");
 		assertEquals(santi.getName(),"C");
 		assertTrue(santi.getPosition() instanceof Forward);
-		playerDAO.delete(santi);
 	}
 	
 	@Test
@@ -76,7 +72,6 @@ public class TestPlayerDAO {
 		Player santi = playerDAO.searchPlayerByName("D");
 		assertEquals(santi.getName(),"D");
 		assertTrue(santi.getPosition() instanceof GoalKeeper);
-		playerDAO.delete(santi);
 	}
 	
 	
