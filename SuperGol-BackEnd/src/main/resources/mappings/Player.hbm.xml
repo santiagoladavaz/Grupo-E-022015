@@ -3,11 +3,10 @@
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
-	<class name="model.Player">
+	<class name="model.Player" table="PLAYER">
 		<id column="ID" name="id">
 			<generator class="native" />
-		</id>
-		
+		</id>		
 		<property name="name" type="java.lang.String"/>
 		<many-to-one name="team" class="model.Team"/>
 		<one-to-one name="position" class="model.Position"/>

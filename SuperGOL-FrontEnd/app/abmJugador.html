@@ -2,35 +2,38 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>SuperGol - Crea tu Liga</title>
+    <title>SuperGol - Crear Jugador</title>
     
-
-    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../styles/styles.css" rel="stylesheet">
-
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
-    <script src="../bower_components/angular/angular.js"></script>
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="../bower_components/angular-resource/angular-resource.js"></script>
-    <script src="../bower_components/angular-route/angular-route.js"></script>
-    <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="../bower_components/angular-touch/angular-touch.js"></script>
+   <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="../scripts/app.js"></script>
-        <script src="../scripts/controllers/main.js"></script>
-        <script src="../scripts/controllers/about.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/about.js"></script>
         <!-- endbuild -->
+
+    
+	<link href="styles/styles.css" rel="stylesheet">
+	
+
+    
+	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
 	
 	<script type="text/javascript">
 			$(function () {
 
             $('[data-toggle="tooltip"]').tooltip();
 
-            var url = "../images/fondo.jpg";
+            var url = "img/fondo.jpg";
             $("<img />").attr('src', url).load(function () {
                 if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
                     alert('broken image!');
@@ -39,17 +42,12 @@
                     $('#background').delay(500).css('opacity', 0).show().animate({ opacity: 1 }, 2000);
                 }
             });
-
-            //ImageAjaxLoad();
-
         });
 
     </script>
 
 	<style>
 		h1{color:white}
-		
-
 	</style>
 </head>
 
@@ -90,25 +88,28 @@
 <div class="container">
 
 <div class="page-header" style="margin-top: 63px;">
-    <h1>Crea tu Liga</h1>
+    <h1>Crear Jugador</h1>
 </div>
 
 <!-- Registration form - START -->
 <div class="contentRegistro clearfix" style="z-index: 10;">
-<div class="col-md-12">
+  <div class="col-md-12">
 
 	<div class="container form_Registro center-block text-center bg_trans_dark" 
 	       style="max-width: 640px; margin-top: 40px; margin-bottom: 100px; padding: 60px">
 			<form role="form" data-toggle="validator" class="form-horizontal">
 			  <div class="form-group">
-				<input type="text" class="form-control" id="liga" placeholder="Nombre de la Liga" required>
+				<input type="text" class="form-control" id="liga" placeholder="Nombre" required>
 			  </div>
 			  <div class="form-group">
-				<input type="text" class="form-control" id="cantmin" placeholder="Cantidad mínima de equipos" required>
+				<input type="text" class="form-control" id="cantmin" placeholder="Apellido" required>
 			  </div>
-			   <div class="form-group">
-				<input type="text" class="form-control" id="cantmin" placeholder="Cantidad máxima de equipos" required>
+			  <div class="form-group">
+				<input type="text" class="form-control" id="cantmin" placeholder="Equipo" required>
 			  </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="cantmin" placeholder="Puesto" required>
+              </div>
 			  <div class="form-group"> 
 				<div>
 				  <button type="submit" class="btn btn-success btn btn-primary btn-lg" >Crear</button>
@@ -117,11 +118,11 @@
 			</form>
         <!-- /.row -->
 	</div>
-	</div>
-<!-- Registration form - END -->
+  </div>
+    <!-- Registration form - END -->
 
-	</div>
 </div>
+
 	
 </body>
 </html>

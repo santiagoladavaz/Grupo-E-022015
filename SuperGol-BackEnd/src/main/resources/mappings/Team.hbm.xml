@@ -11,8 +11,8 @@
 		<property name="flag" type="java.lang.String" />
 		<property name="pointsOfTheTeam" type="java.lang.Integer"/>
 		<list name="players" lazy="false">
-			<key column="ID" />
-			<list-index column="id"/>
+			<key column="TEAM_ID" />
+			<list-index column="posicion"/>
 			<one-to-many class="model.Player"/>
 		</list>
 		<one-to-one name="owner" class="model.User"/>

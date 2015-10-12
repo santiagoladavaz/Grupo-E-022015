@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="ResgisterApp">
 <head>
     <meta charset="utf-8" />
     <title>Registrate</title>
     
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/styles.css" rel="stylesheet">
-		
-	<!-- script references -->
-	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../styles/styles.css" rel="stylesheet">
+
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="../bower_components/angular-touch/angular-touch.js"></script>
     
-	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <script src="../scripts/controllers/RegisterController.js"></script>
+    
+    <!-- endbuild -->
 	
 	<script type="text/javascript">
 			$(function () {
 
             $('[data-toggle="tooltip"]').tooltip();
 
-            var url = "img/fondo.jpg";
+            var url = "../images/fondo.jpg";
             $("<img />").attr('src', url).load(function () {
                 if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
                     alert('broken image!');
@@ -28,9 +35,6 @@
                     $('#background').delay(500).css('opacity', 0).show().animate({ opacity: 1 }, 2000);
                 }
             });
-
-            //ImageAjaxLoad();
-
         });
 
     </script>
@@ -39,7 +43,7 @@
 		h1,label{color:white}
 	</style>
 </head>
-<body>
+<body ng-controller="RegisterController">
 <div id="background" class="max-background ObjTransparent" style="background: url('') no-repeat center top; height: 100%; position: fixed; width: 100%; z-index: -1;">  
 </div>
 <div class="container">
@@ -59,23 +63,23 @@
                 <div class="well well-sm"><strong style="color:black;"><span class="glyphicon glyphicon-asterisk"></span>Campos Requeridos</strong></div>
                 <div class="form-group">
                   <div class="input-group">
-                        <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Nombre de usuario" required>
+                        <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Nombre de usuario" ng-model="user" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
+                        <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" ng-model="email" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="password" class="form-control" id="InputPassword" name="InputPassword" placeholder="Password" required>
+                        <input type="password" class="form-control" id="InputPassword" name="InputPassword" placeholder="Password" ng-model="pass" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
-				<input type="submit" name="submit" id="submit" value="Registrate" class="btn btn-info">
+				<input type="submit" name="submit" id="submit" data-ng-click="createUser()" value="Registrate" class="btn btn-info">
            
         </form>
 		</div>

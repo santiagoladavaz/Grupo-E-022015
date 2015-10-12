@@ -7,5 +7,7 @@ public interface PlayerDAO {
 	
 	public void savePlayer(Player pl);
 	public Player searchPlayerByName(String value);
+	public void erase();
+	public void delete(Player player);
 	
 }

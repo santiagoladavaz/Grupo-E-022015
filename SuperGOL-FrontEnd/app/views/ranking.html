@@ -9,13 +9,25 @@
 
     <title>SuperGol - Tabla de posiciones</title>
 
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/styles.css" rel="stylesheet">
-		
-		<!-- script references -->
-		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../styles/styles.css" rel="stylesheet">
 
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="../bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="../scripts/app.js"></script>
+        <script src="../scripts/controllers/main.js"></script>
+        <script src="../scripts/controllers/about.js"></script>
+        <!-- endbuild -->
 
     <!-- Custom CSS -->
     <style>
@@ -30,7 +42,7 @@
 
             $('[data-toggle="tooltip"]').tooltip();
 
-            var url = "img/fondo.jpg";
+            var url = "../images/fondo.jpg";
             $("<img />").attr('src', url).load(function () {
                 if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
                     alert('broken image!');

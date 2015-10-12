@@ -32,6 +32,7 @@ public class Team {
 	public void addPlayer(Player pl){
 		validatePlayer(pl);
 		players.add(pl);
+		pl.setTeam(this);
 	}
 	
 	
