@@ -21,7 +21,7 @@
     	<property name="leagueDAO" ref="leagueDAO"/>
     </bean>
     
-    <bean id="UserService" class="services.impl.UserServiceImpl">
+    <bean id="userService" class="services.impl.UserServiceImpl">
     	<property name="userDAO" ref="userDAO"></property>
     </bean>
        
@@ -41,4 +41,6 @@
    	<bean id="userDAO" class="daos.impl.UserDAOImpl">
    		<property name="sessionFactory" ref="sessionFactory"/>
    	</bean>
+   	
+   	
 </beans>

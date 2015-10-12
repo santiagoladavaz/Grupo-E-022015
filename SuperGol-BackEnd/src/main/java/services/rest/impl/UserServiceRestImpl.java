@@ -18,7 +18,7 @@ import utils.rest.request.UserRequest;
 @Path("/userService")
 public class UserServiceRestImpl {
 
-	@Autowired
+	
 	private UserService userService;
 
 	
@@ -33,6 +33,7 @@ public class UserServiceRestImpl {
 	    	userService.save(toUser(request));
 	    	 return Response.status(200).build();
 	    }catch(Exception e){
+	    	e.printStackTrace();
 	    	 return Response.serverError().entity(e.getMessage()).build();
 	    }
 	}
@@ -61,5 +62,25 @@ public class UserServiceRestImpl {
         }
         return request;
     }
+
+
+
+
+	
+	
+	
+	
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+	
+	
+	
+	
+	
 	
 }

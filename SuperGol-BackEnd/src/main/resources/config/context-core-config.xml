@@ -54,6 +54,9 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 <!-- 		<property name="playerService" ref="playerSgrsGHARTGervice" /> -->
 	</bean>
 	
-	<bean id="userServiceRest" class="services.rest.impl.UserServiceRestImpl"/>
+	<bean id="userServiceRest" class="services.rest.impl.UserServiceRestImpl">
+		<property name="userService" ref="userService"></property>
+	</bean>
       
+
 </beans>
