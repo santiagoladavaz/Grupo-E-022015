@@ -1,7 +1,8 @@
 package model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,13 +21,13 @@ public class TestTeamDAO {
 	@Autowired
 	public TeamDAO teamDAO;
 	public TeamFactory teamFactory = new TeamFactory();
-	
+	Team t1;
 	
 	
 	@Before
 	public void setUp(){
-		Team t = teamFactory.createFullTeam("Boca", "a");
-		teamDAO.saveTeam(t);
+		t1 = teamFactory.createFullTeam("Atlanta", "a");
+		teamDAO.saveTeam(t1);
 	}
 	
 	@Test
@@ -34,20 +35,19 @@ public class TestTeamDAO {
 		assertNotNull(teamDAO);
 	}
 	
-//	@Test
-//	public void testGetTeamByName(){
-//		Team t1 = teamDAO.getTeamByName("Boca");
-//		assertNotNull(t1);
-//		assertNotNull(t1.getPlayers());
-//	}
+	@Test
+	public void testGetTeamByName(){
+		t1 = teamDAO.getTeamByName("Atlanta");
+		assertNotNull(t1);
+		assertNotNull(t1.getPlayers());
+	}
 	
-//	@Test
-//	public void testGetTeamByUser(){
-//		Team t1 = teamDAO.getTeamByUser("Fede");
-//		assertNotNull(t1);
-//		assertNotNull(t1.getPlayers());
-//	}
-	
+	@After
+	public void tearDown(){
+		if(t1 != null){
+			teamDAO.deleteTeam(t1);			
+		}
+	}
 	
 	
 }

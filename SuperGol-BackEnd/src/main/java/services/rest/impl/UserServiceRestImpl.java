@@ -18,16 +18,15 @@ import utils.rest.request.UserRequest;
 @Path("/userService")
 public class UserServiceRestImpl {
 
-	
+	@Autowired
 	private UserService userService;
-
 	
 	
 	
 	@POST
 	@Path("/create")
 	@Produces("application/json")
-	public Response createPlayer(@Multipart(value = "request", type = "application/json") final String jsonRequest) {
+	public Response createPlayer(@Multipart(value = "jsonRequest", type = "application/json") final String jsonRequest) {
 	    try{
 	    	UserRequest request = toRequest(jsonRequest);
 	    	userService.save(toUser(request));

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="LeagueApp">
 <head>
     <meta charset="utf-8" />
     <title>SuperGol - Crea tu Liga</title>
@@ -19,12 +19,14 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="../scripts/app.js"></script>
-        <script src="../scripts/controllers/main.js"></script>
-        <script src="../scripts/controllers/about.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="../scripts/app.js"></script>
+    <script src="../scripts/controllers/main.js"></script>
+    <script src="../scripts/controllers/about.js"></script>
+    <!-- endbuild -->
 	
+    <script src="../scripts/controllers/leagueController.js"></script>
+
 	<script type="text/javascript">
 			$(function () {
 
@@ -53,7 +55,7 @@
 	</style>
 </head>
 
-<body>
+<body ng-controller="LeagueController">
 <div id="background" class="max-background ObjTransparent" style="background: url('') no-repeat center top; height: 100%; position: fixed; width: 100%; z-index: -1;">  
 </div>
 <!-- Navigation -->
@@ -101,17 +103,17 @@
 	       style="max-width: 640px; margin-top: 40px; margin-bottom: 100px; padding: 60px">
 			<form role="form" data-toggle="validator" class="form-horizontal">
 			  <div class="form-group">
-				<input type="text" class="form-control" id="liga" placeholder="Nombre de la Liga" required>
+				<input type="text" class="form-control" id="leagueName" placeholder="Nombre de la Liga" ng-model="leagueName" required>
 			  </div>
 			  <div class="form-group">
-				<input type="text" class="form-control" id="cantmin" placeholder="Cantidad mínima de equipos" required>
+				<input type="text" class="form-control" id="cantmin" placeholder="Cantidad mínima de equipos"  ng-model="cantMin" required>
 			  </div>
 			   <div class="form-group">
-				<input type="text" class="form-control" id="cantmin" placeholder="Cantidad máxima de equipos" required>
+				<input type="text" class="form-control" id="cantmin" placeholder="Cantidad máxima de equipos"  ng-model="cantMax" required>
 			  </div>
 			  <div class="form-group"> 
 				<div>
-				  <button type="submit" class="btn btn-success btn btn-primary btn-lg" >Crear</button>
+				  <button type="submit" data-ng-click="CreateLeague()" class="btn btn-success btn btn-primary btn-lg" >Crear</button>
 				</div>
 			  </div>
 			</form>

@@ -9,5 +9,5 @@ public interface TeamDAO {
 
 	public Team getTeamByName(String string);
 
-	public Team getTeamByUser(String string);
+	public void deleteTeam(Team t1);
 }

@@ -1,6 +1,8 @@
 package services.interfaces;
 
-import javax.transaction.Transactional;
+
+
+import org.springframework.transaction.annotation.Transactional;
 
 import model.Player;
 

@@ -1,12 +1,10 @@
 package services.rest.impl;
 
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import services.interfaces.PlayerService;
@@ -15,7 +13,7 @@ import services.interfaces.PlayerService;
 @Path("/playerService")
 public class PlayerServiceRestImpl {
 
-	@Autowired
+
 	private PlayerService playerService;
 
 	

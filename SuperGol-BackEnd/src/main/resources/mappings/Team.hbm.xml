@@ -3,14 +3,14 @@
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
-	<class name="model.Team">
+	<class name="model.Team" table="TEAM">
 		<id column="ID" name="id">
 			<generator class="native" />
 		</id>
 		<property name="name" type="java.lang.String"/>
 		<property name="flag" type="java.lang.String" />
 		<property name="pointsOfTheTeam" type="java.lang.Integer"/>
-		<list name="players" lazy="false">
+		<list name="players" lazy="false" cascade="all">
 			<key column="TEAM_ID" />
 			<list-index column="posicion"/>
 			<one-to-many class="model.Player"/>

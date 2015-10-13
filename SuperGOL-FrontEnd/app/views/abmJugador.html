@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="PlayerApp">
 <head>
     <meta charset="utf-8" />
     <title>SuperGol - Crear Jugador</title>
@@ -19,18 +19,15 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="../scripts/app.js"></script>
-        <script src="../scripts/controllers/main.js"></script>
-        <script src="../scripts/controllers/about.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="../scripts/app.js"></script>
+    <script src="../scripts/controllers/main.js"></script>
+    <script src="../scripts/controllers/about.js"></script>
+    <!-- endbuild -->
 
-    
-	
-	
+    <script src="../scripts/controllers/playerController.js"></script>
 
-    
-	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/fonts/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/fonts/font-awesome.min.css" />
 	
 	<script type="text/javascript">
 			$(function () {
@@ -55,7 +52,7 @@
 	</style>
 </head>
 
-<body>
+<body ng-controller="PlayerController">
 <div id="background" class="max-background ObjTransparent" style="background: url('') no-repeat center top; height: 100%; position: fixed; width: 100%; z-index: -1;">  
 </div>
 <!-- Navigation -->
@@ -103,20 +100,20 @@
 	       style="max-width: 640px; margin-top: 40px; margin-bottom: 100px; padding: 60px">
 			<form role="form" data-toggle="validator" class="form-horizontal">
 			  <div class="form-group">
-				<input type="text" class="form-control" id="liga" placeholder="Nombre" required>
+				<input type="text" class="form-control" id="name" placeholder="Nombre" ng-model="name" required>
 			  </div>
 			  <div class="form-group">
-				<input type="text" class="form-control" id="cantmin" placeholder="Apellido" required>
+				<input type="text" class="form-control" id="lastName" placeholder="Apellido" ng-model="lastName" required>
 			  </div>
 			  <div class="form-group">
-				<input type="text" class="form-control" id="cantmin" placeholder="Equipo" required>
+				<input type="text" class="form-control" id="team" placeholder="Equipo" ng-model="team" required>
 			  </div>
               <div class="form-group">
-                <input type="text" class="form-control" id="cantmin" placeholder="Puesto" required>
+                <input type="text" class="form-control" id="position" placeholder="Puesto" ng-model="position" required>
               </div>
 			  <div class="form-group"> 
 				<div>
-				  <button type="submit" class="btn btn-success btn btn-primary btn-lg" >Crear</button>
+				  <button type="submit" id="createPlayer" data-ng-click="createPlay()"class="btn btn-success btn btn-primary btn-lg" >Crear</button>
 				</div>
 			  </div>
 			</form>

@@ -5,8 +5,6 @@ import java.sql.SQLException;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.criterion.Expression;
-import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -42,21 +40,8 @@ public class TeamDAOImpl extends HibernateDaoSupport implements TeamDAO{
 	}
 
 	@Override
-	public Team getTeamByUser(final String user) {
-		try{
-			Team t = this.getHibernateTemplate().execute(new HibernateCallback<Team>(){
-				
-				@Override
-				public Team doInHibernate(Session session) throws HibernateException, SQLException {
-					Criteria criteria = session.createCriteria(Team.class)
-							.add(Expression.eq("owner.userName",user));
-					return (Team)criteria.uniqueResult();
-				}
-			});
-			return t;
-		}catch(Exception e){
-			throw new TeamDoesntExistException("There's no team with owner: "+ user);
-		}
+	public void deleteTeam(Team t) {
+		this.getHibernateTemplate().delete(t);		
 	}
 
 }

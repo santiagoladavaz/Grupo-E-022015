@@ -8,7 +8,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			classpath*:/config/*.xml,
-			classpath*/beans/*.xml
+			classpath*:/beans/*.xml
 		</param-value>
 	</context-param>
 	<listener>
@@ -17,7 +17,7 @@
 	
 	<servlet>
 		<servlet-name>CXFServlet</servlet-name>
-		<display-name>CXF Servlet</display-name>
+<!-- 		<display-name>CXF Servlet</display-name> -->
 		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
