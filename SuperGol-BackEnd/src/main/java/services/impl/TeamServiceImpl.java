@@ -1,6 +1,9 @@
 package services.impl;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import daos.interfaces.TeamDAO;
+import model.Team;
 import services.interfaces.TeamService;
 
 public class TeamServiceImpl implements TeamService{
@@ -8,16 +11,10 @@ public class TeamServiceImpl implements TeamService{
 	private TeamDAO teamDAO;
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@Transactional
+	public void saveTeam(Team t){
+		teamDAO.saveTeam(t);
+	}
 	
 	
 	

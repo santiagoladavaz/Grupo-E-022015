@@ -1,4 +1,4 @@
-package utils.rest.request;
+package services.rest.request;
 
 public class UserRequest {
 
@@ -6,9 +6,7 @@ public class UserRequest {
 	private String email;
 	private String pass;
 	
-	
-	
-	
+		
 	public String getNombre() {
 		return nombre;
 	}

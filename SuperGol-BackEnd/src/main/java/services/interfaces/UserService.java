@@ -8,4 +8,6 @@ public interface UserService {
 
 	@Transactional
 	public void save(User usr);
+
+	public User obtainUser(String usuario);
 }
