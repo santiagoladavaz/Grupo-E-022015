@@ -1,7 +1,9 @@
 package services.rest.impl;
 
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import model.User;
 import services.interfaces.UserService;
-import utils.rest.request.UserRequest;
+import services.rest.request.UserRequest;
 
 @Service
 @Path("/userService")
@@ -23,12 +25,20 @@ public class UserServiceRestImpl {
 	
 	
 	
+	@GET
+	@Path("/create/{id}")
+	@Produces("application/json")
+	public int getPlayer(@PathParam("id") final int id) {
+	      return 5;
+	}
+	
+	
 	@POST
 	@Path("/create")
 	@Produces("application/json")
 	public Response createPlayer(@Multipart(value = "jsonRequest", type = "application/json") final String jsonRequest) {
 	    try{
-	    	UserRequest request = toRequest(jsonRequest);
+	    	UserRequest request = toCreateUserRequest(jsonRequest);
 	    	userService.save(toUser(request));
 	    	 return Response.status(200).build();
 	    }catch(Exception e){
@@ -42,16 +52,16 @@ public class UserServiceRestImpl {
 
 	private User toUser(UserRequest request) {
 		User user = new User();
-		user.setEmail(request.getEmail());
-		user.setUserName(request.getNombre());
-		user.setPassword(request.getPass());
+		user.setEmail(request.getEmail().replaceAll("\\s", ""));
+		user.setUserName(request.getNombre().replaceAll("\\s",""));
+		user.setPassword(request.getPass().replaceAll("\\s", ""));
 		return user;
 	}
 
 
 
 
-	private UserRequest toRequest(String jsonRequest) {
+	private UserRequest toCreateUserRequest(String jsonRequest) {
 		UserRequest request = new UserRequest();
         ObjectMapper mapper = new ObjectMapper();
         try {
