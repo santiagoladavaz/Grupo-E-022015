@@ -1,5 +1,7 @@
 package services.rest.impl;
 
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -7,6 +9,7 @@ import javax.ws.rs.Produces;
 
 import org.springframework.stereotype.Service;
 
+import model.Player;
 import services.interfaces.PlayerService;
 
 @Service
@@ -25,12 +28,11 @@ public class PlayerServiceRestImpl {
 	      return 1;
 	}
 	
-	
-	
-	
-	
-	
-	
+	@GET
+	@Path("/player")
+	public List<Player> getPlayers(){
+		return playerService.getAll();
+	}
 	
 	
 	

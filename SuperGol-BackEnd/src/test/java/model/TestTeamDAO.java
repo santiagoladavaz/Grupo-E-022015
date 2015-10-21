@@ -47,9 +47,10 @@ public class TestTeamDAO {
 	@Test
 	public void testGetTeamByName(){
 		t1 = teamDAO.getTeamByName("Atlanta");
-		u1 = userDAO.obtainUser("LALA");
+		User u = userDAO.obtainUser("LALA");
 		assertNotNull(t1);
 		assertNotNull(t1.getPlayers());
+		assertNotNull(u);
 	}
 	
 	@After

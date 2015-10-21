@@ -24,6 +24,10 @@
     <bean id="userService" class="services.impl.UserServiceImpl">
     	<property name="userDAO" ref="userDAO"></property>
     </bean>
+    
+    <bean id="startUpFactory" class="factories.StartUpFactory" init-method="buildPlayers">
+    	<property name="playerService" ref="playerService"/>
+    </bean>
        
     <!--  DAOS BEAN -->
     <bean id="playerDAO" class="daos.impl.PlayerDAOImpl">

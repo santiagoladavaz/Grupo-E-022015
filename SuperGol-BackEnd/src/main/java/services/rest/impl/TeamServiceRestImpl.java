@@ -54,6 +54,7 @@ public class TeamServiceRestImpl {
 			teamService.saveTeam(team);
 			return Response.status(200).build();
 		}catch(Exception e){
+			e.printStackTrace();
 			 return Response.serverError().entity(e.getMessage()).build();
 		}
 	}
@@ -65,9 +66,9 @@ public class TeamServiceRestImpl {
 		Team t = new Team();
 		t.setName(request.getNombreEquipo().trim());
 		for (Method m : request.getClass().getMethods()){
-			if (m.getName().contains("Arquero") || m.getName().contains("Volante") ||
-					m.getName().contains("Defensor") || m.getName().contains("Delantero")){
-				
+			if ((m.getName().contains("Arquero") || m.getName().contains("Volante") ||
+					m.getName().contains("Defensor") || m.getName().contains("Delantero")) 
+					&& m.getName().contains("get")){
 				t.addPlayer(toPlayer((PlayerRequest) m.invoke(request), t));
 			}
 		}

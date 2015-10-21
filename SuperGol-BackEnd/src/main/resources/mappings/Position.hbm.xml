@@ -3,29 +3,19 @@
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
-	<class name="model.Position">
+	<class name="model.Position" table="POSITION">
 		<id column="ID" name="id">
 			<generator class="native" />
 		</id>
 		
-	<joined-subclass name="model.MidFielder">
-		<key column="pos" />
-	</joined-subclass>
+	<discriminator column="pos" type="string" />
 	
-	<joined-subclass name="model.Defender">
-		<key column="pos" />
-	</joined-subclass>
+	<subclass  name="model.MidFielder" discriminator-value="MF"/>
+	
+	<subclass  name="model.Defender" discriminator-value="DEF" />
 
-	<joined-subclass name="model.GoalKeeper">
-		<key column="pos"/>
-	</joined-subclass>	
+	<subclass  name="model.GoalKeeper" discriminator-value="GK"/>
 	
-	<joined-subclass name="model.Forward">
-		<key column="pos"/>
-	</joined-subclass>
+	<subclass name="model.Forward" discriminator-value="FOR"/>
 </class>
-	
-	
-	
-	
 </hibernate-mapping>

@@ -1,5 +1,7 @@
 package daos.interfaces;
 
+import java.util.List;
+
 import model.Player;
 
 public interface PlayerDAO {
@@ -9,5 +11,6 @@ public interface PlayerDAO {
 	public Player searchPlayerByName(String value);
 	public void erase();
 	public void delete(Player player);
+	public List<Player> getAll();
 	
 }

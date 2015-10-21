@@ -1,6 +1,7 @@
 package daos.impl;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -52,6 +53,20 @@ public class PlayerDAOImpl  extends HibernateDaoSupport implements PlayerDAO {
 	public void delete(Player player) {
 		this.getHibernateTemplate().delete(player);
 		
+	}
+
+	@Override
+	public List<Player> getAll() {
+		List<Player> players = (List<Player>) this.getHibernateTemplate().execute(new HibernateCallback<List<Player>>() {
+
+			@SuppressWarnings("unchecked")
+			@Override
+			public List<Player> doInHibernate(Session session) throws HibernateException, SQLException {
+				return (List<Player>) session.createQuery("FROM PLAYER").list();
+			}
+			
+		});
+		return players;
 	}
 
 }

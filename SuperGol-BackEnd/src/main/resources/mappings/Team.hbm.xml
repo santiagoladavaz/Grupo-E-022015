@@ -11,7 +11,7 @@
 		<property name="flag" type="java.lang.String" />
 		<property name="pointsOfTheTeam" type="java.lang.Integer"/>
 		<list name="players" lazy="false" cascade="all">
-			<key column="TEAM_ID" />
+			<key column="TEAM" />
 			<list-index column="posicion"/>
 			<one-to-many class="model.Player"/>
 		</list>

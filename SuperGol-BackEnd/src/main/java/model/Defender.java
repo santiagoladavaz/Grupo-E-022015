@@ -15,7 +15,7 @@ public class Defender extends Position{
 
 	@Override
 	public int totalOfPlayerInPositionAllowed() {
-		return 4;
+		return 3;
 	}
 
 }

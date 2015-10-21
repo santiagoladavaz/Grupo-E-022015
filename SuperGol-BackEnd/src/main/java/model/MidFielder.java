@@ -2,6 +2,9 @@ package model;
 
 public class MidFielder extends Position{
 
+	private String hola;
+	
+	
 	@Override
 	public String description() {
 		return "Mid Fielder";
@@ -14,7 +17,18 @@ public class MidFielder extends Position{
 
 	@Override
 	public int totalOfPlayerInPositionAllowed() {
-		return 3;
+		return 4;
 	}
 
+	public String getHola() {
+		return hola;
+	}
+
+	public void setHola(String hola) {
+		this.hola = hola;
+	}
+
+	
+	
+	
 }
