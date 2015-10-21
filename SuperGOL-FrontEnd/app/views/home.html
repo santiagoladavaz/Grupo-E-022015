@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="HomeApp">
 <head>
 	
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,14 +14,14 @@
     <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="../bower_components/angular-resource/angular-resource.js"></script>
     <script src="../bower_components/angular-route/angular-route.js"></script>
+     <script src="../bower_components/angular-translate/angular-translate.js"></script>
     <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="../scripts/app.js"></script>
-    <script src="../scripts/controllers/main.js"></script>
-    <script src="../scripts/controllers/about.js"></script>
+    <script src="../scripts/controllers/homeController.js"></script>
     <!-- endbuild -->
 
     <script src="../scripts/controllers/leagueController.js"></script>
@@ -82,6 +82,12 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                    <li>
+                        <input type="submit" name="submit" id="submit" ng-click="changeLanguage('es')"  class="btn btn-info" translate="BUTTON_TEXT_ES">
+                    </li>
+                    <li>
+                        <input type="submit" name="submit" id="submit" ng-click="changeLanguage('en')"  class="btn btn-info" translate="BUTTON_TEXT_EN">
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -91,62 +97,14 @@
     
 		<div class="body" style="z-index: 10;">
 	        <div class="container" style="min-height: 500px;">
-	        	<div class="page-header" style="margin-top: 63px;">
-				    <h1>Ligas</h1>
-				</div>
-		        <div class="row" style="padding: 10px;">
-				<div ng-app="app" ng-controller="Ctrl">
-					<table  id="ranking"  class="table table-bordered" style="padding:5px;">
-						<tr style="font-weight: bold">
-						  <td style="width:35%">Name</td>
-						  <td style="width:20%">Cant. Min</td>
-						  <td style="width:20%">Cant. Max</td>
-						  <td style="width:25%">Editar</td>
-						</tr>
-						<tr ng-repeat="league in leagues">
-						  <td>
-							<!-- editable username (text with validation) -->
-							<!-- onbeforesave="checkName($data, league.id)" para validar -->
-							<span editable-text="league.name" e-name="name" e-form="rowform" e-required>
-							  {{ league.name || 'empty' }}
-							</span>
-						  </td>
-						  <td>
-							<!-- editable status (select-local) -->
-							<span editable-text="league.cantMin" e-name="cantMin" e-form="rowform" e-required>
-							  {{ league.cantMin || 'empty' }}
-							</span>
-						  </td>
-						  <td>
-							<!-- editable group (select-remote) -->
-							<span editable-text="league.cantMax" e-name="cantMax" e-form="rowform" e-required>
-							  {{ league.cantMax || 'empty' }}
-							</span>
-						  </td>
-						  <td style="white-space: nowrap">
-							<!-- form -->
-							<form editable-form name="rowform" onbeforesave="saveUser($data, league.id)" 
-								ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == league" >
-							  <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
-								Guardar
-							  </button>
-							  <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
-								Cancelar
-							  </button>
-							</form>
-							<div class="buttons" ng-show="!rowform.$visible">
-							  <button class="btn btn-primary" ng-click="rowform.$show()">Editar</button>
-							  <button class="btn btn-danger" ng-click="removeUser($index)">Eliminar</button>
-							</div>  
-						  </td>
-						</tr>
-					  </table>
-					  
-					  <button class="btn btn-success" ng-click="addUser()">Agregar Liga</button>
-					 </div>
-				</div>
+                 <h2>{{ 'HEADLINE' | translate }}</h2>
+                <p>{{ 'INTRO_TEXT' | translate }}</p>
+	        	
 	    	</div>
 	 	 </div>
+
+
+        
 	
 </body>
 </html>

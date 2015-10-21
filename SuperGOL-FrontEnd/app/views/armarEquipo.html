@@ -186,11 +186,11 @@ font-weight:bold;
 								ng-model="defensoresSeleccionados" ng-change="change('defensor', 3)">
 						</select>
 						
-						<select id="selectVolante" multiple="multiple" ng-options="arquero as arquero.nombre for arquero in arqueros" 
+						<select id="selectVolante" multiple="multiple" ng-options="volante as volante.nombre for volante in volantes" 
 								ng-model="volantesSeleccionados" ng-change="change('volante', 4)">
 						</select>
 						
-						<select id="selectDelantero" multiple="multiple" ng-options="arquero as arquero.nombre for arquero in arqueros" 
+						<select id="selectDelantero" multiple="multiple" ng-options="delantero as delantero.nombre for delantero in delanteros" 
 								ng-model="delanterosSeleccionados" ng-change="change('delantero', 3)" >
 						</select>
 						<input type="text" class="form-control" name="InputName" id="InputName" placeholder="Nombre del Equipo" ng-model="nombreEquipo" required>

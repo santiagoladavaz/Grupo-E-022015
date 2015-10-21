@@ -1,27 +1,44 @@
 'use strict';
 
 /* Controllers */
-var app = angular.module('TeamApp',[]);
+var app = angular.module('TeamApp',['ngCookies']);
 
-app.controller('TeamController', ['$scope','$http',
+app.controller('TeamController', ['$scope','$http','$cookies',
                                                                             
-	function ($scope, $http) {
+	function ($scope, $http, $cookies) {
+
+		
 		
 		
 		$scope.arqueros = [
-			{nombre:'Orion'},
-			{nombre:'Andujar'},
-			{nombre:'Sessa'},
-			{nombre:'Garcia'},
-			{nombre:'Perez'}
+			{nombre:'Orion',apellido:'Agustin',puesto:'Arquero'},
+			{nombre:'Andujar',apellido:'Pedro',puesto:'Arquero'},
+			{nombre:'Sessa',apellido:'Esteban',puesto:'Arquero'},
+			{nombre:'Garcia',apellido:'Lolo',puesto:'Arquero'},
+			{nombre:'Perez',apellido:'Agustin',puesto:'Arquero'}
 		 ]
 		 
 		 $scope.defensores = [
-			{nombre:'Diaz'},
-			{nombre:'Gnomo'},
-			{nombre:'Hermione'},
-			{nombre:'jajajajaj'}
+			{nombre:'Saw',apellido:'Agustin',puesto:'Defensor'},
+			{nombre:'Fede',apellido:'Pedro',puesto:'Defensor'},
+			{nombre:'Ern',apellido:'Esteban',puesto:'Defensor'},
+		]
+
+
+		 $scope.volantes = [
+			{nombre:'Vera',apellido:'Agustin',puesto:'Volante'},
+			{nombre:'Terry',apellido:'Pedro',puesto:'Volante'},
+			{nombre:'Rewq',apellido:'Esteban',puesto:'Volante'},
+			{nombre:'Vert',apellido:'Lolo',puesto:'Volante'}
 		 ]
+
+
+		  $scope.delanteros = [
+			{nombre:'Andrt',apellido:'Palermo',puesto:'Delantero'},
+			{nombre:'Certy',apellido:'Pedro',puesto:'Delantero'},
+			{nombre:'Xertu',apellido:'Esteban',puesto:'Delantero'}
+		 ]
+		 
 		 
 		 $scope.createTeam = function(){
 		    var team = {
@@ -39,8 +56,8 @@ app.controller('TeamController', ['$scope','$http',
 				delantero2: $scope.delanterosSeleccionados[1],
 				delantero3: $scope.delanterosSeleccionados[2],
 			}
-			$http.post('http://192.168.1.105:8080/SuperGol-BackEnd/rest/teamService/create',team).success(function(data){
-				alert("Se creo un usuario");
+			$http.post('http://10.9.6.114:8080/SuperGol-BackEnd/rest/teamService/create',team).success(function(data){
+				alert("Se creo un equipo");
 				$location.path('views/login.html')
 
 			});
