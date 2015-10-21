@@ -16,7 +16,7 @@ public class TeamFactory {
 		.withPlayer(factory.createDefenderWithTeam("Defensor1"+ suffix, t))
 		.withPlayer(factory.createDefenderWithTeam("Defensor2"+ suffix, t))
 		.withPlayer(factory.createDefenderWithTeam("Defensor3"+ suffix, t))
-		.withPlayer(factory.createDefenderWithTeam("Defensor4"+ suffix, t))
+		.withPlayer(factory.createMidFielderWithTeam("Medio0"+ suffix, t))
 		.withPlayer(factory.createMidFielderWithTeam("Medio1"+ suffix, t))
 		.withPlayer(factory.createMidFielderWithTeam("Medio2"+ suffix, t))
 		.withPlayer(factory.createMidFielderWithTeam("Medio3"+ suffix, t))

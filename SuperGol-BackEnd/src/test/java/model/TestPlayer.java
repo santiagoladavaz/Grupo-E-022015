@@ -38,7 +38,7 @@ public class TestPlayer {
 	
 	@Test
 	public void testMaxPlayerInPositionAllowed(){
-		assertEquals(3,tevez.maxOfPlayerInMyPosition());
+		assertEquals(4,tevez.maxOfPlayerInMyPosition());
 	}
 	
 	@Test

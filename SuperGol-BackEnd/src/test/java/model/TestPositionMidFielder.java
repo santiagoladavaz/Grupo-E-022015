@@ -26,7 +26,7 @@ public class TestPositionMidFielder {
 	
 	@Test
 	public void testMaxPlayerInPosition(){
-		assertEquals(3,midFielder.totalOfPlayerInPositionAllowed());
+		assertEquals(4,midFielder.totalOfPlayerInPositionAllowed());
 	}
 
 }

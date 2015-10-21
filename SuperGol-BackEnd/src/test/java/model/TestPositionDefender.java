@@ -27,7 +27,7 @@ Position defender;
 	
 	@Test
 	public void testMaxPlayerInPosition(){
-		assertEquals(4,defender.totalOfPlayerInPositionAllowed());
+		assertEquals(3,defender.totalOfPlayerInPositionAllowed());
 	}
 
 }
