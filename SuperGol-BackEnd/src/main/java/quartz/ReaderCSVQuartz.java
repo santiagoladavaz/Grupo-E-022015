@@ -45,6 +45,7 @@ public class ReaderCSVQuartz {
 	
 	
 	public void readFiles(){
+//		System.out.println("QUARTZS");
 		logger.info("QUARTZ STARTED!!!");
 		logger.info("QUARTZ -> Reading files of default path: " + DEFAULT_PATH);
 		File folder = new File(DEFAULT_PATH);

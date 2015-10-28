@@ -3,14 +3,38 @@ package factories;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.League;
 import model.Player;
+import services.interfaces.LeagueService;
 import services.interfaces.PlayerService;
 
 public class StartUpFactory {
 
 	
 	private PlayerService playerService;
+	private LeagueService leagueService;
 	private PlayerFactory playerFactory = new PlayerFactory();
+	private LeagueFactory leagueFactory = new LeagueFactory();
+	
+	
+	
+	public void build(){
+		this.buildPlayers();
+		this.buildLeagues();
+	}
+	
+	
+	public void buildLeagues(){
+		List<League>leagues = new ArrayList<League>();
+		leagues.add(leagueFactory.buildEmptyLeague("Liga - Argentina"));
+		leagues.add(leagueFactory.buildEmptyLeague("Liga - Sarlanga"));
+		leagues.add(leagueFactory.buildEmptyLeague("Liga - Macri de mierda"));
+		
+		
+//		for (League l : leagues){
+//			leagueService.save(l);
+//		}
+	}
 	
 	public void buildPlayers(){
 		
@@ -40,6 +64,39 @@ public class StartUpFactory {
 	public void setPlayerService(PlayerService playerService) {
 		this.playerService = playerService;
 	}
+
+
+	public LeagueService getLeagueService() {
+		return leagueService;
+	}
+
+
+	public void setLeagueService(LeagueService leagueService) {
+		this.leagueService = leagueService;
+	}
+
+
+	public PlayerFactory getPlayerFactory() {
+		return playerFactory;
+	}
+
+
+	public void setPlayerFactory(PlayerFactory playerFactory) {
+		this.playerFactory = playerFactory;
+	}
+
+
+	public LeagueFactory getLeagueFactory() {
+		return leagueFactory;
+	}
+
+
+	public void setLeagueFactory(LeagueFactory leagueFactory) {
+		this.leagueFactory = leagueFactory;
+	}
+	
+	
+	
 	
 	
 	

@@ -1,7 +1,5 @@
 package factories;
 
-import java.util.Calendar;
-
 import model.League;
 import model.Match;
 import model.MatchDay;
@@ -22,6 +20,15 @@ public class LeagueFactory {
 		MatchDay md = new MatchDay();
 		md.addMatch(match);
 		l.addMatchDay(md);
+		return l;
+	}
+	
+	
+	public League buildEmptyLeague(String name){
+		League l = new League();
+		l.setName(name);
+		l.setMaxUsers(5);
+		l.setMinUsers(5);
 		return l;
 	}
 

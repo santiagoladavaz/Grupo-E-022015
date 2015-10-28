@@ -3,12 +3,14 @@
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
-	<class name="model.League">
+	<class name="model.League" table="LEAGUE">
 		<id column="ID" name="id">
 			<generator class="native" />
 		</id>
 		
-		<property name="name" type="java.lang.String"/>
+		<property name="name" type="string"/>
+		<property name="maxUsers" type="int"/>
+		<property name="minUsers" type="int"/>
 		<list name="matchesOfTheLeague" lazy="false">
 			<key column="matchesOfTheDayID" />
 			<list-index column="id"/>

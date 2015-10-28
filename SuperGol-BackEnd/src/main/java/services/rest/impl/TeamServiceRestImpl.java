@@ -12,7 +12,6 @@ import org.apache.cxf.jaxrs.ext.multipart.Multipart;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import factories.PlayerFactory;
