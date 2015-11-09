@@ -1,12 +1,9 @@
-'use strict';
 
-/* Controllers */
-var app = angular.module('TeamApp',['ngCookies']);
+//var app = angular.module('TeamApp',['ngCookies']);
+//app.controller('TeamController', ['$scope','$http','$cookies',
+//function ($scope, $http, $cookies) {
 
-app.controller('TeamController', ['$scope','$http','$cookies',
-                                                                            
-	function ($scope, $http, $cookies) {
-
+function TeamController($scope, $location, $http, $translate, $routeParams) {
 		
 		
 		
@@ -103,11 +100,4 @@ app.controller('TeamController', ['$scope','$http','$cookies',
 		}
 		
 		
-		
-		
-	}
-		
-	
-		
-
-]);
+	};

@@ -1,17 +1,6 @@
-'use strict';
+function MainController($scope, $translate) {
 
-/**
- * @ngdoc function
- * @name superGolFrontEndApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the superGolFrontEndApp
- */
-angular.module('superGolFrontEndApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  $scope.changeLanguage = function (langKey) {
+    $translate.use(langKey);
+  };
+}

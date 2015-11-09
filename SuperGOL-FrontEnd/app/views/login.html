@@ -1,60 +1,8 @@
-<!DOCTYPE html>
-<html ng-app="LoginApp">
-<head>
-    <meta charset="utf-8" />
-    <title>SuperGol - Login</title>
-    
-
-    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../styles/styles.css" rel="stylesheet">
-
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
-    <script src="../bower_components/angular/angular.js"></script>
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="../bower_components/angular-resource/angular-resource.js"></script>
-    <script src="../bower_components/angular-route/angular-route.js"></script>
-    <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="../bower_components/angular-touch/angular-touch.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="../scripts/app.js"></script>
-        <script src="../scripts/controllers/main.js"></script>
-        <script src="../scripts/controllers/about.js"></script>
-        <script src="../scripts/controllers/loginController.js"></script>
-        <script src="../scripts/controllers/cookiesFactory.js"></script>
-        <!-- endbuild -->
-	
-	<script type="text/javascript">
-			$(function () {
-
-            $('[data-toggle="tooltip"]').tooltip();
-
-            var url = "../images/fondo.jpg";
-            $("<img />").attr('src', url).load(function () {
-                if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
-                    alert('broken image!');
-                } else {
-                    $('#background').css('background', 'url("' + url + '") no-repeat center top');
-                    $('#background').delay(500).css('opacity', 0).show().animate({ opacity: 1 }, 2000);
-                }
-            });
-        });
-
-    </script>
 
 	<style>
 		h1{color:white}
-		
-
 	</style>
-</head>
 
-<body ng-controller="LoginController">
-<div id="background" class="max-background ObjTransparent" style="background: url('') no-repeat center top; height: 100%; position: fixed; width: 100%; z-index: -1;">  
-</div>
 
 
 <!-- Registration form - START -->
@@ -62,32 +10,25 @@
 <div class="col-md-12">
 
 	<div class="container form_Registro center-block text-center bg_trans_dark" 
-	       style="max-width: 640px; margin-top: 40px; margin-bottom: 100px; padding: 20px">
+	       style="max-width: 640px; margin-top: 139px; margin-bottom: 100px; padding: 20px">
 		    
 			<div>
 				<h1 class="text-center">SuperGol<img src="../images/pelota.png" style="width:80px;margin-bottom: 22px;"></img></h1>
 			</div>
 			 <form class="form col-md-12 center-block">
             <div class="form-group">
-              <input type="text" class="form-control input-lg" placeholder="Usuario" ng-model="username" required>
+              <input type="text" class="form-control input-lg" placeholder="{{ 'USER' | translate }}" ng-model="username" required>
             </div>
             <div class="form-group">
               <input type="password" class="form-control input-lg" placeholder="Password" ng-model="password" required>
             </div>
             <div class="form-group">
-              <button class="btn btn-primary btn-lg btn-block" data-ng-click="login()">Iniciar Sesión</button>
-              <span class="pull-right"><a href="register.html">Registrate</a></span>
+              <button class="btn btn-primary btn-lg btn-block" data-ng-click="login()">{{ 'INICIAR_S' | translate }}</button>
+              <span class="pull-right"><a ng-href="#/register">{{ 'R_BUTTON' | translate }}</a></span>
             </div>
           </form>
-
-
-        <!-- /.row -->
-	</div>
-	</div>
+    </div>
+</div>
 <!-- Registration form - END -->
 
-	</div>
-</div>
 	
-</body>
-</html>

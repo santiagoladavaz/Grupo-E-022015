@@ -1,92 +1,121 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-  </head>
-  <body ng-app="superGolFrontEndApp">
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+<head>
+  
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../styles/styles.css" rel="stylesheet">
+    <link href="../styles/whiteContent.css" rel="stylesheet">
+    <link href="../styles/editable.css" rel="stylesheet">
+    <link href="../styles/xeditable.css" rel="stylesheet">
+    <link href="../styles/bootstrap-multiselect.css" rel="stylesheet">
 
-    <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
+    
+    
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">superGolFrontEnd</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
+    
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
 
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
+
+  <script type="text/javascript">
+      $(function () {
+
+            $('[data-toggle="tooltip"]').tooltip();
+
+            var url = "../images/fondo.jpg";
+            $("<img />").attr('src', url).load(function () {
+                if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+                    alert('broken image!');
+                } else {
+                    $('#background').css('background', 'url("' + url + '") no-repeat center top');
+                    $('#background').delay(500).css('opacity', 0).show().animate({ opacity: 1 }, 2000);
+                }
+            });
+        });
+
     </script>
+</head>
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+<body ng-app="frontendApp"  ng-controller="MainController" ng-cloak>
+<div id="background" class="max-background ObjTransparent" style="background: url('') no-repeat center top; height: 100%; position: fixed; width: 100%; z-index: -1;">  
+</div>
+<!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/">SuperGol</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                       <a ng-href="#/leagues">{{ 'LEAGUE_B' | translate }}</a>
+                    </li>
+                    <li>
+                         <a ng-href="#/team">{{ 'MENU_TEAM' | translate }}</a>
+                    </li>
+                    <li>
+                        <a ng-href="#/players">{{ 'MENU_PLAYER' | translate }}</a>
+                    </li>
+                    <li>
+                        <a ng-href="#/register">{{ 'R_BUTTON' | translate }}</a>
+                    </li>
+                    <li>
+                        <a ng-href="#/login">Log In</a>
+                    </li>
+                    
+                </ul>
+                <div style="float:right;">
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <!-- endbuild -->
+                            <input type="image" name="submit" id="submit" src="../images/arg.png" ng-click="changeLanguage('es')"  translate="BUTTON_TEXT_ES">
+                            <input type="image" name="submit" id="submit" src="../images/usa.png" ng-click="changeLanguage('en')"   translate="BUTTON_TEXT_EN">
+                        </div>
+            </div>
+
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    
+ 
+          <div ng-view=""></div>
+
+
+
+
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="../bower_components/angular-touch/angular-touch.js"></script>
+    <script src="../bower_components/angular-translate/angular-translate.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    
+
+    <script src="scripts/bootstrap-multiselect.js"></script>
+    <script src="scripts/xeditable.js"></script>
+    <script src="scripts/configuration.js"></script>
+    <script src="scripts/routes.js"></script>
+    <script src="scripts/translations.js"></script>
+
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/teamController.js"></script>
+    <script src="scripts/controllers/leagueController.js"></script>
+    <script src="scripts/controllers/loginController.js"></script>
+    <script src="scripts/controllers/registerController.js"></script>
+    <script src="scripts/controllers/playerController.js"></script>
+    <script src="scripts/app.js"></script>
+         
+        
+  
 </body>
 </html>

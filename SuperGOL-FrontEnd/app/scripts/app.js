@@ -1,34 +1,21 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name superGolFrontEndApp
- * @description
- * # superGolFrontEndApp
- *
- * Main module of the application.
- */
-angular
-  .module('superGolFrontEndApp', [
+var app = angular.module('frontendApp', [
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+    'pascalprecht.translate',
+    'xeditable'
+  ]);
+
+
+
+app.controller('MainController', ['$scope', '$translate', MainController]);
+app.controller('RegisterController', ['$scope', '$location','$translate', RegisterController]);
+app.controller('LoginController', ['$scope', '$http', '$location', '$routeParams', '$translate', '$cookies', LoginController]);
+app.controller('PlayerController', ['$scope', '$location', '$http','$translate','$routeParams', PlayerController]);
+app.controller('TeamController', ['$scope', '$location','$translate','$routeParams',  TeamController]);
+app.controller('LeagueController', ['$scope', '$translate', '$http', LeagueController]);
+
+app.config(["$routeProvider", "$translateProvider", configuration]);

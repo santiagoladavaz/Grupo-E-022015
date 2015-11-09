@@ -1,11 +1,9 @@
-'use strict';
 
-var loginApp = angular.module('LoginApp', ['ngCookies']);
+//var loginApp = angular.module('LoginApp', ['ngCookies']);
+//loginApp.controller('LoginController', function ($scope, $http, $cookies, $location) {
 
 
-/* Controllers */
-loginApp.controller('LoginController', function ($scope, $http, $cookies, $location) {
-	
+function LoginController($scope, $http, $location, $routeParams, $translate, $cookies) {
 	
     $scope.login = function()
     {	
@@ -13,10 +11,10 @@ loginApp.controller('LoginController', function ($scope, $http, $cookies, $locat
     	$cookies.put('user', $scope.username);
 
     	//$scope.user = $cookies.get('user'); de esta manera lo obtengo
-       	window.location.href="http://localhost:9000/views/armarEquipo.html";
+       $location.path('/team')
     }
    
- });
+ };
 		
 		//$http.post('http://localhost:8080/SuperGol-BackEnd/rest/userService/create',user).success(function(data){
 	

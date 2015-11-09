@@ -1,20 +1,41 @@
-'use strict';
+function PlayerController($scope, $location, $http, $translate, $routeParams) {
 
-var playerApp = angular.module('PlayerApp', []);
+  $scope.players = [];
+
+ $scope.getPlayers = function() {
+    $http.get('http://10.9.6.146:8080/SuperGol-BackEnd/rest/playerService/all').success(function(data){
+        $scope.players = data;
+      });
+  };
 
 
-playerApp.controller('PlayerController', function ($scope, $http) {
-		
-		$scope.createPlayer = function(){
-		    var player = {
-		    	name : $scope.name,
-		    	lastName : $scope.lastName,
-		    	team: $scope.team,
-		    	position:$scope.position
-		    }
-			$http.post('/createPlayer',player).success(function(data){
 
-			});
-		}
-		
-});
+  $scope.savePlayer = function(data, index) {
+ 	if(data.id == null)
+	    $http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/playerService/create',data).success(function(response){
+	         $data.id = response.id;
+	    });
+	else
+	    $http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/playerService/edit',data);
+
+  };
+
+  
+  $scope.removePlayer = function(index) {
+    var  player = $scope.players[index];
+    $scope.players.splice(index, 1);
+    $http.get('http://10.9.6.146:8080/SuperGol-BackEnd/rest/playerService/remove/'+player.id);
+  };
+
+  // add user
+  $scope.addPlayer = function() {
+    $scope.inserted = {
+      name: '',
+      status: null,
+      group: null 
+    };
+    $scope.players.push($scope.inserted);
+
+  };
+};
+
