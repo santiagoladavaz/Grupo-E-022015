@@ -11,6 +11,7 @@ public interface LeagueDAO {
 	public League createLeague(String name, int maxPlayers, int minPlayers);
 	public void editLeague(Integer id,String name,Integer maxPlayers, Integer minPlayers);
 	public void save(League l);
+	public void deleteById(int id);
 	
 	
 }

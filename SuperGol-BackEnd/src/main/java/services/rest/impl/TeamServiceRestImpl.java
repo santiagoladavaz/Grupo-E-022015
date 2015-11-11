@@ -79,17 +79,17 @@ public class TeamServiceRestImpl {
 	
 	
 	private Player toPlayer(PlayerRequest request,Team t){
-		if (request.getPuesto().equals("Arquero")){
-			return playerFactory.createGoalKeeperWithTeam(request.getNombre().trim() + " " +request.getApellido().trim(), t);
+		if (request.getPosition().equals("Goal Keeper")){
+			return playerFactory.createGoalKeeperWithTeam(request.getName().trim(), t);
 		}
-		if(request.getPuesto().equals("Defensor")){
-			return playerFactory.createDefenderWithTeam(request.getNombre().trim() + " " +request.getApellido().trim(), t);
+		if(request.getPosition().equals("Defender")){
+			return playerFactory.createDefenderWithTeam(request.getName().trim(), t);
 		}
 		
-		if(request.getPuesto().equals("Volante")){
-			return playerFactory.createMidFielderWithTeam(request.getNombre().trim() + " " +request.getApellido().trim(), t);
+		if(request.getPosition().equals("Forward")){
+			return playerFactory.createMidFielderWithTeam(request.getName().trim(), t);
 		}
-		return playerFactory.createForwardWithTeam(request.getNombre().trim() + " " +request.getApellido().trim(), t);
+		return playerFactory.createForwardWithTeam(request.getName().trim(), t);
 	}
 	
 	

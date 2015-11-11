@@ -11,10 +11,10 @@
 		<property name="name" type="string"/>
 		<property name="maxUsers" type="int"/>
 		<property name="minUsers" type="int"/>
-		<list name="matchesOfTheLeague" lazy="false">
-			<key column="matchesOfTheDayID" />
-			<list-index column="id"/>
-			<one-to-many class="model.MatchDay"/>
-		</list>
+<!-- 		<list name="matchesOfTheLeague" lazy="false"> -->
+<!-- 			<key column="LEAGUEID"/> -->
+<!-- 			<list-index column="ORDEN"/> -->
+<!-- 			<one-to-many class="model.MatchDay" /> -->
+<!-- 		</list> -->
 	</class>
 </hibernate-mapping>

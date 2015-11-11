@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.League;
+import services.rest.response.LeagueResponse;
 
 public interface LeagueService {
 
@@ -18,4 +19,8 @@ public interface LeagueService {
 	public void editLeague(final Integer id, final String name,final Integer maxPlayers,final Integer minPlayers);
 	@Transactional
 	public void save(League l);
+	@Transactional
+	public void deleteLeagueById(int id);
+
+	public List<LeagueResponse> toResponse(List<League> leagues);
 }

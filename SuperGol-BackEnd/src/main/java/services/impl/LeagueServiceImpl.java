@@ -2,6 +2,7 @@ package services.impl;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import daos.interfaces.LeagueDAO;
 import model.League;
 import services.interfaces.LeagueService;
+import services.rest.response.LeagueResponse;
 
 public class LeagueServiceImpl implements LeagueService {
 
@@ -43,12 +45,27 @@ public class LeagueServiceImpl implements LeagueService {
 	}
 	
 	
+	public List<LeagueResponse> toResponse(List<League>list){
+		List<LeagueResponse> result = new ArrayList<LeagueResponse>();
+		for(League l : list){
+			result.add( new LeagueResponse(l));
+		}
+		
+		return result;
+	}
+	
+	
 	public LeagueDAO getLeagueDAO() {
 		return leagueDAO;
 	}
 
 	public void setLeagueDAO(LeagueDAO leagueDAO) {
 		this.leagueDAO = leagueDAO;
+	}
+
+	@Override
+	public void deleteLeagueById(int id) {
+		leagueDAO.deleteById(id);		
 	}
 
 	

@@ -3,16 +3,16 @@
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
-	<class name="model.MatchDay">
-		<id column="ID" name="id">
+	<class name="model.MatchDay" table="MATCHDAY">
+		<id column="MID" name="id">
 			<generator class="native" />
 		</id>
 		
 		<property name="date" type="java.util.Date"/>
 		<list name="matchesOfTheDay" lazy="false">
-			<key column="matchID"/>
-			<list-index column="id"/>
-			<one-to-many class="model.MatchDay"/>
+			<key column="MATCHDAYID"/>
+			<list-index column="ID"/>
+			<one-to-many class="model.Match"/>
 		</list>
 		
 	</class>

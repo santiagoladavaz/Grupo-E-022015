@@ -5,8 +5,10 @@ import java.util.List;
 
 import model.League;
 import model.Player;
+import model.Team;
 import services.interfaces.LeagueService;
 import services.interfaces.PlayerService;
+import services.interfaces.TeamService;
 
 public class StartUpFactory {
 
@@ -15,9 +17,21 @@ public class StartUpFactory {
 	private LeagueService leagueService;
 	private PlayerFactory playerFactory = new PlayerFactory();
 	private LeagueFactory leagueFactory = new LeagueFactory();
+	private TeamFactory teamFactory = new TeamFactory();
+	private TeamService teamService;
 	
 	
 	
+	public TeamService getTeamService() {
+		return teamService;
+	}
+
+
+	public void setTeamService(TeamService teamService) {
+		this.teamService = teamService;
+	}
+
+
 	public void build(){
 		this.buildPlayers();
 		this.buildLeagues();
@@ -31,9 +45,10 @@ public class StartUpFactory {
 		leagues.add(leagueFactory.buildEmptyLeague("Liga - Macri de mierda"));
 		
 		
-//		for (League l : leagues){
-//			leagueService.save(l);
-//		}
+		for (League l : leagues){
+			leagueService.save(l);
+			
+		}
 	}
 	
 	public void buildPlayers(){
@@ -52,11 +67,38 @@ public class StartUpFactory {
 		players.add(playerFactory.createForward("Luis Zagarella"));
 		players.add(playerFactory.createForward("Carlito Teve (Very Difficult)"));
 		
+		
 		for(Player p :players){
-			playerService.savePlayer(p);
+			p.setBoca("Boca");
 		}
+		
+		Team t = new Team();
+		t.setName("Boca");
+		t.setPlayers(players);
+//		teamService.saveTeam(t);
+		
+		
+		Team t1 = teamFactory.createFullTeam("River", "r");
+		Team t2 = teamFactory.createFullTeam("Yupanqui", "y");
+		Team t3 = teamFactory.createFullTeam("Independiente","i");
+		Team t4 = teamFactory.createFullTeam("Racing", "ra"); 
+		Team t5 = teamFactory.createFullTeam("Belgrano", "b");
+		Team t6 = teamFactory.createFullTeam("San lorenzo", "s");
+		Team t7 = teamFactory.createFullTeam("Huracan", "h");
+		Team t8 = teamFactory.createFullTeam("Quilmes", "q");
+		
+		saveTeams(t,t1,t2,t3,t4,t5,t6,t7,t8);
+		
+		
 	}
 
+	
+	private void saveTeams(Team...teams ){
+		for (int i = 0; i < teams.length; i++){
+			teamService.saveTeam(teams[i]);
+		}
+	}
+	
 	public PlayerService getPlayerService() {
 		return playerService;
 	}

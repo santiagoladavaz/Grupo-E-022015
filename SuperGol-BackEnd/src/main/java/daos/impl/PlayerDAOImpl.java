@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -22,6 +24,13 @@ public class PlayerDAOImpl  extends HibernateDaoSupport implements PlayerDAO {
 		this.getHibernateTemplate().flush();
 	}
 
+	public Player findByID(Integer id){
+		DetachedCriteria criteria = DetachedCriteria.forClass(Player.class);
+		criteria.add(Restrictions.eq("id", id));
+		
+		return (Player) (this.getHibernateTemplate().findByCriteria(criteria).get(0));
+	}
+	
 	@Override
 	public Player searchPlayerByName(final String name) {
 		try{
@@ -62,11 +71,17 @@ public class PlayerDAOImpl  extends HibernateDaoSupport implements PlayerDAO {
 			@SuppressWarnings("unchecked")
 			@Override
 			public List<Player> doInHibernate(Session session) throws HibernateException, SQLException {
-				return (List<Player>) session.createQuery("FROM PLAYER").list();
+				Query q = session.createQuery("FROM Player");
+				return (List<Player>) q.list();
 			}
 			
 		});
 		return players;
+	}
+
+	@Override
+	public void updatePlayer(Player pl) {
+		this.getHibernateTemplate().update(pl);		
 	}
 
 }

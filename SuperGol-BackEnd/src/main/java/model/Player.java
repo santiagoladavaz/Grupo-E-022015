@@ -1,18 +1,25 @@
 package model;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8174077691361775476L;
 	private Position position;
 	private String name;
 	private Team team;
 	private int id;
-	
+	private String realTeam;
 	
 	public Player(){
 		
 	}
-	
-	
+
+
+
 	public int maxOfPlayerInMyPosition(){
 		return position.totalOfPlayerInPositionAllowed();
 	}
@@ -71,6 +78,22 @@ public class Player {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+
+	public String getRealTeam() {
+		return realTeam;
+	}
+
+
+	public void setRealTeam(String realTeam) {
+		this.realTeam = realTeam;
+	}
+
+
+	public void setBoca(String s) {
+		this.realTeam = s;
+		
 	}
 	
 	

@@ -48,7 +48,7 @@ public class LeagueDAOImpl extends HibernateDaoSupport implements LeagueDAO{
 				criteria.add(Restrictions.eq("id", id));
 				League l = (League) criteria.uniqueResult();
 				l.editWith(name,maxPlayers,minPlayers);
-				session.saveOrUpdate(l);
+				session.update(l);
 				session.flush();
 				return null;
 			}
@@ -60,6 +60,23 @@ public class LeagueDAOImpl extends HibernateDaoSupport implements LeagueDAO{
 	public void save(League l) {
 		this.getHibernateTemplate().save(l);
 		getHibernateTemplate().flush();
+	}
+
+	@Override
+	public void deleteById(final int id) {
+		this.getHibernateTemplate().execute(new HibernateCallback<League>() {
+
+			@Override
+			public League doInHibernate(Session session) throws HibernateException, SQLException {
+				Criteria criteria = session.createCriteria(League.class);
+				criteria.add(Restrictions.eq("id", id));
+				League l = (League) criteria.uniqueResult();
+				session.delete(l);
+				session.flush();
+				return null;
+			}
+		});
+		
 	}
   
 	

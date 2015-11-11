@@ -4,7 +4,7 @@
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
 	<class name="model.Team" table="TEAM">
-		<id column="ID" name="id">
+		<id column="TEAMID" name="id">
 			<generator class="native" />
 		</id>
 		<property name="name" type="java.lang.String"/>

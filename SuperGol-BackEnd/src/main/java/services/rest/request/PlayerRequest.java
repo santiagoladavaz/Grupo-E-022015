@@ -2,37 +2,49 @@ package services.rest.request;
 
 public class PlayerRequest {
 	
-	private String nombre;
-	private String apellido;
-	private String puesto;
-	private String club;
+	private String name;
+	private String position;
+	private Integer id;
+	private String team;
+	private String lastName;
+	
+	
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPosition() {
+		return position;
+	}
+	public void setPosition(String position) {
+		this.position = position;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getTeam() {
+		return team;
+	}
+	public void setTeam(String team) {
+		this.team = team;
+	}
 	
 	
 	
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public String getApellido() {
-		return apellido;
-	}
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-	public String getPuesto() {
-		return puesto;
-	}
-	public void setPuesto(String puesto) {
-		this.puesto = puesto;
-	}
-	public String getClub() {
-		return club;
-	}
-	public void setClub(String club) {
-		this.club = club;
-	}
+	
+	
+
 	
 	
 	

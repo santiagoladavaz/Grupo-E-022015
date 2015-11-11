@@ -4,11 +4,12 @@
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
 	<class name="model.Player" table="PLAYER">
-		<id column="ID" name="id">
-			<generator class="native" />
-		</id>		
-		<property name="name" type="java.lang.String"/>
-		<many-to-one name="team" class="model.Team"/>
-		<one-to-one name="position" class="model.Position"/>
+		<id column="PID" name="id">
+			<generator class="identity" />
+		</id>
+		<property name="realTeam" type="string" column="REALTEAM"/>		
+		<property name="name" type="java.lang.String" column="name"/>
+		<many-to-one name="team" class="model.Team" column="TEAM" lazy="false"/>
+		<many-to-one name="position" class="model.Position" column="POSITIONID" lazy="false"/>
 	</class>	
 </hibernate-mapping>

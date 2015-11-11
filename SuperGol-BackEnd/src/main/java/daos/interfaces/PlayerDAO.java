@@ -12,5 +12,7 @@ public interface PlayerDAO {
 	public void erase();
 	public void delete(Player player);
 	public List<Player> getAll();
+	public Player findByID(Integer string);
+	public void updatePlayer(Player pl);
 	
 }

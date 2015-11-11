@@ -1,11 +1,11 @@
 package services.rest.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
@@ -34,7 +34,7 @@ public class LeagueServiceRestImpl {
 	@Produces("application/json")
 	public List<LeagueResponse> obtainAllLeagues(){
 		List<League> leagues = leagueService.obtainAllLeagues();
-		return toResponse(leagues);
+		return leagueService.toResponse(leagues);
 	}
 	
 	@POST
@@ -70,6 +70,18 @@ public class LeagueServiceRestImpl {
 	}
 	
 	
+	@GET
+	@Path("/remove/{id}")
+	@Produces("application/json")
+	public Response deleteLeague(@PathParam("id") final int id){
+		try{
+			leagueService.deleteLeagueById(id);
+			return Response.status(200).build();
+		}catch(Exception e){
+			 return Response.serverError().entity(e.getMessage()).build();
+		}
+	}
+	
 	
 	
 	
@@ -87,14 +99,6 @@ public class LeagueServiceRestImpl {
 	    return request;
 	}
 
-	private List<LeagueResponse> toResponse(List<League>list){
-		List<LeagueResponse> result = new ArrayList<LeagueResponse>();
-		for(League l : list){
-			result.add( new LeagueResponse(l));
-		}
-		
-		return result;
-	}
 	
 	
 	
