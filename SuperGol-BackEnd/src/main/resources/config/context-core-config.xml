@@ -24,10 +24,10 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 
 	<jaxrs:server id="feag" address="/">
 		<jaxrs:serviceBeans>
-			<ref bean="playerServiceRest" />
+			<ref bean="playerServiceRest"/>
 			<ref bean="userServiceRest"/>
 			<ref bean="teamServiceRest"/>
-<!-- 			<ref bean="categoryRest" /> -->
+			<ref bean="leagueServiceRest"/>
 <!-- 			<ref bean="subcategoryRest" /> -->
 <!-- 			<ref bean="operationRest" /> -->
 <!-- 			<ref bean="invoiceRest" /> -->
@@ -63,6 +63,10 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	<bean id="teamServiceRest" class="services.rest.impl.TeamServiceRestImpl">
 		<property name="teamService" ref="teamService"></property>
 		<property name="userService" ref="userService"></property>
+	</bean>
+	
+	<bean id="leagueServiceRest" class="services.rest.impl.LeagueServiceRestImpl">
+		<property name="leagueService" ref="leagueService"></property>
 	</bean>
       
 
