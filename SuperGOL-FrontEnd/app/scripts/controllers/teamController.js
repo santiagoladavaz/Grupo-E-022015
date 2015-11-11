@@ -6,7 +6,6 @@
 function TeamController($scope, $location, $http, $translate, $routeParams) {
 		
 		
-		
 		$scope.arqueros = [
 			{nombre:'Orion',apellido:'Agustin',puesto:'Arquero'},
 			{nombre:'Andujar',apellido:'Pedro',puesto:'Arquero'},
@@ -53,7 +52,7 @@ function TeamController($scope, $location, $http, $translate, $routeParams) {
 				delantero2: $scope.delanterosSeleccionados[1],
 				delantero3: $scope.delanterosSeleccionados[2],
 			}
-			$http.post('http://10.9.6.114:8080/SuperGol-BackEnd/rest/teamService/create',team).success(function(data){
+			$http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/teamService/create',team).success(function(data){
 				alert("Se creo un equipo");
 				$location.path('views/login.html')
 

@@ -6,7 +6,9 @@ var app = angular.module('frontendApp', [
     'ngRoute',
     'ngSanitize',
     'pascalprecht.translate',
-    'xeditable'
+    'xeditable',
+    'angularUtils.directives.dirPagination'
+
   ]);
 
 

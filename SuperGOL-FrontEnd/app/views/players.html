@@ -8,20 +8,14 @@
                     <table  id="ranking"  class="table table-bordered" style="padding:5px;">
                         <tr style="font-weight: bold">
                           <td style="width:35%">{{ 'LEAGUE_N' | translate }}</td>
-                          <td style="width:20%">{{ 'LAST_NAME' | translate }}</td>
                           <td style="width:20%">{{ 'TEAM' | translate }}</td>
                           <td style="width:25%">{{ 'POSITION' | translate }}</td>
-                          <td style="width:25%">{{ 'LEAGUE_E' | translate }}</td>
+                          <td style="width:25%" class="center-block">{{ 'LEAGUE_E' | translate }}</td>
                         </tr>
-                        <tr ng-repeat="player in players">
+                        <tr dir-paginate="player in players | itemsPerPage: 5">
                           <td>
                             <span editable-text="player.name" e-name="name" e-form="rowform" ng-model="name" e-required>
                               {{ player.name || 'empty' }}
-                            </span>
-                          </td>
-                          <td>
-                            <span editable-text="player.lastName" e-name="apellido" e-form="rowform" ng-model="lastName" e-required>
-                              {{ player.lastName || 'empty' }}
                             </span>
                           </td>
                           <td>
@@ -31,12 +25,17 @@
                           </td>
                           <td>
                            <span editable-text="player.position" e-name="position" e-form="rowform" ng-model="position" e-required>
-                              {{ player.position || 'empty' }}
+                              <select required class="form-control" ng-model="position">
+                                  <option value=""> {{ 'POSITION' | translate }}</option>
+                                  <option ng-repeat="position in positions">
+                                    {{player.position}}
+                                  </option>
+                              </select>
                             </span>
                           </td>
                           <td style="white-space: nowrap">
                             <!-- form -->
-                            <form editable-form name="rowform" onbeforesave="savePlayer($data,  $index)" 
+                            <form editable-form name="rowform" onbeforesave="savePlayer($data, $index)" 
                                 ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == player" >
                               <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
                                 {{ 'SAVE' | translate }}
@@ -46,8 +45,7 @@
                               </button>
                             </form>
                             <div class="buttons" ng-show="!rowform.$visible">
-                              <button class="btn btn-primary" ng-click="rowform.$show()">{{ 'LEAGUE_E' | translate }}</button>
-                              <button class="btn btn-danger" ng-click="removePlayer($index)"> {{ 'DELETE' | translate }}</button>
+                              <button class="btn btn-primary center-block" ng-click="rowform.$show()">{{ 'LEAGUE_E' | translate }}</button>
                             </div>  
                           </td>
                         </tr>
@@ -55,6 +53,10 @@
                       
                       <button class="btn btn-success" ng-click="addPlayer()">{{ 'MENU_PLAYER' | translate }}</button>
                      </div>
+
+                    <div class="center-block">
+                     <dir-pagination-controls></dir-pagination-controls>
+                    </div>
                 </div>
             </div>
          </div>

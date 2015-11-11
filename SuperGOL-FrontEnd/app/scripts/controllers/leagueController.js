@@ -14,6 +14,8 @@ function LeagueController($scope, $translate, $http) {
 
 
   $scope.saveLeague = function(data, index) {
+
+
  
   if(data.id == null)
       $http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/leagueService/create',data).success(function(response){
