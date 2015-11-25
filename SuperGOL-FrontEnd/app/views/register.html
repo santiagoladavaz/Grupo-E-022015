@@ -15,6 +15,8 @@
 
 <!-- Registration form - START -->
 
+<uib-alert ng-repeat="alert in alerts" dismiss-on-timeout="timeout" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}, {{alert.timeout}}</uib-alert>
+
 <div class="contentRegistro clearfix" style="z-index: 10;">
 <div class="col-md-12">
 	<div class="container form_Registro center-block text-center bg_trans_dark" 

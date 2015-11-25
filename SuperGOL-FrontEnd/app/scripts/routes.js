@@ -24,6 +24,10 @@ function routes($routeProvider) {
       templateUrl: 'views/players.html',      
       controller: 'PlayerController'
     })
+    .when('/actualizarFecha', {
+      templateUrl: 'views/actualizarFecha.html',      
+      controller: 'ActualizarController'
+    })
     .otherwise({
       redirectTo: '/'
     });

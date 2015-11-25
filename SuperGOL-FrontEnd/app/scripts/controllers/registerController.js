@@ -1,5 +1,10 @@
-function RegisterController($scope, $location, $translate) {
-		
+function RegisterController($scope, $http, $location, $translate) {
+	$scope.alerts = [];
+	$scope.timeout = 3000;
+
+	$scope.closeAlert = function(index) {
+    	$scope.alerts.splice(index, 1);
+  	};
 
 		$scope.createUser = function(){
 		    var user = {
@@ -8,7 +13,7 @@ function RegisterController($scope, $location, $translate) {
 		    	pass: $scope.pass
 		    }
 			$http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/userService/create',user).success(function(data){
-				alert("Se creo un usuario");
+				 $scope.alerts.push({msg: 'Registrado con Exito.', type:'success'});
 
 			});
 		}

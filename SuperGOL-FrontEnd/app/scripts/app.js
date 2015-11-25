@@ -7,17 +7,20 @@ var app = angular.module('frontendApp', [
     'ngSanitize',
     'pascalprecht.translate',
     'xeditable',
-    'angularUtils.directives.dirPagination'
-
+    'angularUtils.directives.dirPagination',
+    'ui.bootstrap'
+    
   ]);
 
 
 
 app.controller('MainController', ['$scope', '$translate', MainController]);
-app.controller('RegisterController', ['$scope', '$location','$translate', RegisterController]);
-app.controller('LoginController', ['$scope', '$http', '$location', '$routeParams', '$translate', '$cookies', LoginController]);
+app.controller('RegisterController', ['$scope','$http', '$location','$translate', RegisterController]);
+app.controller('LoginController', ['$scope', '$http', '$location', '$routeParams', '$translate', '$cookies', 'auth', 'store', LoginController]);
 app.controller('PlayerController', ['$scope', '$location', '$http','$translate','$routeParams', PlayerController]);
-app.controller('TeamController', ['$scope', '$location','$translate','$routeParams',  TeamController]);
+app.controller('TeamController', ['$scope', '$location', '$http', '$translate',  TeamController]);
 app.controller('LeagueController', ['$scope', '$translate', '$http', LeagueController]);
+app.controller('ActualizarController', ['$scope', '$translate', '$http', ActualizarController]);
 
 app.config(["$routeProvider", "$translateProvider", configuration]);
+

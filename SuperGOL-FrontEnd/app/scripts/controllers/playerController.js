@@ -3,32 +3,40 @@ function PlayerController($scope, $location, $http, $translate, $routeParams) {
  $scope.positions = ['Goal Keeper', 'Defender','Mid Field', 'Forward'];
 
  $scope.players = [];
-
+ 
  $scope.getPlayers = function() {
+
     $http.get('http://10.9.6.146:8080/SuperGol-BackEnd/rest/playerService/getAll').success(function(data){
-        $scope.players = data;
+        //$http.get('http://localhost:8080/SuperGol-BackEnd/rest/playerService/getAll').success(function(data){
+           $scope.players = data;
       });
   };
 
 
 
-  $scope.savePlayer = function(data, index) {
-    var player = $scope.players[index];
-    alert(data.position);
-    alert(data.team);
-    alert(data.name);
-    alert(data.idPlayer);
-    if(player.id == null)
-        $http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/playerService/create',player).success(function(response){
-  	         $player.id = response.id;
+  $scope.savePlayer = function() {
+        var data = {
+          name : $scope.name,
+          team : $scope.team,
+          position: $scope.position
+        }
+        //$http.post('http://localhost:8080/SuperGol-BackEnd/rest/playerService/create',data).success(function(response){
+        $http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/playerService/create',data).success(function(response){
+  	        $scope.players.push(response);
   	    });
-  	else
-        $http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/playerService/edit',player);
+  	
+  };
+
+
+  $scope.editPlayer = function(data) {
+    //$http.post('http://localhost:8080/SuperGol-BackEnd/rest/playerService/edit',data);
+    $http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/playerService/edit',data);
 
   };
 
   
   $scope.addPlayer = function() {
+
     $scope.inserted = {
       name: '',
       status: null,
@@ -37,5 +45,6 @@ function PlayerController($scope, $location, $http, $translate, $routeParams) {
     $scope.players.push($scope.inserted);
 
   };
+
 };
 

@@ -30,7 +30,9 @@ function translations($translateProvider) {
       POSITION: 'Position',
       DELETE: 'Delete',
       SAVE: 'Save',
-      CANCEL: 'Cancel'
+      CANCEL: 'Cancel',
+      UPDATE: 'Update Date',
+      JOIN: 'Join'
       
 
     })
@@ -64,7 +66,9 @@ function translations($translateProvider) {
       POSITION: 'Posicion',
       DELETE: 'Eliminar',
       SAVE: 'Guardar',
-      CANCEL: 'Cancelar'
+      CANCEL: 'Cancelar',
+      UPDATE: 'Actualizar Fecha',
+      JOIN: 'Unirse'
     
     });
 

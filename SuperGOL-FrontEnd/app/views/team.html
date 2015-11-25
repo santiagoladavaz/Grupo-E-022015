@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>SuperGol - Equipo</title>
- 
-
 <script type="text/javascript">
+
 
 	function selected(select,numOfPlayers,nonSelectedText){
 			$('#' + select).multiselect({
@@ -14,6 +8,8 @@
 				nonSelectedText:nonSelectedText,
 				filterBehavior: 'text',
 				enableCaseInsensitiveFiltering: true,
+				disableIfEmpty: true,
+				maxHeight: 400,
 				
 				onChange: function(option, checked) {
 	                // Get selected options.
@@ -73,12 +69,7 @@
 		}
 		
 		
-		$(document).ready(function() {
-			selected("selectArquero",1,"Arqueros");
-			selected("selectDefensor",3,"Defensores");
-			selected("selectVolante",4,"Volantes");
-			selected("selectDelantero",3,"Delanteros");
-	    });
+		
 
 </script>
 
@@ -97,7 +88,7 @@
 </div>
 
     
-		<div class="body" style="z-index: 10;">
+		<div class="body" style="z-index: 10;" ng-init="getPlayers()">
 	        <div class="container" style="min-height: 500px;">
 	        	<div class="page-header" style="margin-top: 63px;" >
 				    <h1>{{ 'H1_TEAM' | translate }}</h1>
@@ -106,29 +97,25 @@
 					
 				 <form class="form-inline" role="form">
 				   	
-						<select id="selectArquero" multiple="multiple" ng-options="arquero as arquero.nombre for arquero in arqueros" 
+						<select id="selectArquero" multiple="multiple" ng-options="player as player.name for player in players  | filter: { position: 'GoalKeeper' }" 
 								ng-model="arqueroSeleccionado" ng-change="change('arquero', 1)" >
 						</select>
 						
-						<select id="selectDefensor" multiple="multiple" ng-options="defensor as defensor.nombre for defensor in defensores" 
+						<select id="selectDefensor" multiple="multiple" ng-options="player as player.name for player in players  | filter: { position: 'Defender' }"  
 								ng-model="defensoresSeleccionados" ng-change="change('defensor', 3)">
 						</select>
 						
-						<select id="selectVolante" multiple="multiple" ng-options="volante as volante.nombre for volante in volantes" 
+						<select id="selectVolante" multiple="multiple" ng-options="player as player.name for player in players  | filter: { position: 'MidFielder' }" 
 								ng-model="volantesSeleccionados" ng-change="change('volante', 4)">
 						</select>
 						
-						<select id="selectDelantero" multiple="multiple" ng-options="delantero as delantero.nombre for delantero in delanteros" 
+						<select id="selectDelantero" multiple="multiple" ng-options="player as player.name for player in players  | filter: { position: 'Forward' }" 
 								ng-model="delanterosSeleccionados" ng-change="change('delantero', 3)" >
 						</select>
 						<input type="text" class="form-control" name="InputName" id="InputName" placeholder="{{'TEAM_NAME' | translate }}" ng-model="nombreEquipo" required>
 					  
-						
-					 
-						
 					<input type="submit" name="submit" id="submit" data-ng-click="createTeam()" value="{{'TEAM_B' | translate }}" class="btn btn-info">
 
-				
 				</form>
 			</div>
 	
@@ -212,5 +199,20 @@
 </div>
 	 	 </div>
 	
+
+<script>
+
+$(document).ready(function() {
+	setTimeout(function(){ LoadCombosCheck(); }, 350);
+});
+
+function LoadCombosCheck()
+{
+	selected("selectArquero",1,"Arqueros");
+    selected("selectDefensor",3,"Defensores");
+    selected("selectVolante",4,"Volantes");
+    selected("selectDelantero",3,"Delanteros");
+}
+
+</script>
 </body>
-</html>

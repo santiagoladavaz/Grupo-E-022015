@@ -3,7 +3,7 @@
 //loginApp.controller('LoginController', function ($scope, $http, $cookies, $location) {
 
 
-function LoginController($scope, $http, $location, $routeParams, $translate, $cookies) {
+function LoginController($scope, $http, $location, $routeParams, $translate, $cookies, $auth, $store) {
 	
     $scope.login = function()
     {	

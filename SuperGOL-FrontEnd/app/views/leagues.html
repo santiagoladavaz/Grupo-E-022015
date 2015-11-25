@@ -12,29 +12,29 @@
 				  <td style="width:20%">Cant. Max</td>
 				  <td style="width:25%">{{ 'LEAGUE_E' | translate }}</td>
 				</tr>
-				<tr ng-repeat="league in leagues">
+				 <tr dir-paginate="league in leagues | itemsPerPage: 5">
+				   <td style="display:none;">
+                            <span editable-text="league.id" e-name="id" e-form="rowform" ng-model="id" e-required>
+                              {{ league.id || 'empty' }}
+                            </span>
+                          </td>
 				  <td>
-					<!-- editable username (text with validation) -->
-					<!-- onbeforesave="checkName($data, league.id)" para validar -->
 					<span editable-text="league.name" e-name="name" e-form="rowform" ng-model="name" e-required>
 					  {{ league.name || 'empty' }}
 					</span>
 				  </td>
 				  <td>
-					<!-- editable status (select-local) -->
 					<span editable-text="league.cantMin" e-name="cantMin" e-form="rowform" ng-model="cantMin" e-required>
 					  {{ league.cantMin || 'empty' }}
 					</span>
 				  </td>
 				  <td>
-					<!-- editable group (select-remote) -->
 					<span editable-text="league.cantMax" e-name="cantMax" e-form="rowform" ng-model="cantMax" e-required>
 					  {{ league.cantMax || 'empty' }}
 					</span>
 				  </td>
 				  <td style="white-space: nowrap">
-					<!-- form -->
-					<form editable-form name="rowform" onbeforesave="saveLeague($data,  $index)" 
+					<form editable-form name="rowform" onbeforesave="editLeague($data, $index)" 
 						ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == league" >
 					  <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
 						{{ 'SAVE' | translate }}
@@ -42,18 +42,81 @@
 					  <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
 						{{ 'CANCEL' | translate }}
 					  </button>
+					  
 					</form>
 					<div class="buttons" ng-show="!rowform.$visible">
-					  <button class="btn btn-primary" ng-click="rowform.$show()">{{ 'LEAGUE_E' | translate }}</button>
-					  <button class="btn btn-danger" ng-click="removeLeague($index)">{{ 'DELETE' | translate }}</button>
+						 <button class="btn btn-primary" ng-click="rowform.$show()">{{ 'LEAGUE_E' | translate }}</button>
+						 <button class="btn btn-danger" ng-click="removeLeague(league.id, $index)">{{ 'DELETE' | translate }}</button>
+						 <button type="button" ng-disabled="rowform.$waiting" ng-click="joinLeague(league.id)" class="btn btn-default">
+							{{ 'JOIN' | translate }}
+					  	</button>
 					</div>  
 				  </td>
 				</tr>
 			  </table>
+
+			   <div class="center-block">
+                      <dir-pagination-controls>
+                      </dir-pagination-controls>
+                    </div>
+                <div style="float:right;">
+                       <button class="btn btn-success" data-toggle="modal" data-target="#myModal">{{ 'LEAGUE_B' | translate }}</button>
+               </div>
 			  
-			  <button class="btn btn-success" ng-click="addLeague()">{{ 'LEAGUE_B' | translate }}</button>
+			 	  <uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></uib-pagination>
 			 </div>
 		</div>
 	</div>
  </div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{ 'LEAGUE_B' | translate }}</h4>
+      </div>
+      <div class="modal-body">
+          <form role="form">
+            
+                <div class="well well-sm"><strong style="color:black;"><span class="glyphicon glyphicon-asterisk"></span>{{ 'R_FIELDS' | translate }}</strong></div>
+                <div class="form-group">
+                  <div class="input-group">
+                        <input type="text" class="form-control" name="InputName" id="InputName" 
+                               placeholder ="{{ 'LEAGUE_N' | translate }}"  ng-model="name" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="cantMin" name="Cant. Min" placeholder="Cant. Min" ng-model="cantMin" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="cantMax" name="Cant. Max" placeholder="Cant. Max" ng-model="cantMax" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary" data-dismiss="modal" ng-click="saveLeague($data, index)">
+                                {{ 'SAVE' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+                </div>
+            </div>
+         </div>
 
