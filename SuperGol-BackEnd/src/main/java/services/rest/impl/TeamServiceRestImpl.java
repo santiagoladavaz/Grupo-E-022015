@@ -87,9 +87,9 @@ public class TeamServiceRestImpl {
 		}
 		
 		if(request.getPosition().equals("Forward")){
-			return playerFactory.createMidFielderWithTeam(request.getName().trim(), t);
+			return playerFactory.createForwardWithTeam(request.getName().trim(), t);
 		}
-		return playerFactory.createForwardWithTeam(request.getName().trim(), t);
+		return playerFactory.createMidFielderWithTeam(request.getName().trim(), t);
 	}
 	
 	

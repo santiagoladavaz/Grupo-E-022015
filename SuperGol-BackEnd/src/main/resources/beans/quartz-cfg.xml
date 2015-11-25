@@ -17,7 +17,7 @@
 	<bean id="cronTriggerCSV"
 		class="org.springframework.scheduling.quartz.CronTriggerBean">
 		<property name="jobDetail" ref="readCSVJob" />
-		<property name="cronExpression" value="0/5 * * * * ?" />
+		<property name="cronExpression" value="0 0 23 * * ?" />
 	</bean>
 	
 	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">

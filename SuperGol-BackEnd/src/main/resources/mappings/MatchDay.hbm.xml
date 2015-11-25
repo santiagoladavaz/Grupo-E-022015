@@ -11,7 +11,7 @@
 		<property name="date" type="java.util.Date"/>
 		<list name="matchesOfTheDay" lazy="false">
 			<key column="MATCHDAYID"/>
-			<list-index column="ID"/>
+			<list-index column="IDMATCH"/>
 			<one-to-many class="model.Match"/>
 		</list>
 		

@@ -45,7 +45,7 @@ public class Team {
 		}
 		String position = pl.getPositionDescription();
 		int maxAllowed= pl.maxOfPlayerInMyPosition();
-		if( maxAllowed == playersInPosition(position)){
+		if( maxAllowed < playersInPosition(position)){
 			throw new EnoughtPlayersInPositionException("There's enought players in position: "+ position );
 		}
 	}

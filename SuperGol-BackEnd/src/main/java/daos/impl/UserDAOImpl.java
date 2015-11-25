@@ -34,7 +34,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 			}
 		});
 		if (u == null){
-			throw new PlayerDoesntExistException("Player does not exist! or It has a team already!");
+			throw new PlayerDoesntExistException("User does not exist! or It has a team already!");
 		}
 		return u;
 		

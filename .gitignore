@@ -5,3 +5,5 @@
 /Servers
 /Wicket-Spring-Security
 /wicket-spring-hib
+/SuperGol-BackEnd/src/main/resources/config/dataSource.xml
+

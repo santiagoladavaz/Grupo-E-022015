@@ -23,4 +23,6 @@ public interface LeagueService {
 	public void deleteLeagueById(int id);
 
 	public List<LeagueResponse> toResponse(List<League> leagues);
+	@Transactional
+	public void joinLeague(String username, int idLeague);
 }

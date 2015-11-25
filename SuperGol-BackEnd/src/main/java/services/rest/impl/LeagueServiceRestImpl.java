@@ -17,6 +17,7 @@ import model.League;
 import services.interfaces.LeagueService;
 import services.rest.request.CreateLeagueRequest;
 import services.rest.request.EditLeagueRequest;
+import services.rest.request.JoinLeagueRequest;
 import services.rest.response.LeagueResponse;
 
 
@@ -83,6 +84,29 @@ public class LeagueServiceRestImpl {
 	}
 	
 	
+	
+	@POST
+	@Path("/join")
+	@Produces("application/json")
+	public Response joinToLeague(@Multipart(value = "jsonRequest", type = "application/json")
+	final String jsonRequest){
+		try{
+			JoinLeagueRequest request = toCreateJoinLeagueRequest(jsonRequest);
+			leagueService.joinLeague(request.getUsername(),request.getIdLeague());
+			return Response.status(200).build();
+		}catch(Exception e){
+			 return Response.serverError().entity(e.getMessage()).build();
+		}
+		
+	}
+	
+	
+	private JoinLeagueRequest toCreateJoinLeagueRequest(String jsonRequest) throws Exception{
+		JoinLeagueRequest request = new JoinLeagueRequest();
+		ObjectMapper mapper = new ObjectMapper();
+		request = mapper.readValue(jsonRequest, JoinLeagueRequest.class);
+		return request;
+	}
 	
 	
 	private CreateLeagueRequest toCreateLeagueRequest(String jsonRequest) throws Exception{

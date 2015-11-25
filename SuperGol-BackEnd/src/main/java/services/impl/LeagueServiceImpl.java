@@ -9,12 +9,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import daos.interfaces.LeagueDAO;
 import model.League;
+import model.User;
 import services.interfaces.LeagueService;
+import services.interfaces.UserService;
 import services.rest.response.LeagueResponse;
 
 public class LeagueServiceImpl implements LeagueService {
 
 	private LeagueDAO leagueDAO;
+	private UserService userService;
 
 	
 	
@@ -62,10 +65,29 @@ public class LeagueServiceImpl implements LeagueService {
 	public void setLeagueDAO(LeagueDAO leagueDAO) {
 		this.leagueDAO = leagueDAO;
 	}
+	
+	
+	
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
 
 	@Override
 	public void deleteLeagueById(int id) {
 		leagueDAO.deleteById(id);		
+	}
+
+	@Override
+	public void joinLeague(String username, int idLeague) {
+		User u = userService.obtainUser(username);
+		League l = leagueDAO.obtainLeagueById(idLeague);
+		l.addTeam(u.getUserTeam());
+		leagueDAO.save(l);
 	}
 
 	

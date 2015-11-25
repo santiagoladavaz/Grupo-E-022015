@@ -19,6 +19,7 @@
     
     <bean id="leagueService" class="services.impl.LeagueServiceImpl">
     	<property name="leagueDAO" ref="leagueDAO"/>
+    	<property name="userService" ref="userService"/>
     </bean>
     		  	
     <bean id="userService" class="services.impl.UserServiceImpl">
