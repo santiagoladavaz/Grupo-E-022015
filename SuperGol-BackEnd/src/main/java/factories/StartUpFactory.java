@@ -9,6 +9,7 @@ import model.Team;
 import services.interfaces.LeagueService;
 import services.interfaces.PlayerService;
 import services.interfaces.TeamService;
+import services.rest.impl.UserServiceRestImpl;
 
 public class StartUpFactory {
 
@@ -19,6 +20,7 @@ public class StartUpFactory {
 	private LeagueFactory leagueFactory = new LeagueFactory();
 	private TeamFactory teamFactory = new TeamFactory();
 	private TeamService teamService;
+	private UserServiceRestImpl userService;
 	
 	
 	
@@ -89,10 +91,21 @@ public class StartUpFactory {
 		
 		saveTeams(t,t1,t2,t3,t4,t5,t6,t7,t8);
 		
+//		userService.getPlayer(2);
 		
 	}
 
 	
+	public UserServiceRestImpl getUserService() {
+		return userService;
+	}
+
+
+	public void setUserService(UserServiceRestImpl userService) {
+		this.userService = userService;
+	}
+
+
 	private void saveTeams(Team...teams ){
 		for (int i = 0; i < teams.length; i++){
 			teamService.saveTeam(teams[i]);

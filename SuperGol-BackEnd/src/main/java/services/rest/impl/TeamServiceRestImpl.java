@@ -14,6 +14,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Service;
 
+import aspect.Aspectable;
 import factories.PlayerFactory;
 import model.Player;
 import model.Team;
@@ -41,7 +42,7 @@ public class TeamServiceRestImpl {
 	
 	
 	
-	
+	@Aspectable
 	@POST
 	@Path("/create")
 	@Produces("application/json")

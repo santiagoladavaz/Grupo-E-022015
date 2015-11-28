@@ -12,6 +12,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import aspect.Aspectable;
 import model.User;
 import services.interfaces.UserService;
 import services.rest.request.UserRequest;
@@ -24,7 +25,7 @@ public class UserServiceRestImpl {
 	private UserService userService;
 	
 	
-	
+	@Aspectable
 	@GET
 	@Path("/create/{id}")
 	@Produces("application/json")
@@ -32,7 +33,7 @@ public class UserServiceRestImpl {
 	      return 5;
 	}
 	
-	
+	@Aspectable
 	@POST
 	@Path("/create")
 	@Produces("application/json")

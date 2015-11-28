@@ -1,0 +1,3 @@
+[18:00:08] INFO [aspect.ServiceAuditorAspect] - **************************************** SERVICE INSPECTOR *********************************************
+[18:00:08] INFO [aspect.ServiceAuditorAspect] - DATE: 28/11/2015 18:00:08 Executing method: getPlayerOf class: class services.rest.impl.UserServiceRestImpl With Params: 2, 
+[18:00:08] INFO [aspect.ServiceAuditorAspect] - **************************************** SERVICE INSPECTOR END *****************************************

@@ -1,5 +1,6 @@
 package factories;
 
+import aspect.Aspectable;
 import model.Team;
 import model.User;
 
@@ -7,6 +8,7 @@ public class TeamFactory {
 
 	PlayerFactory factory = new PlayerFactory();
 	
+	@Aspectable
 	public Team createFullTeam(String name,String suffix){
 		Team t = new Team();
 		User u = new User();

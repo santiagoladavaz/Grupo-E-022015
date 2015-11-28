@@ -13,6 +13,7 @@ import org.apache.cxf.jaxrs.ext.multipart.Multipart;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Service;
 
+import aspect.Aspectable;
 import model.League;
 import services.interfaces.LeagueService;
 import services.rest.request.CreateLeagueRequest;
@@ -29,7 +30,7 @@ public class LeagueServiceRestImpl {
 
 	private LeagueService leagueService;	
 	
-
+	@Aspectable
 	@GET
 	@Path("/all")
 	@Produces("application/json")
@@ -38,6 +39,7 @@ public class LeagueServiceRestImpl {
 		return leagueService.toResponse(leagues);
 	}
 	
+	@Aspectable
 	@POST
 	@Path("/edit")
 	@Produces("application/json")
@@ -53,7 +55,7 @@ public class LeagueServiceRestImpl {
 		}
 	}
 	
-	
+	@Aspectable
 	@POST
 	@Path("/create")
 	@Produces("application/json")
@@ -70,7 +72,7 @@ public class LeagueServiceRestImpl {
 		}
 	}
 	
-	
+	@Aspectable
 	@GET
 	@Path("/remove/{id}")
 	@Produces("application/json")
@@ -84,7 +86,7 @@ public class LeagueServiceRestImpl {
 	}
 	
 	
-	
+	@Aspectable
 	@POST
 	@Path("/join")
 	@Produces("application/json")

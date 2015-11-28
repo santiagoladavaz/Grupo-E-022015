@@ -6,8 +6,8 @@ function LeagueController($scope, $translate, $http) {
   $scope.leagues = [];
 
  $scope.getLeagues = function() {
-    $http.get('http://10.9.6.146:8080/SuperGol-BackEnd/rest/leagueService/all').success(function(data){
-     //$http.get('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/all').success(function(data){   
+    //$http.get('http://10.9.6.146:8080/SuperGol-BackEnd/rest/leagueService/all').success(function(data){
+     $http.get('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/all').success(function(data){   
         $scope.leagues = data;
       });
   };
@@ -20,29 +20,29 @@ function LeagueController($scope, $translate, $http) {
           cantMin : $scope.cantMin,
           cantMax: $scope.cantMax
         }
-    $http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/leagueService/create',data).success(function(response){
-      //$http.post('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/create',data).success(function(response){     
+    //$http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/leagueService/create',data).success(function(response){
+      $http.post('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/create',data).success(function(response){     
             $scope.leagues.push(response);
       });
     
   };
 
   $scope.editLeague = function(data, index) {
-    //$http.post('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/edit',data);
-    $http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/leagueService/edit',data);
+    $http.post('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/edit',data);
+    //$http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/leagueService/edit',data);
 
   };
 
   
   $scope.removeLeague = function(idLeague, index) {
     $scope.leagues.splice(index, 1);
-    //$http.get('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/remove/'+idLeague);
-    $http.get('http://10.9.6.146:8080/SuperGol-BackEnd/rest/leagueService/remove/'+league.id);
+    $http.get('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/remove/'+idLeague);
+    //$http.get('http://10.9.6.146:8080/SuperGol-BackEnd/rest/leagueService/remove/'+league.id);
   };
 
 
   $scope.joinLeague = function(id) {
-    //$http.get('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/join/'+idLeague);
+    $http.get('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/join/'+idLeague);
     alert(id);
     var data = {
           idLeague : id, 
