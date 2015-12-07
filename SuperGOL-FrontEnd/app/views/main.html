@@ -1,15 +1,17 @@
 <div class="body" style="z-index: 10;">
+  <uib-alert ng-repeat="alert in alerts" dismiss-on-timeout="timeout" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}, {{alert.timeout}}</uib-alert>
+
   <div class="container" style="min-height: 500px;">
       <h1>{{ 'HEADLINE' | translate }}</h1>
       <p>{{ 'INTRO_TEXT' | translate }}</p>
 
+
+
    <div class="row">
-  		<div class="col-md-6">
-  			<a ng-href="#/login"><button class="btn btn-success btn-lg btn-block">{{ 'INICIAR_S' | translate }}</button></a> 
+  		<div class="col-md-6 col-md-offset-3">
+  			<a><button id="btnLogin" class="btn btn-success btn-lg btn-block" ng-click="login()">{{ 'INICIAR_S' | translate }}</button></a> 
   		</div>
-  		<div class="col-md-6">
-  			<a ng-href="#/register"> <button class="btn btn-primary btn-lg btn-block" >{{ 'R_BUTTON' | translate }}</button></a>
-        </div>
+
 	</div>
   </div>
 </div>

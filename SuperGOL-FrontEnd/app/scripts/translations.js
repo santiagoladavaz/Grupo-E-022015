@@ -2,7 +2,7 @@ function translations($translateProvider) {
   $translateProvider
     .translations('en', {
       HEADLINE: 'SuperGol',
-      INTRO_TEXT: 'And it has i18n support!',
+      INTRO_TEXT: 'Platform to reward players based on the knowledge and deportivos.Cada hunches user is a coach of players that make up a fantasy team participating against other participants. The performance of each team will be determined by the performance of the players chosen in one embodiment of all against all.',
       BUTTON_TEXT_EN: 'english',
       BUTTON_TEXT_ES: 'spanish',
       H1_TEAM: 'Create your team',
@@ -38,7 +38,7 @@ function translations($translateProvider) {
     })
     .translations('es', {
       HEADLINE: 'SuperGol',
-      INTRO_TEXT: 'La plataforma recompensa a los jugadores en funcion a los conocimientos y palpitos deportivos.Cada usuario es un seleccionador de jugadores que conforman un equipo de fantasía que participa en  contra otros participantes.El desempeño de cada equipo estara determinado por el desempeño de los jugadores elegidos en una modalidad de todos contra todos',
+      INTRO_TEXT: 'La plataforma recompensa a los jugadores en funcion a los conocimientos y palpitos deportivos.Cada usuario es un seleccionador de jugadores que conforman un equipo de fantasia que participa en  contra otros participantes.El rendimiento de cada equipo estara determinado por el rendimiento de los jugadores elegidos en una modalidad de todos contra todos',
       BUTTON_TEXT_EN: 'ingles',
       BUTTON_TEXT_DE: 'español',
       H1_TEAM: 'Crea tu equipo',

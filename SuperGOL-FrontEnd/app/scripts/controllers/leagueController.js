@@ -1,13 +1,11 @@
-//var app = angular.module("LeagueApp", ["xeditable"]);
-//app.controller('LeagueController', function($scope, $filter, $http) {
-
-function LeagueController($scope, $translate, $http) {
+function LeagueController($scope, $translate, $http, auth, store, $cookies) {
 
   $scope.leagues = [];
+  $scope.user = $cookies.get('user');
 
  $scope.getLeagues = function() {
-    $http.get('http://10.9.6.146:8080/SuperGol-BackEnd/rest/leagueService/all').success(function(data){
-     //$http.get('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/all').success(function(data){   
+    $http.get('http://192.168.0.21:8080/SuperGol-BackEnd/rest/leagueService/all').success(function(data){
+     //$http.get('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/all').success(function(data){
         $scope.leagues = data;
       });
   };
@@ -20,16 +18,16 @@ function LeagueController($scope, $translate, $http) {
           cantMin : $scope.cantMin,
           cantMax: $scope.cantMax
         }
-    $http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/leagueService/create',data).success(function(response){
-      //$http.post('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/create',data).success(function(response){     
-            $scope.leagues.push(response);
+    $http.post('http://192.168.0.21:8080/SuperGol-BackEnd/rest/leagueService/create',data).success(function(response){
+      //$http.post('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/create',data).success(function(response){
+          $scope.leagues.push(response);
       });
     
   };
 
   $scope.editLeague = function(data, index) {
     //$http.post('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/edit',data);
-    $http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/leagueService/edit',data);
+    $http.post('http://192.168.0.21:8080/SuperGol-BackEnd/rest/leagueService/edit',data);
 
   };
 
@@ -37,19 +35,17 @@ function LeagueController($scope, $translate, $http) {
   $scope.removeLeague = function(idLeague, index) {
     $scope.leagues.splice(index, 1);
     //$http.get('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/remove/'+idLeague);
-    $http.get('http://10.9.6.146:8080/SuperGol-BackEnd/rest/leagueService/remove/'+league.id);
+    $http.get('http://192.168.0.21:8080/SuperGol-BackEnd/rest/leagueService/remove/'+league.id);
   };
 
 
   $scope.joinLeague = function(id) {
-    //$http.get('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/join/'+idLeague);
-    alert(id);
-    var data = {
+   var data = {
           idLeague : id, 
-          username : "Pepito"
+          username : $scope.user
     };
 
-    $http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/leagueService/join/',data).success(function(){
+    $http.post('http://192.168.0.21:8080/SuperGol-BackEnd/rest/leagueService/join/',data).success(function(){
       alert('te uniste!');
     });
     

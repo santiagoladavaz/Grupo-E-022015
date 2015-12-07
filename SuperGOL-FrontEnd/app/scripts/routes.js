@@ -1,4 +1,4 @@
-function routes($routeProvider) {
+function routes($routeProvider,authProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'views/main.html',
@@ -14,19 +14,23 @@ function routes($routeProvider) {
     })
     .when('/team', {
       templateUrl: 'views/team.html',
-      controller: 'TeamController'
+      controller: 'TeamController',
+      requiresLogin: true
     })
     .when('/leagues', {
       templateUrl: 'views/leagues.html',
-      controller: 'LeagueController'
+      controller: 'LeagueController',
+      requiresLogin: true
     })
     .when('/players', {
       templateUrl: 'views/players.html',      
-      controller: 'PlayerController'
+      controller: 'PlayerController',
+      requiresLogin: true
     })
     .when('/actualizarFecha', {
       templateUrl: 'views/actualizarFecha.html',      
-      controller: 'ActualizarController'
+      controller: 'ActualizarController',
+      requiresLogin: true
     })
     .otherwise({
       redirectTo: '/'
