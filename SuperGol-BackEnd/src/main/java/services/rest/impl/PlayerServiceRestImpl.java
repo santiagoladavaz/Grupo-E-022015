@@ -16,6 +16,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Service;
 
+import aspect.Aspectable;
 import services.interfaces.PlayerService;
 import services.rest.request.PlayerRequest;
 import services.rest.response.PlayerResponse;
@@ -28,7 +29,7 @@ public class PlayerServiceRestImpl {
 	private PlayerService playerService;
 
 	
-	
+	@Aspectable
 	@GET
 	@Path("/player/{id}")
 	@Produces("application/json")
@@ -36,7 +37,7 @@ public class PlayerServiceRestImpl {
 	      return 1;
 	}
 	
-	
+	@Aspectable
 	@POST
 	@Path("/create")
 	@Produces("application/json")
@@ -51,6 +52,7 @@ public class PlayerServiceRestImpl {
 		}
 	}
 	
+	@Aspectable
 	@GET
 	@Path("/getAll")
 	public List<PlayerResponse> getPlayers(){
@@ -58,7 +60,7 @@ public class PlayerServiceRestImpl {
 	}
 	
 	
-	
+	@Aspectable
 	@POST
 	@Path("/edit")
 	@Produces("application/json")

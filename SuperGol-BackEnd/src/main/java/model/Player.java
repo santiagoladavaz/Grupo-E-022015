@@ -13,7 +13,12 @@ public class Player implements Serializable{
 	private Team team;
 	private int id;
 	private String realTeam;
+	private volatile int goals;
 	
+
+
+
+
 	public Player(){
 		
 	}
@@ -79,6 +84,18 @@ public class Player implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
+	public int getGoals() {
+		return goals;
+	}
+
+
+
+	public void setGoals(int goals) {
+		this.goals = goals;
+	}
+
 
 
 	public String getRealTeam() {

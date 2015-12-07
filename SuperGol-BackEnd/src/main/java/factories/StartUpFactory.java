@@ -3,12 +3,15 @@ package factories;
 import java.util.ArrayList;
 import java.util.List;
 
+import daos.interfaces.LeagueDAO;
 import model.League;
+import model.Match;
 import model.Player;
 import model.Team;
 import services.interfaces.LeagueService;
 import services.interfaces.PlayerService;
 import services.interfaces.TeamService;
+import services.rest.impl.UserServiceRestImpl;
 
 public class StartUpFactory {
 
@@ -19,9 +22,21 @@ public class StartUpFactory {
 	private LeagueFactory leagueFactory = new LeagueFactory();
 	private TeamFactory teamFactory = new TeamFactory();
 	private TeamService teamService;
+	private UserServiceRestImpl userService;
+	private LeagueDAO leagueDAO;
 	
 	
 	
+	public LeagueDAO getLeagueDAO() {
+		return leagueDAO;
+	}
+
+
+	public void setLeagueDAO(LeagueDAO leagueDAO) {
+		this.leagueDAO = leagueDAO;
+	}
+
+
 	public TeamService getTeamService() {
 		return teamService;
 	}
@@ -63,7 +78,7 @@ public class StartUpFactory {
 		players.add(playerFactory.createMidFielder("Santiago Ladavaz"));
 		players.add(playerFactory.createMidFielder("Clemente Rodriguez"));
 		players.add(playerFactory.createForward("Fernando Gago"));
-		players.add(playerFactory.createForward("Caracol "));
+		players.add(playerFactory.createForward("Caracol"));
 		players.add(playerFactory.createForward("Luis Zagarella"));
 		players.add(playerFactory.createForward("Carlito Teve (Very Difficult)"));
 		
@@ -89,10 +104,33 @@ public class StartUpFactory {
 		
 		saveTeams(t,t1,t2,t3,t4,t5,t6,t7,t8);
 		
+//		List<Team> tss = new ArrayList<Team>();
+//		tss.add(t1);
+//		tss.add(t2);
+//		tss.add(t3);
+//		tss.add(t4);
+//		League l = leagueFactory.buildEmptyLeague("Liga - PRUEBA FIXTURE");
+//		l.setTeams(tss);
+//		leagueFactory.createFixture(l);
+//		leagueService.save(l);
+		
+		
+		
+//		userService.getPlayer(2);
 		
 	}
 
 	
+	public UserServiceRestImpl getUserService() {
+		return userService;
+	}
+
+
+	public void setUserService(UserServiceRestImpl userService) {
+		this.userService = userService;
+	}
+
+
 	private void saveTeams(Team...teams ){
 		for (int i = 0; i < teams.length; i++){
 			teamService.saveTeam(teams[i]);

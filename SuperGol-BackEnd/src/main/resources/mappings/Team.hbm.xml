@@ -15,6 +15,6 @@
 			<list-index column="posicion"/>
 			<one-to-many class="model.Player"/>
 		</list>
-		<one-to-one name="owner" class="model.User"/>
+		<many-to-one name="owner" class="model.User" column="TEAMUSER"/>
 	</class>
 </hibernate-mapping>

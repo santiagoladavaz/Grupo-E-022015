@@ -57,17 +57,17 @@ public class PlayerServiceImpl implements PlayerService{
 		Player pl = playerDAO.findByID(request.getId());
 		if( pl != null){
 			pl.setName(request.getName());
-			if(request.equals("Goal Keeper")){
+			if(request.getPosition() != null && request.getPosition().equals("Goal Keeper")){
 				pl.setPosition(new GoalKeeper());
 			}
-			if(request.getPosition().equals("Forward")){
+			if(request.getPosition() != null && request.getPosition().equals("Forward")){
 				pl.setPosition(new Forward());
 			}
 			
-			if(request.getPosition().equals("Defender")){
+			if(request.getPosition() != null && request.getPosition().equals("Defender")){
 				pl.setPosition(new Defender());
 			}
-			if(request.getPosition().equals("Mid Fielder")){
+			if(request.getPosition() !=null && request.getPosition().equals("Mid Fielder")){
 				pl.setPosition(new MidFielder());
 			}
 			pl.setRealTeam(request.getTeam());
@@ -85,6 +85,11 @@ public class PlayerServiceImpl implements PlayerService{
 		Player p = factory.createPlayerByRequest(request);
 		playerDAO.savePlayer(p);
 		return this.toPlayerResponse(p);
+	}
+
+	@Override
+	public Player searchPlayerByName(String name) {
+		return playerDAO.searchPlayerByName(name);
 	}
 
 	

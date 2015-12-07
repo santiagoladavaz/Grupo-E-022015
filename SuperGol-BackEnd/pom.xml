@@ -13,6 +13,7 @@
 		<jackson.version>1.9.13</jackson.version>
 		<org.springframework.version>3.0.5.RELEASE</org.springframework.version>
 		<org.hibernate.version>3.6.7.Final</org.hibernate.version>
+		<aspectj.version>1.7.4</aspectj.version>
 	</properties>
 
 	<build>
@@ -38,7 +39,7 @@
 					<wtpversion>2.0</wtpversion>
 					<downloadSources>true</downloadSources>
 				</configuration>
-			</plugin>
+			</plugin>			
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
@@ -67,6 +68,18 @@
 	</build>
 
 	<dependencies>
+
+		<dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectj.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjtools</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
 
 		<dependency>
 			<groupId>joda-time</groupId>

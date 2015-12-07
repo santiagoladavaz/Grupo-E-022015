@@ -6,12 +6,15 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import daos.interfaces.LeagueDAO;
 import model.League;
+import model.Match;
+import model.Player;
 
 public class LeagueDAOImpl extends HibernateDaoSupport implements LeagueDAO{
 
@@ -58,7 +61,7 @@ public class LeagueDAOImpl extends HibernateDaoSupport implements LeagueDAO{
 
 	@Override
 	public void save(League l) {
-		this.getHibernateTemplate().save(l);
+		this.getHibernateTemplate().saveOrUpdate(l);
 		getHibernateTemplate().flush();
 	}
 
@@ -76,6 +79,20 @@ public class LeagueDAOImpl extends HibernateDaoSupport implements LeagueDAO{
 				return null;
 			}
 		});
+		
+	}
+
+	@Override
+	public League obtainLeagueById(int idLeague) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(League.class);
+		criteria.add(Restrictions.eq("id", idLeague));
+		return (League) this.getHibernateTemplate().findByCriteria(criteria).get(0);
+	}
+
+	@Override
+	public void insertMatch(Match match) {
+		this.getHibernateTemplate().save(match);
+		this.getHibernateTemplate().flush();
 		
 	}
   

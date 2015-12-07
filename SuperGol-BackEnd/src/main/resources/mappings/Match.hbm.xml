@@ -1,15 +1,18 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
-	<class name="model.Match" table="MATCH">
-		<id column="ID" name="id">
-			<generator class="native" />
+	<class name="model.Match" table="MATCHH">
+		<id column="IDMATCH" name="id">
+			<generator class="identity" />
 		</id>
+		
+		
+		<property name="winner" type="java.lang.Integer" not-null="false"/>
 		<property name="tie" type="java.lang.Boolean"/>
-		<one-to-one name="visitorTeam" class="model.Team"/>
-		<one-to-one name="localTeam" class="model.Team"/>
-		<one-to-one name="winner" class="model.Team"/>
+		<many-to-one name="visitorTeam" class="model.Team" column="VISITORID"/>
+		<many-to-one name="localTeam" class="model.Team" column="LOCALID"/>
+		
 	</class>
 </hibernate-mapping>

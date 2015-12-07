@@ -13,10 +13,13 @@ import org.apache.cxf.jaxrs.ext.multipart.Multipart;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Service;
 
+import aspect.Aspectable;
 import model.League;
 import services.interfaces.LeagueService;
 import services.rest.request.CreateLeagueRequest;
 import services.rest.request.EditLeagueRequest;
+import services.rest.request.JoinLeagueRequest;
+import services.rest.request.UploadFileRequest;
 import services.rest.response.LeagueResponse;
 
 
@@ -28,7 +31,7 @@ public class LeagueServiceRestImpl {
 
 	private LeagueService leagueService;	
 	
-
+	@Aspectable
 	@GET
 	@Path("/all")
 	@Produces("application/json")
@@ -37,6 +40,7 @@ public class LeagueServiceRestImpl {
 		return leagueService.toResponse(leagues);
 	}
 	
+	@Aspectable
 	@POST
 	@Path("/edit")
 	@Produces("application/json")
@@ -52,7 +56,7 @@ public class LeagueServiceRestImpl {
 		}
 	}
 	
-	
+	@Aspectable
 	@POST
 	@Path("/create")
 	@Produces("application/json")
@@ -69,7 +73,7 @@ public class LeagueServiceRestImpl {
 		}
 	}
 	
-	
+	@Aspectable
 	@GET
 	@Path("/remove/{id}")
 	@Produces("application/json")
@@ -83,6 +87,52 @@ public class LeagueServiceRestImpl {
 	}
 	
 	
+	@Aspectable
+	@POST
+	@Path("/join")
+	@Produces("application/json")
+	public Response joinToLeague(@Multipart(value = "jsonRequest", type = "application/json")
+	final String jsonRequest){
+		try{
+			JoinLeagueRequest request = toCreateJoinLeagueRequest(jsonRequest);
+			leagueService.joinLeague(request.getUsername(),request.getIdLeague());
+			return Response.status(200).build();
+		}catch(Exception e){
+			 return Response.serverError().entity(e.getMessage()).build();
+		}
+		
+	}
+	
+	
+	
+	@Aspectable
+	@POST
+	@Path("/upload")
+	@Produces("application/json")
+	public Response uploadFile(@Multipart(value = "request", type = "application/json") final String jsonRequest){
+		
+		try{
+			UploadFileRequest request = toFileRequest(jsonRequest);
+			leagueService.saveFile(request);
+			return Response.status(200).build();			
+		}catch(Exception e){
+			return Response.serverError().entity(e.getMessage()).build();
+		}
+	}
+	
+	
+	private UploadFileRequest toFileRequest(String jsonRequest) throws Exception{
+		UploadFileRequest request = new UploadFileRequest();
+		request.setContent(jsonRequest);
+		return request;
+	}
+
+	private JoinLeagueRequest toCreateJoinLeagueRequest(String jsonRequest) throws Exception{
+		JoinLeagueRequest request = new JoinLeagueRequest();
+		ObjectMapper mapper = new ObjectMapper();
+		request = mapper.readValue(jsonRequest, JoinLeagueRequest.class);
+		return request;
+	}
 	
 	
 	private CreateLeagueRequest toCreateLeagueRequest(String jsonRequest) throws Exception{

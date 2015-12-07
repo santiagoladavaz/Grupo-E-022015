@@ -9,10 +9,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import exceptions.PlayerDoesntExistException;
 import quartz.ReaderCSVQuartz;
 
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"../beans/*",
+					 "../config/dataSource.xml"
+								})
 public class TestQuartzReader {
 	
 	ReaderCSVQuartz reader;
@@ -28,6 +36,7 @@ public class TestQuartzReader {
 	}
 	
 	@Test
+	@Ignore
 	public void testReadFiles(){
 		reader.readFiles();
 	}

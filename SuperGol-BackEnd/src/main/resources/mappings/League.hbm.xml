@@ -4,17 +4,23 @@
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
 	<class name="model.League" table="LEAGUE">
-		<id column="ID" name="id">
+		<id column="IDLEAGUE" name="id">
 			<generator class="native" />
 		</id>
 		
 		<property name="name" type="string"/>
 		<property name="maxUsers" type="int"/>
 		<property name="minUsers" type="int"/>
-<!-- 		<list name="matchesOfTheLeague" lazy="false"> -->
-<!-- 			<key column="LEAGUEID"/> -->
-<!-- 			<list-index column="ORDEN"/> -->
-<!-- 			<one-to-many class="model.MatchDay" /> -->
-<!-- 		</list> -->
+		<list name="matchesOfTheLeague" lazy="false">
+			<key column="IDLEAGUE"/>
+			<list-index column="ORDEN"/>
+			<one-to-many class="model.MatchDay" />
+		</list>
+		
+		<list name="teams" lazy="false">
+			<key column="IDLEAGUE"/>
+			<list-index column="ORDEN"/>
+			<one-to-many class="model.Team"/>
+		</list>
 	</class>
 </hibernate-mapping>

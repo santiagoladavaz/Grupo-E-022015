@@ -14,7 +14,7 @@ public class PlayerResponse implements Serializable{
 	
 	private String name;
 	private String lastName = "default last name";
-	private Integer idPlayer;
+	private Integer id;
 	private String position;
 	private String team;
 	
@@ -31,11 +31,11 @@ public class PlayerResponse implements Serializable{
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Integer getIdPlayer() {
-		return idPlayer;
+	public Integer getId() {
+		return id;
 	}
 	public void setId(Integer idPlayer) {
-		this.idPlayer = idPlayer;
+		this.id = idPlayer;
 	}
 	public String getPosition() {
 		return position;
@@ -58,8 +58,8 @@ public class PlayerResponse implements Serializable{
 	}
 	public PlayerResponse(Player pl){
 		this.name = pl.getName();
-		this.position = pl.getPositionDescription();
-		this.idPlayer = pl.getId();
+		this.position = pl.getPositionDescription().replaceAll("\\s", "");
+		this.id = pl.getId();
 		this.team = pl.getRealTeam();
 	}
 	

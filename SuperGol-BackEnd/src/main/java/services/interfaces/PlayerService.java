@@ -23,4 +23,6 @@ public interface PlayerService {
 	public void editPlayerByRequest(PlayerRequest request);
 	@Transactional
 	public PlayerResponse createPlayerByRequest(PlayerRequest request);
+	
+	public Player searchPlayerByName(String name);
 }

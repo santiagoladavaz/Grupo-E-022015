@@ -15,6 +15,7 @@ public class League {
 	private int id;
 	private int maxUsers;
 	private int minUsers;
+	private List<Team> teams;
 	
 	
 	
@@ -37,7 +38,8 @@ public class League {
 	}
 	
 	public League(String name, int maxPlayers, int miPlayers){
-		this.matchesOfTheLeague = new ArrayList<MatchDay>();	
+		this.matchesOfTheLeague = new ArrayList<MatchDay>();
+		this.teams = new ArrayList<Team>();
 		if(miPlayers < 0 || maxPlayers < 0 ){
 			throw new RuntimeException("Min users or max users cannot be minor to zero");
 		}
@@ -48,6 +50,20 @@ public class League {
 	
 	public int getMaxUsers() {
 		return maxUsers;
+	}
+
+	
+	
+
+
+	public List<Team> getTeams() {
+		return teams;
+	}
+
+
+
+	public void setTeams(List<Team> teams) {
+		this.teams = teams;
 	}
 
 
@@ -134,6 +150,13 @@ public class League {
 		this.setName(name);
 		this.setMaxUsers(maxPlayers);
 		this.setMinUsers(minPlayers);
+		
+	}
+
+
+
+	public void addTeam(Team userTeam) {
+		this.teams.add(userTeam);
 		
 	}	
 
