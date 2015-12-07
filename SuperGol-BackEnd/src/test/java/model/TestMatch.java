@@ -39,7 +39,7 @@ public class TestMatch {
 		List<Player>players = new ArrayList<Player>();
 		players.add(playerFactory.createMidFielder("Medio1"));
 		match.results(players);
-		assertEquals(match.winner,match.getLocalTeam());
+		assertEquals(match.winner,Integer.valueOf(match.getLocalTeam().getId()));
 		assertFalse(match.tie);
 	}
 	
@@ -48,7 +48,7 @@ public class TestMatch {
 		List<Player>players = new ArrayList<Player>();
 		players.add(playerFactory.createMidFielder("MedioV1"));
 		match.results(players);
-		assertEquals(match.winner,match.getVisitorTeam());
+		assertEquals(match.winner,Integer.valueOf(match.getVisitorTeam().getId()));
 		assertFalse(match.tie);
 	}
 	
