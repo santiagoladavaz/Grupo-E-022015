@@ -5,9 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.log4j.Logger;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 
 
 
@@ -17,8 +17,8 @@ public class ServiceAuditorAspect {
 	Logger logger = Logger.getLogger(ServiceAuditorAspect.class);
 	
 	
-	@Around("@annotation(aspect.Aspectable)")
-	public void inspect(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
+	@Before("@annotation(aspect.Aspectable)")
+	public void inspect(JoinPoint proceedingJoinPoint) throws Throwable{
 		Object target = proceedingJoinPoint.getTarget();
 		
 		String method= proceedingJoinPoint.getSignature().getName();
@@ -33,6 +33,6 @@ public class ServiceAuditorAspect {
 		logger.info("**************************************** SERVICE INSPECTOR *********************************************");
 		logger.info("DATE: "+ date +" Executing method: '"+ method + "' Of class: '" + target.getClass() +"' With Params: '"+ stringparams + "'");
 		logger.info("**************************************** SERVICE INSPECTOR END *****************************************");
-		proceedingJoinPoint.proceed();			
+//		proceedingJoinPoint.proceed();			
 	}
 }
