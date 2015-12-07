@@ -29,7 +29,7 @@ public class TestLeague {
 		Match match = l.getListOfMatchDay(Calendar.getInstance()).getMatchesOfTheDay().get(0);
 		ps.add(match.getLocalTeam().getPlayers().get(3));
 		l.calculateGoals(Calendar.getInstance(), ps);
-		assertEquals(match.winner,match.getLocalTeam());
+		assertEquals(match.winner,Integer.valueOf(match.getLocalTeam().getId()));
 		
 	}
 

@@ -23,6 +23,7 @@ import model.Player;
 import services.interfaces.LeagueService;
 import services.interfaces.PlayerService;
 
+
 public class ReaderCSVQuartz {
 	
 	final static Logger logger = Logger.getLogger(ReaderCSVQuartz.class);
