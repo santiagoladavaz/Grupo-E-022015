@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.League;
+import services.rest.request.UploadFileRequest;
 import services.rest.response.LeagueResponse;
 
 public interface LeagueService {
@@ -25,4 +26,6 @@ public interface LeagueService {
 	public List<LeagueResponse> toResponse(List<League> leagues);
 	@Transactional
 	public void joinLeague(String username, int idLeague);
+
+	public void saveFile(UploadFileRequest request);
 }

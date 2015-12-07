@@ -2,22 +2,30 @@ package services.impl;
 
 
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
 import daos.interfaces.LeagueDAO;
+import exceptions.WritingFileException;
 import model.League;
 import model.User;
 import services.interfaces.LeagueService;
 import services.interfaces.UserService;
+import services.rest.request.UploadFileRequest;
 import services.rest.response.LeagueResponse;
 
 public class LeagueServiceImpl implements LeagueService {
 
 	private LeagueDAO leagueDAO;
 	private UserService userService;
+	
+	public static String PATH = "src/main/resources/csv/";
 
 	
 	
@@ -83,11 +91,31 @@ public class LeagueServiceImpl implements LeagueService {
 	}
 
 	@Override
+	@Transactional
 	public void joinLeague(String username, int idLeague) {
 		User u = userService.obtainUser(username);
 		League l = leagueDAO.obtainLeagueById(idLeague);
 		l.addTeam(u.getUserTeam());
 		leagueDAO.save(l);
+	}
+
+	@Override
+	public void saveFile(UploadFileRequest request) {
+		String[] splitContent = request.getContent().split(";");
+		String name = splitContent[0];
+		File file = new File(PATH + name + ".txt");
+		file.setWritable(true);
+		try{
+			Writer out = new BufferedWriter(new FileWriter(file));
+			for (int i = 1 ;i < splitContent.length;i++){
+				String content = splitContent[i];
+				out.write(content);			
+		
+			}
+			out.close();
+		}catch(Exception e){
+			throw new WritingFileException("An error occrurs when trying to write file: "+ name + "CAUSE: " +e.getMessage());
+		}
 	}
 
 	

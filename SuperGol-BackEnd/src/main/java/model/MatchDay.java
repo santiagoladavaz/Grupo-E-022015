@@ -2,17 +2,18 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class MatchDay {
 
 	private List<Match>matchesOfTheDay;
-	private Calendar date;
+	private Date date;
 	private int id;
 	
 	public MatchDay(){
 		matchesOfTheDay = new ArrayList<Match>();
-		date = Calendar.getInstance();
+		date = new Date();
 	}
 	
 	public void setMatchesOfTheDay(List<Match> matchesOfTheDay) {
@@ -33,11 +34,11 @@ public class MatchDay {
 	}
 
 
-	public Calendar getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(Calendar date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -62,9 +63,7 @@ public class MatchDay {
 	public List<Match> getMatchesOfTheDay() {
 		return matchesOfTheDay;
 	}
-	public void setMatchsOfTheDay(List<Match> matchsOfTheDay) {
-		this.matchesOfTheDay = matchsOfTheDay;
-	}
+	
 	
 	
 	

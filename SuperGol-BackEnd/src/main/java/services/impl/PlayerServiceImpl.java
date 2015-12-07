@@ -87,6 +87,11 @@ public class PlayerServiceImpl implements PlayerService{
 		return this.toPlayerResponse(p);
 	}
 
+	@Override
+	public Player searchPlayerByName(String name) {
+		return playerDAO.searchPlayerByName(name);
+	}
+
 	
 	
 	

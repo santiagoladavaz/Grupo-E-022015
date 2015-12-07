@@ -3,7 +3,9 @@ package factories;
 import java.util.ArrayList;
 import java.util.List;
 
+import daos.interfaces.LeagueDAO;
 import model.League;
+import model.Match;
 import model.Player;
 import model.Team;
 import services.interfaces.LeagueService;
@@ -21,9 +23,20 @@ public class StartUpFactory {
 	private TeamFactory teamFactory = new TeamFactory();
 	private TeamService teamService;
 	private UserServiceRestImpl userService;
+	private LeagueDAO leagueDAO;
 	
 	
 	
+	public LeagueDAO getLeagueDAO() {
+		return leagueDAO;
+	}
+
+
+	public void setLeagueDAO(LeagueDAO leagueDAO) {
+		this.leagueDAO = leagueDAO;
+	}
+
+
 	public TeamService getTeamService() {
 		return teamService;
 	}
@@ -65,7 +78,7 @@ public class StartUpFactory {
 		players.add(playerFactory.createMidFielder("Santiago Ladavaz"));
 		players.add(playerFactory.createMidFielder("Clemente Rodriguez"));
 		players.add(playerFactory.createForward("Fernando Gago"));
-		players.add(playerFactory.createForward("Caracol "));
+		players.add(playerFactory.createForward("Caracol"));
 		players.add(playerFactory.createForward("Luis Zagarella"));
 		players.add(playerFactory.createForward("Carlito Teve (Very Difficult)"));
 		
@@ -90,6 +103,18 @@ public class StartUpFactory {
 		Team t8 = teamFactory.createFullTeam("Quilmes", "q");
 		
 		saveTeams(t,t1,t2,t3,t4,t5,t6,t7,t8);
+		
+//		List<Team> tss = new ArrayList<Team>();
+//		tss.add(t1);
+//		tss.add(t2);
+//		tss.add(t3);
+//		tss.add(t4);
+//		League l = leagueFactory.buildEmptyLeague("Liga - PRUEBA FIXTURE");
+//		l.setTeams(tss);
+//		leagueFactory.createFixture(l);
+//		leagueService.save(l);
+		
+		
 		
 //		userService.getPlayer(2);
 		

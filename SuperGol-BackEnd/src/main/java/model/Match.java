@@ -6,7 +6,7 @@ public class Match {
 	
 	Team visitorTeam;
 	Team localTeam;
-	Team winner;
+	Integer winner;
 	boolean tie;
 	int id;
 	
@@ -18,21 +18,29 @@ public class Match {
 			localTeam.score(p);
 		}
 		if(visitorTeam.getMatchPoints() > localTeam.getMatchPoints()){
-			winner = visitorTeam;
+			visitorTeam.setPointsOfTheTeam(visitorTeam.getPointsOfTheTeam() + 3);
+			winner = visitorTeam.getId();
 			return;
 		}
 		if(localTeam.getMatchPoints() > visitorTeam.getMatchPoints()){
-			winner = localTeam;
+			localTeam.setPointsOfTheTeam(localTeam.getPointsOfTheTeam() + 3);
+			winner = localTeam.getId();
 			return;
 		}
 		tie=true;
 		localTeam.setMatchPoints(0);
 		visitorTeam.setMatchPoints(0);
+		localTeam.setPointsOfTheTeam(localTeam.getPointsOfTheTeam() + 1);
+		visitorTeam.setPointsOfTheTeam(visitorTeam.getPointsOfTheTeam() + 1);
 	}
 
 
 	
-	
+	@Override
+	public String toString(){
+		return "LocalTeam: "+ localTeam.getName() + " VisitorTeam: " + visitorTeam.getName();
+		
+	}
 
 	public Team getVisitorTeam() {
 		return visitorTeam;

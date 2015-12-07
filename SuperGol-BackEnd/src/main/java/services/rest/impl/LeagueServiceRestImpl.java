@@ -19,6 +19,7 @@ import services.interfaces.LeagueService;
 import services.rest.request.CreateLeagueRequest;
 import services.rest.request.EditLeagueRequest;
 import services.rest.request.JoinLeagueRequest;
+import services.rest.request.UploadFileRequest;
 import services.rest.response.LeagueResponse;
 
 
@@ -103,6 +104,29 @@ public class LeagueServiceRestImpl {
 	}
 	
 	
+	
+	@Aspectable
+	@POST
+	@Path("/upload")
+	@Produces("application/json")
+	public Response uploadFile(@Multipart(value = "request", type = "application/json") final String jsonRequest){
+		
+		try{
+			UploadFileRequest request = toFileRequest(jsonRequest);
+			leagueService.saveFile(request);
+			return Response.status(200).build();			
+		}catch(Exception e){
+			return Response.serverError().entity(e.getMessage()).build();
+		}
+	}
+	
+	
+	private UploadFileRequest toFileRequest(String jsonRequest) throws Exception{
+		UploadFileRequest request = new UploadFileRequest();
+		request.setContent(jsonRequest);
+		return request;
+	}
+
 	private JoinLeagueRequest toCreateJoinLeagueRequest(String jsonRequest) throws Exception{
 		JoinLeagueRequest request = new JoinLeagueRequest();
 		ObjectMapper mapper = new ObjectMapper();

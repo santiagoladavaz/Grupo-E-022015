@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aspect.Aspectable;
+import exceptions.PlayerDoesntExistException;
 import model.User;
 import services.interfaces.UserService;
 import services.rest.request.UserRequest;
@@ -25,13 +26,13 @@ public class UserServiceRestImpl {
 	private UserService userService;
 	
 	
-	@Aspectable
-	@GET
-	@Path("/create/{id}")
-	@Produces("application/json")
-	public int getPlayer(@PathParam("id") final int id) {
-	      return 5;
-	}
+//	@Aspectable
+//	@GET
+//	@Path("/create/{id}")
+//	@Produces("application/json")
+//	public int getPlayer(@PathParam("id") final int id) {
+//	      return 5;
+//	}
 	
 	@Aspectable
 	@POST
@@ -39,23 +40,24 @@ public class UserServiceRestImpl {
 	@Produces("application/json")
 	public Response createPlayer(@Multipart(value = "jsonRequest", type = "application/json") final String jsonRequest) {
 	    try{
-	    	UserRequest request = toCreateUserRequest(jsonRequest);
-	    	userService.save(toUser(request));
-	    	 return Response.status(200).build();
+//	    	UserRequest request = toCreateUserRequest(jsonRequest);
+	    	userService.obtainUser(jsonRequest);
+	    	return Response.status(200).build();
+	    }catch(PlayerDoesntExistException e){
+	    	userService.save(toUser(jsonRequest));
+	    	return Response.status(200).build();
 	    }catch(Exception e){
 	    	e.printStackTrace();
-	    	 return Response.serverError().entity(e.getMessage()).build();
+	       return Response.serverError().entity(e.getMessage()).build();
 	    }
 	}
 
 
 
 
-	private User toUser(UserRequest request) {
+	private User toUser(String request) {
 		User user = new User();
-		user.setEmail(request.getEmail().replaceAll("\\s", ""));
-		user.setUserName(request.getNombre().replaceAll("\\s",""));
-		user.setPassword(request.getPass().replaceAll("\\s", ""));
+		user.setUserName(request.replaceAll("\\s",""));
 		return user;
 	}
 

@@ -5,13 +5,13 @@
 	default-cascade="save-update">
 	<class name="model.MatchDay" table="MATCHDAY">
 		<id column="MID" name="id">
-			<generator class="native" />
+			<generator class="identity" />
 		</id>
 		
 		<property name="date" type="java.util.Date"/>
 		<list name="matchesOfTheDay" lazy="false">
-			<key column="MATCHDAYID"/>
-			<list-index column="IDMATCH"/>
+			<key column="MID"/>
+			<list-index column="POSITION"/>
 			<one-to-many class="model.Match"/>
 		</list>
 		

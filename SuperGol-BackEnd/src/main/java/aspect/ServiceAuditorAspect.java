@@ -33,7 +33,6 @@ public class ServiceAuditorAspect {
 		logger.info("**************************************** SERVICE INSPECTOR *********************************************");
 		logger.info("DATE: "+ date +" Executing method: '"+ method + "' Of class: '" + target.getClass() +"' With Params: '"+ stringparams + "'");
 		logger.info("**************************************** SERVICE INSPECTOR END *****************************************");
-		
 		proceedingJoinPoint.proceed();			
 	}
 }

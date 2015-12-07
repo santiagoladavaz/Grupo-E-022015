@@ -6,6 +6,8 @@
 	
 	
 	<bean id="readerCSVQuartz" class="quartz.ReaderCSVQuartz">
+		<property name="playerService" ref="playerService"/>
+		<property name="leagueService" ref="leagueService"/>
 	</bean>
 	
 	<bean id="readCSVJob" 
@@ -17,7 +19,7 @@
 	<bean id="cronTriggerCSV"
 		class="org.springframework.scheduling.quartz.CronTriggerBean">
 		<property name="jobDetail" ref="readCSVJob" />
-		<property name="cronExpression" value="0 0 23 * * ?" />
+		<property name="cronExpression" value="40 23 * * * ?" />
 	</bean>
 	
 	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">

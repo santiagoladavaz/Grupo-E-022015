@@ -33,6 +33,7 @@
     	<property name="playerService" ref="playerService"/>
     	<property name="leagueService" ref="leagueService"/>
     	<property name="teamService" ref="teamService"/>
+    	<property name="leagueDAO" ref="leagueDAO"/>
 <!--     	<property name="userService" ref="userServiceRest"/> -->
     </bean>
        

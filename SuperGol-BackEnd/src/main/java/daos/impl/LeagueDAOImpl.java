@@ -13,6 +13,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import daos.interfaces.LeagueDAO;
 import model.League;
+import model.Match;
 import model.Player;
 
 public class LeagueDAOImpl extends HibernateDaoSupport implements LeagueDAO{
@@ -86,6 +87,13 @@ public class LeagueDAOImpl extends HibernateDaoSupport implements LeagueDAO{
 		DetachedCriteria criteria = DetachedCriteria.forClass(League.class);
 		criteria.add(Restrictions.eq("id", idLeague));
 		return (League) this.getHibernateTemplate().findByCriteria(criteria).get(0);
+	}
+
+	@Override
+	public void insertMatch(Match match) {
+		this.getHibernateTemplate().save(match);
+		this.getHibernateTemplate().flush();
+		
 	}
   
 	
