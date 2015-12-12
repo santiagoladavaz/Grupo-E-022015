@@ -32,6 +32,11 @@ function routes($routeProvider,authProvider) {
       controller: 'ActualizarController',
       requiresLogin: true
     })
+    .when('/myLeague', {
+      templateUrl: 'views/myLeague.html',      
+      controller: 'MyLeaguesController',
+      requiresLogin: true
+    })
     .otherwise({
       redirectTo: '/'
     });

@@ -1,8 +1,3 @@
-
-//var app = angular.module('TeamApp',['ngCookies']);
-//app.controller('TeamController', ['$scope','$http','$cookies',
-//function ($scope, $http, $cookies) {
-
 function TeamController($scope, $location, $http, $translate, auth, store, $cookies) {
 
 	 $scope.user = $cookies.get('user');
