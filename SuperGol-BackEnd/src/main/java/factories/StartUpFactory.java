@@ -46,11 +46,11 @@ public class StartUpFactory {
 		this.teamService = teamService;
 	}
 
-
-	public void build(){
+//
+//	public void build(){
 //		this.buildPlayers();
 //		this.buildLeagues();
-	}
+//	}
 	
 	
 	public void buildLeagues(){

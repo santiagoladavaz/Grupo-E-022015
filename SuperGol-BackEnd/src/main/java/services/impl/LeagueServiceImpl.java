@@ -112,6 +112,8 @@ public class LeagueServiceImpl implements LeagueService {
 		}
 		
 		l.addTeam(u.getUserTeam());
+		u.getUserTeam().setIdLeague(l.getId());
+		userService.save(u);
 		leagueDAO.save(l);
 	}
 
