@@ -35,7 +35,7 @@
     </script>
 </head>
 
-<body ng-app="frontendApp"  ng-controller="MainController" ng-cloak>
+<body ng-app="frontendApp"  ng-controller="MainController" >
 <div id="background" class="max-background ObjTransparent" style="background: url('') no-repeat center top; height: 100%; position: fixed; width: 100%; z-index: -1;">  
 </div>
 <!-- Navigation -->
@@ -64,21 +64,26 @@
                         <a ng-href="#/players">{{ 'MENU_PLAYER' | translate }}</a>
                     </li>
                     <li>
-                        <a ng-href="#/register">{{ 'R_BUTTON' | translate }}</a>
-                    </li>
-                    <li>
                         <a ng-href="#/actualizarFecha">{{ 'UPDATE' | translate }}</a>
                     </li>
                     <li>
-                        <a ng-href="#/login">Log In</a>
+                       
                     </li>
+                   
                     
                 </ul>
+                
                 <div style="float:right;">
-
-                            <input type="image" name="submit" id="submit" src="../images/arg.png" ng-click="changeLanguage('es')"  translate="BUTTON_TEXT_ES">
+                           <input type="image" name="submit" id="submit" src="../images/arg.png" ng-click="changeLanguage('es')"  translate="BUTTON_TEXT_ES">
                             <input type="image" name="submit" id="submit" src="../images/usa.png" ng-click="changeLanguage('en')"   translate="BUTTON_TEXT_EN">
-                        </div>
+
+                </div>
+                <div id="divLogin" style="float:right;margin-right: 200px; margin-top: 5px; width: 166px;">
+                            <h4><span class="label label-danger">{{user}}</span></h4>
+                            <button type="button" class="btn btn-danger" ng-click="logout()" 
+                                    style="float:right; margin-top: -34px;margin-right: -69px;">LogOut
+                            </button>
+                </div>
             </div>
 
             <!-- /.navbar-collapse -->
@@ -91,9 +96,9 @@
 
 
 
-        <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="scripts/bootstrap-multiselect.js"></script>
-<script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
 
 
 
@@ -106,9 +111,11 @@
     
     <script src="../bower_components/angularUtils-pagination/dirPagination.js"></script>
     
-   <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="../bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
+    <script src="../bower_components/ng-file-upload/ng-file-upload.min.js"></script>
     
-
+    
     <script src="scripts/xeditable.js"></script>
     <script src="scripts/configuration.js"></script>
     <script src="scripts/routes.js"></script>
@@ -124,15 +131,15 @@
     <script src="scripts/app.js"></script>
 
     <!-- Auth0 Lock script and AngularJS module -->
-<script src="//cdn.auth0.com/js/lock-7.9.min.js"></script>
-<!-- angular-jwt and angular-storage -->
-<script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
-<script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
+    <script src="//cdn.auth0.com/js/lock-7.9.min.js"></script>
+    <!-- angular-jwt and angular-storage -->
+    <script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
+    <script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
 
-<script src="//cdn.auth0.com/w2/auth0-angular-4.js"> </script>
+    <script src="//cdn.auth0.com/w2/auth0-angular-4.js"> </script>
 
-<!-- Setting the right viewport -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- Setting the right viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
          
 
 </body>

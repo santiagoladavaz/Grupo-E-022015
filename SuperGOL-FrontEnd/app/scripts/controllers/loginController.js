@@ -1,20 +1,18 @@
-
-//var loginApp = angular.module('LoginApp', ['ngCookies']);
-//loginApp.controller('LoginController', function ($scope, $http, $cookies, $location) {
-
-
-function LoginController($scope, $http, $location, $routeParams, $translate, $cookies, $auth, $store) {
+function LoginController($scope, $http, $location, $routeParams, $translate, $cookies, auth, store) {
 	
-    $scope.login = function()
-    {	
-    	//guardo el usuario
-    	$cookies.put('user', $scope.username);
+   $scope.login = function(){	
 
-    	//$scope.user = $cookies.get('user'); de esta manera lo obtengo
-       $location.path('/team')
-    }
+    auth.signin({}, function (profile, token) {
+      alert(profile);
+      // Success callback
+      store.set('profile', profile);
+      store.set('token', token);
+      $location.path('/');
+    }, function () {
+
+    });
    
  };
 		
-		//$http.post('http://localhost:8080/SuperGol-BackEnd/rest/userService/create',user).success(function(data){
+}		//$http.post('http://localhost:8080/SuperGol-BackEnd/rest/userService/create',user).success(function(data){
 	

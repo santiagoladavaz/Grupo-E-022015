@@ -3,14 +3,16 @@
 //app.controller('TeamController', ['$scope','$http','$cookies',
 //function ($scope, $http, $cookies) {
 
-function TeamController($scope, $location, $http, $translate) {
+function TeamController($scope, $location, $http, $translate, auth, store, $cookies) {
+
+	 $scope.user = $cookies.get('user');
 		
 	$scope.getPlayers = function() {
     
         
         //$http.get('http://localhost:8080/SuperGol-BackEnd/rest/playerService/getAll').success(function(data){
         	
-    $http.get('http://10.9.6.146:8080/SuperGol-BackEnd/rest/playerService/getAll').success(function(data){
+    $http.get('http://192.168.0.21:8080/SuperGol-BackEnd/rest/playerService/getAll').success(function(data){
        	$scope.players = data;
 		});
   	};
@@ -19,7 +21,7 @@ function TeamController($scope, $location, $http, $translate) {
 		 
 	$scope.createTeam = function(){
 		    var team = {
-		    	usuario:'Pepito',
+		    	usuario:$scope.user,
 		    	nombreEquipo: $scope.nombreEquipo,
 				arquero: $scope.arqueroSeleccionado[0],
 		    	defensor1 : $scope.defensoresSeleccionados[0],
@@ -35,7 +37,7 @@ function TeamController($scope, $location, $http, $translate) {
 			}
 			
 			//$http.post('http://localhost:8080/SuperGol-BackEnd/rest/teamService/create',team).success(function(data){
-			$http.post('http://10.9.6.146:8080/SuperGol-BackEnd/rest/teamService/create',team).success(function(data){
+			$http.post('http://192.168.0.21:8080/SuperGol-BackEnd/rest/teamService/create',team).success(function(data){
 				alert("Se creo un equipo");
 				$location.path('views/login.html')
 
