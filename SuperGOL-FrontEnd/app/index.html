@@ -9,6 +9,8 @@
     <link href="../styles/xeditable.css" rel="stylesheet">
     <link href="../styles/bootstrap-multiselect.css" rel="stylesheet">
     <link href="../bower_components/components-font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet">
+
     
     <script src="../bower_components/jquery/dist/jquery.js"></script>
 
@@ -54,6 +56,17 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ligas <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                       <a ng-href="#/leagues">{{ 'LEAGUE_B' | translate }}</a>
+                    </li>
+                    <li>
+                       <a ng-href="#/myLeague">{{ 'MY_LEAGUES' | translate }}</a>
+                    </li>
+                </ul>
+              </li>
                     <li>
                        <a ng-href="#/leagues">{{ 'LEAGUE_B' | translate }}</a>
                     </li>
@@ -114,6 +127,11 @@
     <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="../bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
     <script src="../bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+   
+    <script src="../bower_components/ngSweetAlert/SweetAlert.min.js"></script>
+    <script src="../bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    
+    
     
     
     <script src="scripts/xeditable.js"></script>
@@ -128,6 +146,7 @@
     <script src="scripts/controllers/registerController.js"></script>
     <script src="scripts/controllers/playerController.js"></script>
     <script src="scripts/controllers/actualizarController.js"></script>
+    <script src="scripts/controllers/myLeagueController.js"></script>
     <script src="scripts/app.js"></script>
 
     <!-- Auth0 Lock script and AngularJS module -->

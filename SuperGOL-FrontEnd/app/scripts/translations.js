@@ -32,7 +32,9 @@ function translations($translateProvider) {
       SAVE: 'Save',
       CANCEL: 'Cancel',
       UPDATE: 'Update Date',
-      JOIN: 'Join'
+      JOIN: 'Join',
+      CREATE:'Create Fixture',
+      MY_LEAGUES:'My Leagues'
       
 
     })
@@ -68,7 +70,9 @@ function translations($translateProvider) {
       SAVE: 'Guardar',
       CANCEL: 'Cancelar',
       UPDATE: 'Actualizar Fecha',
-      JOIN: 'Unirse'
+      JOIN: 'Unirse',
+      CREATE:'Crear Fixture',
+      MY_LEAGUES:'Mis Ligas'
     
     });
 

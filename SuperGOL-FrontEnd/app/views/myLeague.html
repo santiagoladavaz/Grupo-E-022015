@@ -47,12 +47,9 @@
 					<div class="buttons" ng-show="!rowform.$visible">
 						 <button class="btn btn-primary" ng-click="rowform.$show()">{{ 'LEAGUE_E' | translate }}</button>
 						 <button class="btn btn-danger" ng-click="removeLeague(league.id, $index)">{{ 'DELETE' | translate }}</button>
-						 <button type="button" ng-disabled="rowform.$waiting" ng-click="joinLeague(league.id)" class="btn btn-default">
-							{{ 'JOIN' | translate }}
-					  	</button>
-					  	<button type="button" ng-disabled="rowform.$waiting" ng-click="createFixture(league.id)" class="btn btn-default">
-							{{ 'CREATE' | translate }}
-					  	</button>
+						 <button type="button" ng-disabled="rowform.$waiting" ng-click="getInfo(league.id)" class="btn btn-default" data-toggle="modal" data-target="#myModal"> Ranking</button>
+						 <button type="button" ng-disabled="rowform.$waiting" ng-click="getInfo(league.id)" class="btn btn-default" data-toggle="modal" data-target="#myModalFixture"> Fixture</button>
+
 					</div>  
 				  </td>
 				</tr>
@@ -62,11 +59,8 @@
                       <dir-pagination-controls auto-hide>
                       </dir-pagination-controls>
                     </div>
-                <div style="float:right;">
-                       <button class="btn btn-success" data-toggle="modal" data-target="#myModal">{{ 'LEAGUE_B' | translate }}</button>
-               </div>
-			  
-			 	  <uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></uib-pagination>
+               
+			  <uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></uib-pagination>
 			 </div>
 		</div>
 	</div>
@@ -75,49 +69,83 @@
 
 
 
-<!-- Modal -->
+<!-- Modal Ranking-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">{{ 'LEAGUE_B' | translate }}</h4>
+        <h4 class="modal-title" id="myModalLabel">Ranking</h4>
       </div>
       <div class="modal-body">
-          <form role="form">
-            
-                <div class="well well-sm"><strong style="color:black;"><span class="glyphicon glyphicon-asterisk"></span>{{ 'R_FIELDS' | translate }}</strong></div>
-                <div class="form-group">
-                  <div class="input-group">
-                        <input type="text" class="form-control" name="InputName" id="InputName" 
-                               placeholder ="{{ 'LEAGUE_N' | translate }}"  ng-model="name" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="cantMin" name="Cant. Min" placeholder="Cant. Min" ng-model="cantMin" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
-                 <div class="form-group">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="cantMax" name="Cant. Max" placeholder="Cant. Max" ng-model="cantMax" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
-        </form>
+         
+       <table class="table">
+       	<thead>  
+		  <tr>  
+			<th>Equipo</th>  
+			<th>Puntos</th>  
+		  </tr>  
+		</thead>  
+  			<tr ng-repeat="rs in ranking">
+    			<td>{{ rs.team }}</td>
+    			<td>{{ rs.points }}</td>
+  			</tr>
+		</table>
+        
       </div>
+      
+
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary" data-dismiss="modal" ng-click="saveLeague($data, index)">
-                                {{ 'SAVE' | translate }}
-        </button>
       </div>
+    
+
     </div>
   </div>
 </div>
+<!-- EndModal Ranking -->
 
+
+
+<!-- Modal Ranking-->
+<div class="modal fade" id="myModalFixture" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Fixture</h4>
+      </div>
+      <div class="modal-body">
+         
+       <table class="table">
+       	<thead>  
+		  <tr>
+		  	<th>Fecha</th>    
+			<th>Equipo</th>  
+			<th>Puntos</th>
+			<th>Ganador</th>
+		  </tr>  
+		</thead>  
+  			<tr ng-repeat="fx in fixture">
+    			<td>{{ fx.date }}</td>
+    			<td>{{ fx.local }}</td>
+    			<td>{{ fx.visitor }}</td>
+    			<td ng-if="fx.winner !=null">{{ fx.winner}}</td>
+  			</tr>
+		</table>
+        
+      </div>
+      
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    
+
+    </div>
+  </div>
+</div>
+<!-- EndModal Ranking -->
 
                 </div>
             </div>

@@ -13,7 +13,11 @@ var app = angular.module('frontendApp', [
     'angular-storage',
     'angular-jwt',
     'angularFileUpload',
-    'ngFileUpload'
+    'ngFileUpload',
+    'oitozero.ngSweetAlert'
+
+
+
 ]);
 
 
@@ -25,6 +29,8 @@ app.controller('PlayerController', ['$scope', '$location', '$http','$translate',
 app.controller('TeamController', ['$scope', '$location', '$http', '$translate','auth', 'store','$cookies', TeamController]);
 app.controller('LeagueController', ['$scope', '$translate', '$http','auth', 'store','$cookies', LeagueController]);
 app.controller('ActualizarController', ['$scope', '$translate', '$http','Upload', ActualizarController]);
+app.controller('MyLeaguesController', ['$scope', '$translate', '$http','auth', 'store','$cookies', MyLeaguesController]);
+
 
 
 app.config(["$routeProvider", "$translateProvider",'$locationProvider', configuration]);

@@ -1,10 +1,10 @@
-function LeagueController($scope, $translate, $http, auth, store, $cookies) {
+function MyLeaguesController($scope, $translate, $http, auth, store, $cookies) {
 
   $scope.leagues = [];
   $scope.user = $cookies.get('user');
 
  $scope.getLeagues = function() {
-    $http.get('http://192.168.0.21:8080/SuperGol-BackEnd/rest/leagueService/all').success(function(data){
+    $http.get('http://192.168.0.21:8080/SuperGol-BackEnd/rest/leagueService/myLeagues/'+$scope.user).success(function(data){
     //$http.get('http://localhost:8080/SuperGol-BackEnd/rest/leagueService/all').success(function(data){   
 
         $scope.leagues = data;
@@ -40,21 +40,6 @@ function LeagueController($scope, $translate, $http, auth, store, $cookies) {
   };
 
 
-  $scope.joinLeague = function(id) {
-    var data = {
-          idLeague : id, 
-          username : $scope.user
-    };
-
-    $http.post('http://192.168.0.21:8080/SuperGol-BackEnd/rest/leagueService/join/',data).success(function(){
-      swal("Te uniste a la liga","Bien hecho","success");
-    }
-    ,function(e){
-      swal(e);
-    });
-  };
-
-  
   $scope.createFixture = function(id){
     $http.get('http://192.168.0.21:8080/SuperGol-BackEnd/rest/leagueService/createFixture/'+id).success(function(){
       swal('Se creo el fixture',"Bien hecho","success");
@@ -62,15 +47,18 @@ function LeagueController($scope, $translate, $http, auth, store, $cookies) {
   }
 
   
-  $scope.addLeague = function() {
-    $scope.inserted = {
-      name: '',
-      status: null,
-      group: null 
-    };
-    
-    $scope.leagues.push($scope.inserted);
+  $scope.getInfo = function(id){
+     $http.get('http://192.168.0.21:8080/SuperGol-BackEnd/rest/leagueService/detailLeague/'+id).success(function(response){
+        $scope.ranking = response.rankingResponse;
+        $scope.fixture = response.dateResponse;
+    });
+
+
 
   };
+
+  
+
+
 };
 
