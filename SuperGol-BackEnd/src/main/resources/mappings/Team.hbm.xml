@@ -10,7 +10,7 @@
 		<property name="name" type="java.lang.String"/>
 		<property name="flag" type="java.lang.String" />
 		<property name="pointsOfTheTeam" type="java.lang.Integer"/>
-		<property name="idLeague" type="integer" column="IDLEAGUE"/>
+		<property name="idLeague" type="java.lang.Integer"/>
 		<list name="players" lazy="false" cascade="all" fetch="join"> 
 			<key column="TEAM" />
 			<list-index column="posicion"/>

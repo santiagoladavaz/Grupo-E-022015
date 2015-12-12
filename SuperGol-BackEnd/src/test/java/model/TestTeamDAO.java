@@ -31,6 +31,7 @@ public class TestTeamDAO {
 	@Before
 	public void setUp(){
 		t1 = teamFactory.createFullTeam("Atlanta", "a");
+		t1.setIdLeague(3);
 		teamDAO.saveTeam(t1);
 		u1 = new User();
 		u1.setEmail("aaa@gmail.com");

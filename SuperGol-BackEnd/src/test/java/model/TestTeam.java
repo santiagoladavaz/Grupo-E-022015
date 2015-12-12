@@ -50,7 +50,12 @@ public class TestTeam {
 
 	@Test(expected=EnoughtPlayersInPositionException.class)
 	public void testAddPlayerWithFullPositionsInTeam(){
+		boca.getPlayers().remove(0);
+		boca.getPlayers().remove(0);
 		boca.addPlayer(factory.createDefenderWithTeam("delantero5h", boca));
+		boca.addPlayer(factory.createDefenderWithTeam("delantero12h", boca));
+		boca.addPlayer(factory.createDefenderWithTeam("delantero6h", boca));
+		
 	}
 	
 	@Test(expected=TeamAlreadyFullException.class)
