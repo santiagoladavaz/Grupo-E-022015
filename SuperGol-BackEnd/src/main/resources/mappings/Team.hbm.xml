@@ -10,11 +10,12 @@
 		<property name="name" type="java.lang.String"/>
 		<property name="flag" type="java.lang.String" />
 		<property name="pointsOfTheTeam" type="java.lang.Integer"/>
-		<list name="players" lazy="false" cascade="all">
+		<property name="idLeague" type="integer" column="IDLEAGUE"/>
+		<list name="players" lazy="false" cascade="all" fetch="join"> 
 			<key column="TEAM" />
 			<list-index column="posicion"/>
-			<one-to-many class="model.Player"/>
+			<one-to-many class="model.Player" />
 		</list>
-		<many-to-one name="owner" class="model.User" column="TEAMUSER"/>
+		<many-to-one name="owner" class="model.User" column="TEAMUSER" lazy="false" fetch="join"/>
 	</class>
 </hibernate-mapping>

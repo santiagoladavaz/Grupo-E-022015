@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import daos.interfaces.LeagueDAO;
 import exceptions.WritingFileException;
+import factories.LeagueFactory;
 import model.League;
 import model.User;
 import services.interfaces.LeagueService;
@@ -24,6 +25,7 @@ public class LeagueServiceImpl implements LeagueService {
 
 	private LeagueDAO leagueDAO;
 	private UserService userService;
+	private LeagueFactory factory = new LeagueFactory();
 	
 	public static String PATH = "src/main/resources/csv/";
 
@@ -89,12 +91,26 @@ public class LeagueServiceImpl implements LeagueService {
 	public void deleteLeagueById(int id) {
 		leagueDAO.deleteById(id);		
 	}
+	
+	
+	public League obtainLeagueById(int id){
+		return leagueDAO.obtainLeagueById(id);
+	}
 
 	@Override
 	@Transactional
 	public void joinLeague(String username, int idLeague) {
 		User u = userService.obtainUser(username);
+	
+		if(u.getUserTeam().getPlayers() == null || u.getUserTeam().getPlayers().size() < 11){
+			throw new RuntimeException("The user: " + u.getUserName() + "Has no Team or The user's Team isn't fulled");
+		}
 		League l = leagueDAO.obtainLeagueById(idLeague);
+		
+		if(l.getTeams().size() >= l.getMaxUsers()){
+			throw new RuntimeException("The League is full");
+		}
+		
 		l.addTeam(u.getUserTeam());
 		leagueDAO.save(l);
 	}
@@ -116,6 +132,22 @@ public class LeagueServiceImpl implements LeagueService {
 		}catch(Exception e){
 			throw new WritingFileException("An error occrurs when trying to write file: "+ name + "CAUSE: " +e.getMessage());
 		}
+	}
+
+	@Override
+	@Transactional
+	public void createFixture(int idLeague) {
+		League l = leagueDAO.obtainLeagueById(idLeague);
+		factory.createFixture(l);
+		leagueDAO.save(l);
+		
+	}
+
+	@Override
+	public League getLeagueByUser(String idUser) {
+		User u = userService.obtainUser(idUser);
+		League l = leagueDAO.obtainLeagueById(u.getUserTeam().getIdLeague());
+		return l;
 	}
 
 	

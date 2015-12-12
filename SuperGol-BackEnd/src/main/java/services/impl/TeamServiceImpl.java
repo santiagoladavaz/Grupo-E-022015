@@ -30,6 +30,20 @@ public class TeamServiceImpl implements TeamService{
 
 	public void setTeamDAO(TeamDAO teamDAO) {
 		this.teamDAO = teamDAO;
+	}
+
+
+
+
+
+
+
+
+
+	@Override
+	public Team obtainTeamById(int id) {
+		return teamDAO.getTeamById(id);
+		
 	}	
 
 }

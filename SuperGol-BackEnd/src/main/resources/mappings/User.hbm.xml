@@ -12,7 +12,7 @@
 		<property name="userName" column ="USERNAME" type="java.lang.String"/>
 		<property name="email" column="EMAIL" type="java.lang.String"/>
 		<property name="points" column="POINTS" type="java.lang.Integer"/>
-		<many-to-one name="userTeam" column="TEAMUSER" class="model.Team"/>
+		<many-to-one name="userTeam" column="TEAMUSER" class="model.Team" lazy="false" fetch="join"/>
 	</class>
 	
 </hibernate-mapping>

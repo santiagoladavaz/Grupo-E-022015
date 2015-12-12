@@ -9,7 +9,7 @@
 		</id>
 		
 		<property name="date" type="java.util.Date"/>
-		<list name="matchesOfTheDay" lazy="false">
+		<list name="matchesOfTheDay" lazy="false" fetch="join">
 			<key column="MID"/>
 			<list-index column="POSITION"/>
 			<one-to-many class="model.Match"/>

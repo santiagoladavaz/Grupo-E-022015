@@ -10,4 +10,6 @@ public interface TeamDAO {
 	public Team getTeamByName(String string);
 
 	public void deleteTeam(Team t1);
+
+	public Team getTeamById(int id);
 }

@@ -67,6 +67,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	
 	<bean id="leagueServiceRest" class="services.rest.impl.LeagueServiceRestImpl">
 		<property name="leagueService" ref="leagueService"></property>
+		<property name="teamService" ref="teamService"/>
 	</bean>
       
 

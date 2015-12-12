@@ -124,7 +124,9 @@ public class League {
 
 	public void calculateGoals(Calendar date, List<Player> playerss) {
 		MatchDay match = getListOfMatchDay(date);
-		match.playersScore(playerss);
+		if(match != null){
+			match.playersScore(playerss);			
+		}
 	}
 
 

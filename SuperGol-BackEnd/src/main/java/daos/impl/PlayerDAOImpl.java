@@ -38,7 +38,7 @@ public class PlayerDAOImpl  extends HibernateDaoSupport implements PlayerDAO {
 				public Player doInHibernate(Session session) throws HibernateException, SQLException {
 					Criteria criteria = session.createCriteria(Player.class);
 					criteria.add(Restrictions.eq("name", name));
-					return (Player) criteria.uniqueResult();
+					return (Player) criteria.list().get(0);
 				}
 			});			
 			return pl;

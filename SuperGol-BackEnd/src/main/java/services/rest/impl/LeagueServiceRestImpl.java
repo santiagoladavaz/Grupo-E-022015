@@ -1,5 +1,6 @@
 package services.rest.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -16,10 +17,12 @@ import org.springframework.stereotype.Service;
 import aspect.Aspectable;
 import model.League;
 import services.interfaces.LeagueService;
+import services.interfaces.TeamService;
 import services.rest.request.CreateLeagueRequest;
 import services.rest.request.EditLeagueRequest;
 import services.rest.request.JoinLeagueRequest;
 import services.rest.request.UploadFileRequest;
+import services.rest.response.DetailLeagueResponse;
 import services.rest.response.LeagueResponse;
 
 
@@ -29,7 +32,8 @@ import services.rest.response.LeagueResponse;
 @Path("/leagueService")
 public class LeagueServiceRestImpl {
 
-	private LeagueService leagueService;	
+	private LeagueService leagueService;
+	private TeamService teamService;
 	
 	@Aspectable
 	@GET
@@ -82,7 +86,23 @@ public class LeagueServiceRestImpl {
 			leagueService.deleteLeagueById(id);
 			return Response.status(200).build();
 		}catch(Exception e){
+			e.printStackTrace();
 			 return Response.serverError().entity(e.getMessage()).build();
+		}
+	}
+	
+	
+	@Aspectable
+	@GET
+	@Path("/createFixture/{id}")
+	@Produces("application/json")
+	public Response createFixture(@PathParam("id") final int id){
+		try{
+			leagueService.createFixture(id);
+			return Response.status(200).build();
+		}catch(Exception e){
+			e.printStackTrace();
+			return Response.serverError().entity(e.getMessage()).build();
 		}
 	}
 	
@@ -94,15 +114,39 @@ public class LeagueServiceRestImpl {
 	public Response joinToLeague(@Multipart(value = "jsonRequest", type = "application/json")
 	final String jsonRequest){
 		try{
+			// VALIDAR SI EL USUARIO TIENE EQUIPO PARA EJECUTAR EL UNIRSE A UNA LIGA
 			JoinLeagueRequest request = toCreateJoinLeagueRequest(jsonRequest);
 			leagueService.joinLeague(request.getUsername(),request.getIdLeague());
 			return Response.status(200).build();
 		}catch(Exception e){
+			e.printStackTrace();
 			 return Response.serverError().entity(e.getMessage()).build();
 		}
 		
 	}
 	
+	
+	@Aspectable
+	@GET
+	@Path("/myLeagues/{id}")
+	@Produces("application/json")
+	public List<LeagueResponse> myLeagues(@PathParam("id") final String idUser){
+		League l = leagueService.getLeagueByUser(idUser);
+		List<League>lss = new ArrayList<League>();
+		lss.add(l);
+		return leagueService.toResponse(lss);
+	}
+	
+	
+	@Aspectable
+	@GET
+	@Path("/detailLeague/{id}")
+	@Produces("application/json")
+	public DetailLeagueResponse obtainDetailLeague(@PathParam("id") final int idLeague){
+		League l = leagueService.obtainLeagueById(idLeague);
+		return new DetailLeagueResponse(l,teamService);
+		
+	}
 	
 	
 	@Aspectable
@@ -169,6 +213,18 @@ public class LeagueServiceRestImpl {
 	public void setLeagueService(LeagueService leagueService) {
 		this.leagueService = leagueService;
 	}
+
+	public TeamService getTeamService() {
+		return teamService;
+	}
+
+	public void setTeamService(TeamService teamService) {
+		this.teamService = teamService;
+	}
+	
+	
+	
+	
 	
 	
 }

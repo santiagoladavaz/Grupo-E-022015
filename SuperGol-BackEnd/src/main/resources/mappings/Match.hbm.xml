@@ -11,8 +11,8 @@
 		
 		<property name="winner" type="java.lang.Integer" not-null="false"/>
 		<property name="tie" type="java.lang.Boolean"/>
-		<many-to-one name="visitorTeam" class="model.Team" column="VISITORID"/>
-		<many-to-one name="localTeam" class="model.Team" column="LOCALID"/>
+		<many-to-one name="visitorTeam" class="model.Team" column="VISITORID" lazy="false" fetch="join"/>
+		<many-to-one name="localTeam" class="model.Team" column="LOCALID" lazy="false" fetch="join"/>
 		
 	</class>
 </hibernate-mapping>

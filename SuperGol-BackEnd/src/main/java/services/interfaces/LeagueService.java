@@ -28,4 +28,11 @@ public interface LeagueService {
 	public void joinLeague(String username, int idLeague);
 
 	public void saveFile(UploadFileRequest request);
+	@Transactional
+	public void createFixture(int idLeague);
+
+	public League getLeagueByUser(String idUser);
+	
+	
+	public League obtainLeagueById(int id);
 }

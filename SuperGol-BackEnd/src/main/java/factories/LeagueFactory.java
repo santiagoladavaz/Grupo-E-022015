@@ -64,7 +64,7 @@ public class LeagueFactory {
 	
 	private List<List<Match>> createDate( List<Team> tss){
 		List<List<Match>> result = new ArrayList<List<Match>>();
-		ArrayList <Team> clubes=(ArrayList<Team>) tss;
+		List <Team> clubes=tss;
 		   int auxT=clubes.size();
 		   boolean impar=(auxT%2!=0);
 		   if(impar){

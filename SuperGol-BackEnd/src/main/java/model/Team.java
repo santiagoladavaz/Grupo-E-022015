@@ -16,6 +16,7 @@ public class Team {
 	private User owner;
 	private int matchPoints;
 	private int pointsOfTheTeam;
+	private int idLeague;
 	int id;
 	
 	public Team(){
@@ -45,7 +46,7 @@ public class Team {
 		}
 		String position = pl.getPositionDescription();
 		int maxAllowed= pl.maxOfPlayerInMyPosition();
-		if( maxAllowed < playersInPosition(position) + 1){
+		if( maxAllowed <  playersInPosition(position)){
 			throw new EnoughtPlayersInPositionException("There's enought players in position: "+ position );
 		}
 	}
@@ -152,6 +153,16 @@ public class Team {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public int getIdLeague() {
+		return idLeague;
+	}
+
+	public void setIdLeague(int idLeague) {
+		this.idLeague = idLeague;
+	}
+	
+	
 	
 	
 	

@@ -44,4 +44,17 @@ public class TeamDAOImpl extends HibernateDaoSupport implements TeamDAO{
 		this.getHibernateTemplate().delete(t);		
 	}
 
+	@Override
+	public Team getTeamById(final int id) {
+			Team t = this.getHibernateTemplate().execute(new HibernateCallback<Team>(){
+				
+				@Override
+				public Team doInHibernate(Session session) throws HibernateException, SQLException {
+					Criteria criteria = session.createCriteria(Team.class);
+					criteria.add(Restrictions.eq("id",id));
+					return (Team)criteria.uniqueResult();
+				}
+			});
+			return t;
+	}
 }

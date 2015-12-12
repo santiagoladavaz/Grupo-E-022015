@@ -8,6 +8,20 @@ public class Match {
 	Team localTeam;
 	Integer winner;
 	boolean tie;
+	public boolean isTie() {
+		return tie;
+	}
+
+
+
+	public void setTie(boolean tie) {
+		this.tie = tie;
+	}
+
+
+
+
+
 	int id;
 	
 	
@@ -56,6 +70,18 @@ public class Match {
 	}
 
 
+
+
+
+	public Integer getWinner() {
+		return winner;
+	}
+
+
+
+	public void setWinner(Integer winner) {
+		this.winner = winner;
+	}
 
 
 

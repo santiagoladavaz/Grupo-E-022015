@@ -48,8 +48,8 @@ public class StartUpFactory {
 
 
 	public void build(){
-		this.buildPlayers();
-		this.buildLeagues();
+//		this.buildPlayers();
+//		this.buildLeagues();
 	}
 	
 	
@@ -69,40 +69,81 @@ public class StartUpFactory {
 	public void buildPlayers(){
 		
 		List<Player>players = new ArrayList<Player>();
-		players.add(playerFactory.createDefender("Diaz Cata"));
-		players.add(playerFactory.createDefender("Fernando Tobio"));
-		players.add(playerFactory.createDefender("Alexis Rollin"));
-		players.add(playerFactory.createDefender("Fabian monzon"));
-		players.add(playerFactory.createGoalKeeper("Agustin Orion"));
-		players.add(playerFactory.createMidFielder("Plablo Perez"));
-		players.add(playerFactory.createMidFielder("Santiago Ladavaz"));
-		players.add(playerFactory.createMidFielder("Clemente Rodriguez"));
-		players.add(playerFactory.createForward("Fernando Gago"));
+		players.add(playerFactory.createGoalKeeper("Orion"));
+		players.add(playerFactory.createDefender("Tobio"));
+		players.add(playerFactory.createDefender("Rollin"));
+		players.add(playerFactory.createDefender("Monzon"));
+		players.add(playerFactory.createMidFielder("Perez"));
+		players.add(playerFactory.createMidFielder("Ladavaz"));
+		players.add(playerFactory.createMidFielder("Rodriguez"));
+		players.add(playerFactory.createMidFielder("Gago"));
 		players.add(playerFactory.createForward("Caracol"));
-		players.add(playerFactory.createForward("Luis Zagarella"));
-		players.add(playerFactory.createForward("Carlito Teve (Very Difficult)"));
+		players.add(playerFactory.createForward("Zagarella"));
+		players.add(playerFactory.createForward("Tevez"));
+		
+		
+		
+		players.add(playerFactory.createGoalKeeper("Saja"));
+		players.add(playerFactory.createDefender("Agued"));
+		players.add(playerFactory.createDefender("Castro"));
+		players.add(playerFactory.createDefender("Lolo"));
+		players.add(playerFactory.createMidFielder("Limi"));
+		players.add(playerFactory.createMidFielder("Chavez"));
+		players.add(playerFactory.createMidFielder("Luguercio"));
+		players.add(playerFactory.createMidFielder("Ponzio"));
+		players.add(playerFactory.createForward("Masche"));
+		players.add(playerFactory.createForward("Zagarella2"));
+		players.add(playerFactory.createForward("Franchescoli"));
+		
+		
+		players.add(playerFactory.createGoalKeeper("Roa"));
+		players.add(playerFactory.createDefender("Zanneti"));
+		players.add(playerFactory.createDefender("Redondo"));
+		players.add(playerFactory.createDefender("Venzini"));
+		players.add(playerFactory.createMidFielder("Mas"));
+		players.add(playerFactory.createMidFielder("Ortigoza"));
+		players.add(playerFactory.createMidFielder("Mercier"));
+		players.add(playerFactory.createMidFielder("Buffa"));
+		players.add(playerFactory.createForward("Cannigia"));
+		players.add(playerFactory.createForward("Zagarella3"));
+		players.add(playerFactory.createForward("Batistuta"));
+		
+		
+		
+		players.add(playerFactory.createGoalKeeper("Burgos"));
+		players.add(playerFactory.createDefender("Zorin"));
+		players.add(playerFactory.createDefender("Trota"));
+		players.add(playerFactory.createDefender("Flores"));
+		players.add(playerFactory.createMidFielder("Paez"));
+		players.add(playerFactory.createMidFielder("Fidel"));
+		players.add(playerFactory.createMidFielder("Loba"));
+		players.add(playerFactory.createMidFielder("Silver"));
+		players.add(playerFactory.createForward("Boli"));
+		players.add(playerFactory.createForward("Zagarella4"));
+		players.add(playerFactory.createForward("Toti"));
+		
 		
 		
 		for(Player p :players){
-			p.setBoca("Boca");
+			playerService.savePlayer(p);
 		}
 		
-		Team t = new Team();
-		t.setName("Boca");
-		t.setPlayers(players);
-//		teamService.saveTeam(t);
+//		Team t = new Team();
+//		t.setName("Boca");
+//		t.setPlayers(players);
+////		teamService.saveTeam(t);
 		
 		
-		Team t1 = teamFactory.createFullTeam("River", "r");
-		Team t2 = teamFactory.createFullTeam("Yupanqui", "y");
-		Team t3 = teamFactory.createFullTeam("Independiente","i");
-		Team t4 = teamFactory.createFullTeam("Racing", "ra"); 
-		Team t5 = teamFactory.createFullTeam("Belgrano", "b");
-		Team t6 = teamFactory.createFullTeam("San lorenzo", "s");
-		Team t7 = teamFactory.createFullTeam("Huracan", "h");
-		Team t8 = teamFactory.createFullTeam("Quilmes", "q");
-		
-		saveTeams(t,t1,t2,t3,t4,t5,t6,t7,t8);
+//		Team t1 = teamFactory.createFullTeam("River", "r");
+//		Team t2 = teamFactory.createFullTeam("Yupanqui", "y");
+//		Team t3 = teamFactory.createFullTeam("Independiente","i");
+//		Team t4 = teamFactory.createFullTeam("Racing", "ra"); 
+//		Team t5 = teamFactory.createFullTeam("Belgrano", "b");
+//		Team t6 = teamFactory.createFullTeam("San lorenzo", "s");
+//		Team t7 = teamFactory.createFullTeam("Huracan", "h");
+//		Team t8 = teamFactory.createFullTeam("Quilmes", "q");
+//		
+//		saveTeams(t,t1,t2,t3,t4,t5,t6,t7,t8);
 		
 //		List<Team> tss = new ArrayList<Team>();
 //		tss.add(t1);
