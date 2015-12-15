@@ -74,7 +74,7 @@ public class PlayerFactory {
 			pl = this.createMidFielder(request.getName());
 		}
 		if(request.getPosition().equals("Goal Keeper")){
-			pl = this.createMidFielder(request.getName());
+			pl = this.createGoalKeeper(request.getName());
 		}
 		if(request.getPosition().equals("Defender")){
 			pl = this.createDefender(request.getName());

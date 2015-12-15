@@ -48,8 +48,8 @@ public class StartUpFactory {
 
 //
 	public void build(){
-//		this.buildPlayers();
-//		this.buildLeagues();
+		this.buildPlayers();
+		this.buildLeagues();
 	}
 	
 	

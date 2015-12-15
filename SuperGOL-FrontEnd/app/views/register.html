@@ -24,6 +24,8 @@
         <form role="form">
             
                 <div class="well well-sm"><strong style="color:black;"><span class="glyphicon glyphicon-asterisk"></span>{{ 'R_FIELDS' | translate }}</strong></div>
+                
+
                 <div class="form-group">
                   <div class="input-group">
                         <input type="text" class="form-control" name="InputName" id="InputName" 
@@ -31,19 +33,23 @@
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
+
+
                 <div class="form-group">
                     <div class="input-group">
                         <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Email" ng-model="email" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
+                
                 <div class="form-group">
                     <div class="input-group">
                         <input type="password" class="form-control" id="InputPassword" name="InputPassword" placeholder="Password" ng-model="pass" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
-				<input type="submit" name="submit" id="submit" data-ng-click="createUser()" value="{{ 'R_BUTTON' | translate }}" class="btn btn-info">
+				
+                <input type="submit" name="submit" id="submit" data-ng-click="createUser()" value="{{ 'R_BUTTON' | translate }}" class="btn btn-info">
 
 
         </form>

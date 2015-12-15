@@ -58,7 +58,7 @@ public class PlayerResponse implements Serializable{
 	}
 	public PlayerResponse(Player pl){
 		this.name = pl.getName();
-		this.position = pl.getPositionDescription().replaceAll("\\s", "");
+		this.position = pl.getPositionDescription();
 		this.id = pl.getId();
 		this.team = pl.getRealTeam();
 	}

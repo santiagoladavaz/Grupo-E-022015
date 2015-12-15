@@ -2,10 +2,7 @@ function RegisterController($scope, $http, $location, $translate) {
 	$scope.alerts = [];
 	$scope.timeout = 3000;
 
-	$scope.closeAlert = function(index) {
-    	$scope.alerts.splice(index, 1);
-  	};
-
+	
 		$scope.createUser = function(){
 		    var user = {
 		    	nombre : $scope.user,

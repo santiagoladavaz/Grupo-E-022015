@@ -18,11 +18,11 @@ function MainController($scope, $translate, $cookies, auth, store, $log, $locati
       $("#divLogin").css('display', 'block');
       $("#btnLogin").css('display', 'none');
       $scope.user = $cookies.get('user');
-      alert($scope.user);
-      $http.post('http://192.168.0.21:8080/SuperGol-BackEnd/rest/userService/create',$scope.user);
+      $http.post('http://localhost:8080/SuperGol-BackEnd/rest/userService/create',$scope.user);
+      //$http.post('http://192.168.0.21:8080/SuperGol-BackEnd/rest/userService/create',$scope.user);
       //window.location.reload(false); 
 //      $location.path('/');
-      //$scope.alerts.push({msg: 'Registrado con Exito.', type:'success'});
+     
     }, function () {
     	 
    	   });
@@ -35,8 +35,7 @@ function MainController($scope, $translate, $cookies, auth, store, $log, $locati
    $cookies.remove('user');
    $("#divLogin").css('display', 'none');
    $("#btnLogin").css('display', 'block');
-   $location.path('/');
-   //$scope.alerts.push({msg: 'Se cerro la sesion', type:'success'});
+   $location.path('/');   
 }
 
 }

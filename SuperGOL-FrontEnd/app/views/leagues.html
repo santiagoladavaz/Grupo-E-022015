@@ -10,7 +10,7 @@
 				  <td style="width:35%">{{ 'LEAGUE_N' | translate }}</td>
 				  <td style="width:20%">Cant. Min</td>
 				  <td style="width:20%">Cant. Max</td>
-				  <td style="width:25%">{{ 'LEAGUE_E' | translate }}</td>
+				  <td style="width:25%">{{ 'EDIT' | translate }}</td>
 				</tr>
 				 <tr dir-paginate="league in leagues | itemsPerPage: 5">
 				   <td style="display:none;">
@@ -45,7 +45,7 @@
 					  
 					</form>
 					<div class="buttons" ng-show="!rowform.$visible">
-						 <button class="btn btn-primary" ng-click="rowform.$show()">{{ 'LEAGUE_E' | translate }}</button>
+						 <button class="btn btn-primary" ng-click="rowform.$show()">{{ 'EDIT' | translate }}</button>
 						 <button class="btn btn-danger" ng-click="removeLeague(league.id, $index)">{{ 'DELETE' | translate }}</button>
 						 <button type="button" ng-disabled="rowform.$waiting" ng-click="joinLeague(league.id)" class="btn btn-default">
 							{{ 'JOIN' | translate }}
@@ -66,7 +66,7 @@
                        <button class="btn btn-success" data-toggle="modal" data-target="#myModal">{{ 'LEAGUE_B' | translate }}</button>
                </div>
 			  
-			 	  <uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></uib-pagination>
+			 	 
 			 </div>
 		</div>
 	</div>
@@ -90,30 +90,29 @@
                 <div class="form-group">
                   <div class="input-group">
                         <input type="text" class="form-control" name="InputName" id="InputName" 
-                               placeholder ="{{ 'LEAGUE_N' | translate }}"  ng-model="name" required>
+                               placeholder ="{{ 'LEAGUE_N' | translate }}"  ng-model="name" ng-required="true">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="cantMin" name="Cant. Min" placeholder="Cant. Min" ng-model="cantMin" required>
+                        <input type="number" class="form-control" id="cantMin" name="Cant. Min" placeholder="Cant. Min" ng-model="cantMin"  min="0" ng-required="true">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                  <div class="form-group">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="cantMax" name="Cant. Max" placeholder="Cant. Max" ng-model="cantMax" required>
+                        <input type="number" class="form-control" id="cantMax" name="Cant. Max" placeholder="Cant. Max" ng-model="cantMax" min="{{cantMin}}"ng-required="true">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
+
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+        <input type="submit" name="submit" id="submit" data-ng-click="formplayer.$valid && saveLeague($data, index)" value="{{ 'SAVE' | translate }}" class="btn btn-info">
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary" data-dismiss="modal" ng-click="saveLeague($data, index)">
-                                {{ 'SAVE' | translate }}
-        </button>
-      </div>
+      					
     </div>
   </div>
 </div>

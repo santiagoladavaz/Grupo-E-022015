@@ -56,9 +56,12 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    <li>
+                         <a ng-href="#/team">{{ 'MENU_TEAM' | translate }}</a>
+                    </li>
                     <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ligas <span class="caret"></span></a>
-                <ul class="dropdown-menu">
+                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ligas <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
                     <li>
                        <a ng-href="#/leagues">{{ 'LEAGUE_B' | translate }}</a>
                     </li>
@@ -67,12 +70,8 @@
                     </li>
                 </ul>
               </li>
-                    <li>
-                       <a ng-href="#/leagues">{{ 'LEAGUE_B' | translate }}</a>
-                    </li>
-                    <li>
-                         <a ng-href="#/team">{{ 'MENU_TEAM' | translate }}</a>
-                    </li>
+                    
+                    
                     <li>
                         <a ng-href="#/players">{{ 'MENU_PLAYER' | translate }}</a>
                     </li>

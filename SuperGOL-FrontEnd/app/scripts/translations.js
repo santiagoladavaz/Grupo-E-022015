@@ -13,7 +13,7 @@ function translations($translateProvider) {
       R_BUTTON: 'Sign Up',
       H1_PLAYER: 'Players',
       LEAGUE_N : 'Name',
-      LEAGUE_E : 'Edit',
+      EDIT : 'Edit',
       LEAGUE_B : 'Create League',
       TEAM_A : 'GOALKEEPER',
       TEAM_DEF: 'DFENDER',
@@ -34,7 +34,8 @@ function translations($translateProvider) {
       UPDATE: 'Update Date',
       JOIN: 'Join',
       CREATE:'Create Fixture',
-      MY_LEAGUES:'My Leagues'
+      MY_LEAGUES:'My Leagues',
+      LOAD:'Load'
       
 
     })
@@ -51,7 +52,7 @@ function translations($translateProvider) {
       R_BUTTON: 'Registrate',
       H1_PLAYER: 'Jugadores',
       LEAGUE_N: 'Nombre',
-      LEAGUE_E: 'Editar',
+      EDIT: 'Editar',
       LEAGUE_B: 'Crear Liga',
       TEAM_A: 'ARQUERO',
       TEAM_DEF: 'DEFENSOR',
@@ -72,7 +73,8 @@ function translations($translateProvider) {
       UPDATE: 'Actualizar Fecha',
       JOIN: 'Unirse',
       CREATE:'Crear Fixture',
-      MY_LEAGUES:'Mis Ligas'
+      MY_LEAGUES:'Mis Ligas',
+      LOAD:'Cargar'
     
     });
 

@@ -10,9 +10,9 @@
                           <td style="width:35%">{{ 'LEAGUE_N' | translate }}</td>
                           <td style="width:20%">{{ 'TEAM' | translate }}</td>
                           <td style="width:25%">{{ 'POSITION' | translate }}</td>
-                          <td style="width:25%">{{ 'LEAGUE_E' | translate }}</td>
+                          <td style="width:25%">{{ 'EDIT' | translate }}</td>
                         </tr>
-                        <tr dir-paginate="player in players | itemsPerPage: 5" current-page="currentPage">
+                        <tr dir-paginate="player in players | itemsPerPage:5">
                           
                           <td style="display:none;">
                             <span editable-text="player.id" e-name="id" e-form="rowform" ng-model="id" e-required>
@@ -31,10 +31,12 @@
                             </span>
                           </td>
                           <td>
+                           
+
                            <!--<span editable-text="player.position" e-name="position" e-form="rowform" ng-model="position" e-required>{{ player.position || 'empty' }}
                             </span>
                             -->
-                            <select disabled required class="form-control" ng-model="player.position" ng-options="position as position for position in positions">
+                            <select disabled class="form-control" ng-model="player.position" ng-options="position as position for position in positions" ng-change="selpos= player.position">
                               <option> {{player.position}}</option>
                             </select> 
                           </td>
@@ -50,7 +52,7 @@
                               </button>
                             </form>
                             <div class="buttons" ng-show="!rowform.$visible">
-                              <button id="btnEditar" class="btn btn-primary center-block" onclick="SetEditar(this);" ng-click="rowform.$show()">{{ 'LEAGUE_E' | translate }}</button>
+                              <button id="btnEditar" class="btn btn-primary center-block" onclick="SetEditar(this);" ng-click="rowform.$show()">{{ 'EDIT' | translate }}</button>
                             </div>  
                           </td>
                         </tr>
@@ -78,37 +80,46 @@
         <h4 class="modal-title" id="myModalLabel">{{ 'MENU_PLAYER' | translate }}</h4>
       </div>
       <div class="modal-body">
-          <form role="form">
+          <form role="form" id="formplayer" name="formplayer">
             
                 <div class="well well-sm"><strong style="color:black;"><span class="glyphicon glyphicon-asterisk"></span>{{ 'R_FIELDS' | translate }}</strong></div>
+                
+
                 <div class="form-group">
                   <div class="input-group">
                         <input type="text" class="form-control" name="InputName" id="InputName" 
-                               placeholder ="{{ 'LEAGUE_N' | translate }}"  ng-model="name" required>
+                               placeholder ="{{ 'LEAGUE_N' | translate }}"  ng-model="name" ng-required="true">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="team" name="team" placeholder="{{ 'TEAM' | translate }}" ng-model="team" ng-required="true">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="{{ 'TEAM' | translate }}" ng-model="team" required>
+                        <select class="form-control" ng-model="newposition" ng-options="position as position for position in positions" ng-required="true" >
+                             <option value="">{{ 'POSITION' | translate }}</option>
+                        </select> 
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <select  required class="form-control" ng-model="position" ng-options="position as position for position in positions">
-                              <option>Posiciones</option>
-                            </select> 
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+        <input type="submit" name="submit" id="submit" data-ng-click="formplayer.$valid && savePlayer()" value="{{ 'SAVE' | translate }}" class="btn btn-info">
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     
+        <!--
         <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary" onclick="DisableSelect(this);" data-dismiss="modal" ng-click="savePlayer()">
                                 {{ 'SAVE' | translate }}
         </button>
+      -->
       </div>
     </div>
   </div>

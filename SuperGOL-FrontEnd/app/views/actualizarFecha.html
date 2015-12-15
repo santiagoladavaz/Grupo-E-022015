@@ -1,27 +1,9 @@
-    <style>
-		.btn-file input[type=file] {
-            position: absolute;
-            top: 0;
-            right: 0;
-            min-width: 100%;
-            min-height: 100%;
-            font-size: 100px;
-            text-align: right;
-            filter: alpha(opacity=0);
-            opacity: 0;
-            outline: none;
-            background: white;
-            cursor: inherit;
-            display: block;
-        }
-	</style>
-
 <body>
 <div class="body" style="z-index: 10;" >
             <div class="container" style="min-height: 500px;">
 
 <div class="page-header" style="margin-top: 63px;">
-    <h1>Cargar Fecha</h1>
+    <h1>{{ 'UPDATE' | translate}}</h1>
 </div>
 
 <!-- Registration form - START -->
@@ -47,7 +29,7 @@
               -->
 			  <div class="form-group"> 
 				<div>
-				  <button type="submit" class="btn btn-success btn btn-primary btn-lg" ng-click="upload(file)" >Cargar</button>
+				  <button type="submit" class="btn btn-success btn btn-primary btn-lg" ng-click="upload(file)" >{{ 'LOAD' | translate}}</button>
 				</div>
 			  </div>
 			</form>

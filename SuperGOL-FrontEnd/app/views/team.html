@@ -97,7 +97,7 @@
 					
 				 <form class="form-inline" role="form">
 				   	
-						<select id="selectArquero" multiple="multiple" ng-options="player as player.name for player in players  | filter: { position: 'GoalKeeper' }" 
+						<select id="selectArquero" multiple="multiple" ng-options="player as player.name for player in players  | filter: { position: 'Goal Keeper' }" 
 								ng-model="arqueroSeleccionado" ng-change="change('arquero', 1)" >
 						</select>
 						
@@ -105,7 +105,7 @@
 								ng-model="defensoresSeleccionados" ng-change="change('defensor', 3)">
 						</select>
 						
-						<select id="selectVolante" multiple="multiple" ng-options="player as player.name for player in players  | filter: { position: 'MidFielder' }" 
+						<select id="selectVolante" multiple="multiple" ng-options="player as player.name for player in players  | filter: { position: 'Mid Fielder' }" 
 								ng-model="volantesSeleccionados" ng-change="change('volante', 4)">
 						</select>
 						
